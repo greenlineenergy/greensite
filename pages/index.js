@@ -58,13 +58,13 @@ export default function Home() {
             <div className="flex items-center justify-between h-16">
               <a href="#top" className="flex items-center gap-3 font-semibold">
                 <img
-                  src="/greenline-logo-mark.png.jpeg"
+                  src="/greenline-logo-mark.png"
                   alt="GreenLine Logo Mark"
                   className="h-10 w-10 rounded-full"
                 />
                 <span className="sr-only">GreenLine Energy</span>
                 <img
-                  src="/greenline-logo-word.png.jpeg"
+                  src="/greenline-logo-word.png.jpeg.png"
                   alt="GreenLine Energy"
                   className="hidden sm:block h-6"
                 />
@@ -135,7 +135,7 @@ export default function Home() {
             <div className="md:col-span-5">
               <div className="bg-white/90 rounded-2xl shadow-md ring-1 ring-black/5 p-6">
                 <img
-                  src="/hero-bg.jpg.png"
+                  src="/hero-bg.png.png"
                   alt="Eco-friendly home with solar panels and heat pump"
                   width="600"
                   height="400"
