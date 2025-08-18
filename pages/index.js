@@ -14,7 +14,7 @@ export default function Home() {
           property="og:description"
           content="VEU-accredited upgrades for heat pump hot water, air conditioning, and hydronics. Reduce costs and emissions with certified installations."
         />
-        <meta property="og:image" content="https://greensite-rouge.vercel.app/og-image.jpg" />
+        <meta property="og:image" content="https://greensite-7ept.vercel.app/og-image.jpg" />
         <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://cdn.tailwindcss.com" />
@@ -32,7 +32,7 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: "GreenLine Energy Pty Ltd",
-            url: "https://greensite-rouge.vercel.app",
+            url: "https://greensite-7ept.vercel.app",
             telephone: "+61 412 345 678",
             areaServed: "Victoria, Australia",
             address: {
@@ -52,6 +52,14 @@ export default function Home() {
       </Head>
       {/* SITE WRAPPER */}
       <div className="bg-gradient-to-b from-[#F5F5F5] via-white to-white text-[#1A237E] antialiased">
+        {/* Banner */}
+        <div className="w-full">
+          <img
+            src="/greenline-banner.png"
+            alt="GreenLine Energy Banner"
+            className="w-full h-auto max-h-[200px] object-cover"
+          />
+        </div>
         {/* Header (Teal) */}
         <header className="sticky top-0 z-50 bg-[#26A69A] text-white/90">
           <div className="mx-auto max-w-7xl px-4 md:px-6">
