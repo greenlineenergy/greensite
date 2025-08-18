@@ -1,312 +1,277 @@
-import Head from "next/head";
-import { useEffect, useState } from "react";
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GreenLine Energy — VEU Heat Pumps, Aircon & Hot Water Upgrades</title>
+  <meta name="description" content="GreenLine Energy Pty Ltd — VEU-accredited upgrades: heat pump hot water, reverse-cycle air conditioning, and hydronics. Save on bills, cut carbon." />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256'%3E%3Ccircle cx='128' cy='128' r='120' fill='%230a7f4f'/%3E%3Cpath d='M68 148c40-10 68-42 84-88 18 20 28 44 28 72 0 45-31 82-84 82-22 0-39-7-51-20 9-17 13-31 23-46z' fill='%23fff'/%3E%3C/svg%3E" />
+  <style>
+    /* Minimal enhancements beyond Tailwind */
+    .card { @apply bg-white/90 rounded-2xl shadow-xl ring-1 ring-black/5; }
+    .btn  { @apply inline-flex items-center justify-center px-5 py-3 rounded-xl font-semibold transition-colors; }
+    .btn-primary { @apply bg-emerald-600 text-white hover:bg-emerald-700; }
+    .btn-ghost   { @apply bg-white text-emerald-700 hover:bg-emerald-50 ring-1 ring-emerald-200; }
+    .badge { @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200; }
+    .section { @apply py-14 md:py-20; }
+  </style>
 
-/* ---------- tiny utilities ---------- */
-const sections = [
-  { id: "home", label: "Home" },
-  { id: "contact", label: "Contact" },
-];
-
-function useScrollSpy(ids) {
-  const [active, setActive] = useState(ids[0]);
-  useEffect(() => {
-    const observers = ids.map((id) => {
-      const el = document.getElementById(id);
-      if (!el) return null;
-      const obs = new IntersectionObserver(
-        (entries) => entries.forEach((e) => e.isIntersecting && setActive(id)),
-        { threshold: 0.4 }
-      );
-      obs.observe(el);
-      return obs;
-    });
-    return () => observers.forEach((o) => o && o.disconnect());
-  }, [ids]);
-  return active;
-}
-
-/* ---------- components ---------- */
-function LogoMark({ size = 36 }) {
-  return (
-    <img
-      src="/greenline-logo-mark.png"
-      width={size}
-      height={size}
-      alt="GreenLine logo"
-      style={{ display: "block", borderRadius: "50%" }}
-      onError={(e) => {
-        // fallback to simple circle if image missing
-        e.currentTarget.replaceWith(
-          Object.assign(document.createElement("div"), {
-            style:
-              `width:${size}px;height:${size}px;border-radius:50%;` +
-              "border:3px solid #10b981;",
-          })
-        );
-      }}
-    />
-  );
-}
-
-function Nav() {
-  const active = useScrollSpy(sections.map((s) => s.id));
-  const [open, setOpen] = useState(false);
-
-  return (
-    <header style={styles.header}>
-      <div style={styles.container}>
-        <div style={styles.navbar}>
-          <a href="#home" style={styles.brandLink}>
-            <LogoMark />
-            <div>
-              <div style={styles.brandName}>GreenLine</div>
-              <div style={styles.brandSub}>Energy • HVAC • Solar</div>
-            </div>
-          </a>
-
-          {/* desktop menu */}
-          <nav style={{ display: "none", gap: 12, alignItems: "center" }} className="desk">
-            {sections.map((s) => (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                style={{
-                  ...styles.navItem,
-                  ...(active === s.id ? styles.navItemActive : null),
-                }}
-              >
-                {s.label}
-              </a>
-            ))}
-            <a href="#contact" style={styles.btnPrimary}>Get a Quote</a>
-          </nav>
-
-          {/* mobile button */}
-          <button
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-            style={styles.mobileBtn}
-            className="mobile"
-          >
-            {open ? "Close" : "Menu"}
-          </button>
-        </div>
-      </div>
-
-      {/* mobile drawer */}
-      {open && (
-        <div style={styles.mobileDrawer} className="mobile">
-          <div style={{ display: "grid", gap: 10 }}>
-            {sections.map((s) => (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                onClick={() => setOpen(false)}
-                style={{
-                  ...styles.navItem,
-                  padding: "12px 14px",
-                  ...(active === s.id ? styles.navItemActive : null),
-                }}
-              >
-                {s.label}
-              </a>
-            ))}
-            <a href="#contact" onClick={() => setOpen(false)} style={styles.btnPrimary}>
-              Get a Quote
-            </a>
-          </div>
-        </div>
-      )}
-
-      {/* simple responsive CSS hooks */}
-      <style jsx>{`
-        @media (min-width: 860px) {
-          .desk { display: flex !important; }
-          .mobile, .mobileDrawer { display: none !important; }
-        }
-      `}</style>
-    </header>
-  );
-}
-
-function Hero() {
-  return (
-    <section id="home" style={styles.hero}>
-      <div style={styles.container}>
-        <div style={styles.heroWrap}>
-          <div>
-            <div style={styles.badge}>Trusted local installers</div>
-            <h1 style={styles.h1}>
-              Upgrade comfort. <span style={{ color: "#10b981" }}>Lower costs.</span>
-            </h1>
-            <p style={styles.lead}>
-              GreenLine delivers energy-efficient heating, cooling, hot water and solar.
-              We help you unlock VEU rebates and design the best-fit system for your home or business.
-            </p>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 14 }}>
-              <a href="#contact" style={styles.btnPrimary}>Get a quote</a>
-              <a href="#contact" style={styles.btnOutline}>Contact us</a>
-            </div>
-            <ul style={styles.ticks}>
-              <li>Licensed & insured</li>
-              <li>5-year workmanship warranty</li>
-              <li>Transparent pricing</li>
-            </ul>
-          </div>
-
-          <div style={styles.card}>
-            <h3 style={{ margin: "0 0 8px 0" }}>What we install</h3>
-            <ul style={styles.ul}>
-              <li>Reverse-cycle split systems (RCAC)</li>
-              <li>Heat-pump hot water</li>
-              <li>Solar PV & batteries</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
-  const [sent, setSent] = useState(false);
-  const [error, setError] = useState("");
-
-  function submit(e) {
-    e.preventDefault();
-    if (phone && !/^\+?\d{8,12}$/.test(phone)) {
-      setError("Please enter a valid phone number (8–12 digits).");
-      return;
-    }
-    setError("");
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`
-    );
-    window.location.href = `mailto:hello@greenline.energy?subject=Quote%20Request&body=${body}`;
-    setSent(true);
+  <!-- LocalBusiness schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"GreenLine Energy Pty Ltd",
+    "url":"https://YOUR-GITHUB-PAGES-URL",
+    "telephone":"+61 4XX XXX XXX",
+    "areaServed":"Victoria, Australia",
+    "address": {"@type":"PostalAddress","addressCountry":"AU","addressRegion":"VIC"},
+    "sameAs":["https://www.energy.vic.gov.au/victorian-energy-upgrades","https://www.solar.vic.gov.au/hot-water-rebate"]
   }
+  </script>
+</head>
+<body class="bg-gradient-to-b from-emerald-50 via-white to-white text-slate-900 antialiased">
 
-  return (
-    <section id="contact" style={{ background: "#f8fafc", padding: "56px 0" }}>
-      <div style={styles.container}>
-        <div style={styles.contactGrid}>
-          <div>
-            <h2 style={styles.h2}>Get a quote</h2>
-            <p style={styles.muted}>
-              Tell us a bit about your site and we’ll get back quickly with options.
-            </p>
-            <div style={{ display: "grid", gap: 8, marginTop: 16, color: "#334155" }}>
-              <div><strong>Phone:</strong> 0000 000 000</div>
-              <div><strong>Email:</strong> hello@greenline.energy</div>
-              <div><strong>Address:</strong> 123 Green St, Melbourne VIC 3000</div>
-              <div><strong>ABN:</strong> 12 345 678 901</div>
-            </div>
-          </div>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-emerald-100">
+    <div class="mx-auto max-w-7xl px-4 md:px-6">
+      <div class="flex items-center justify-between h-16">
+        <a href="#top" class="flex items-center gap-2 font-semibold text-emerald-800">
+          <span class="h-8 w-8 rounded-full bg-emerald-600 inline-block"></span>
+          GreenLine Energy
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#solutions" class="hover:text-emerald-700">Solutions</a>
+          <a href="#pricing" class="hover:text-emerald-700">Pricing</a>
+          <a href="#process" class="hover:text-emerald-700">Process</a>
+          <a href="#faq" class="hover:text-emerald-700">FAQ</a>
+        </nav>
+        <a href="#cta" class="btn btn-primary text-sm">Check Eligibility</a>
+      </div>
+    </div>
+  </header>
 
-          <form onSubmit={submit} style={styles.form} className="card">
-            <label style={styles.label}>Name<input value={name} onChange={(e)=>setName(e.target.value)} required style={styles.input}/></label>
-            <label style={styles.label}>Email<input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} required style={styles.input}/></label>
-            <label style={styles.label}>Phone<input value={phone} onChange={(e)=>setPhone(e.target.value)} style={styles.input}/></label>
-            <label style={styles.label}>Message<textarea rows={6} value={message} onChange={(e)=>setMessage(e.target.value)} placeholder="Tell us about your rooms/roof…" style={styles.textarea}/></label>
-            {error && <div style={{ color:"#b91c1c", fontSize:12 }}>{error}</div>}
-            <button type="submit" style={styles.btnPrimary}>Send</button>
-            {sent && <div style={{ color:"#059669", fontSize:12 }}>Your email app should have opened — thanks!</div>}
-          </form>
+  <!-- Hero -->
+  <section id="top" class="section">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 grid md:grid-cols-12 gap-8 items-center">
+      <div class="md:col-span-7 space-y-6">
+        <span class="badge">VEU-accredited upgrades</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
+          Save Money. Cut Carbon. <span class="text-emerald-700">Upgrade with GreenLine.</span>
+        </h1>
+        <p class="text-lg text-slate-700">
+          Replace old hot water and heating with efficient heat pumps and reverse-cycle air conditioning.
+          Eligible Victorian households can access significant rebates and discounts.
+        </p>
+        <div class="flex gap-3">
+          <a href="#cta" class="btn btn-primary">Get My Rebate</a>
+          <a href="#solutions" class="btn btn-ghost">View Solutions</a>
+        </div>
+        <ul class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm pt-4">
+          <li class="card p-3 text-center"><strong>Up to $3,000</strong><br/>in combined hot water incentives*</li>
+          <li class="card p-3 text-center"><strong>$1,000–$1,400</strong><br/>Solar Victoria hot water rebate</li>
+          <li class="card p-3 text-center"><strong>Save up to $1,275/yr</strong><br/>vs old electric tanks</li>
+          <li class="card p-3 text-center"><strong>Fast installs</strong><br/>Licensed plumbers & sparkies</li>
+        </ul>
+      </div>
+      <div class="md:col-span-5">
+        <div class="card p-6">
+          <img alt="Eco-friendly home upgrade" class="rounded-xl" src="https://images.unsplash.com/photo-1461151304267-38535e780c79?q=80&w=1200&auto=format&fit=crop" />
+          <p class="text-xs text-slate-500 mt-2">Efficient, all-electric comfort with modern heat pump systems.</p>
         </div>
       </div>
-    </section>
-  );
-}
+    </div>
+  </section>
 
-function Footer() {
-  return (
-    <footer style={{ borderTop: "1px solid #e2e8f0", background: "#fff", padding: "22px 0" }}>
-      <div style={styles.container}>
-        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", gap:16, flexWrap:"wrap" }}>
-          <div style={{ display:"flex", alignItems:"center", gap:10 }}>
-            <LogoMark size={30} />
-            <strong>GreenLine</strong>
+  <!-- Solutions -->
+  <section id="solutions" class="section bg-emerald-50/50 border-y border-emerald-100">
+    <div class="mx-auto max-w-7xl px-4 md:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8">Our Solutions</h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Heat Pump Hot Water -->
+        <article class="card p-6">
+          <h3 class="text-xl font-semibold">Heat Pump Hot Water</h3>
+          <p class="mt-2 text-sm text-slate-700">
+            High-efficiency heat pumps replace electric/gas storage systems, slashing running costs.
+          </p>
+          <ul class="mt-4 text-sm space-y-2 list-disc pl-5">
+            <li>Up to ~80% less electricity vs old electric tanks</li>
+            <li>Quiet operation, smart modes (Eco/Hybrid/E-heater)</li>
+            <li>Rebates & STCs can significantly reduce upfront cost</li>
+          </ul>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="badge">Emerald / EcoGenica / Neopower</span>
+            <span class="badge">VEU + STCs</span>
           </div>
-          <div style={{ color: "#64748b", fontSize: 13 }}>
-            © {new Date().getFullYear()} GreenLine Pty Ltd • Energy-efficient HVAC • Hot Water • Solar
+        </article>
+
+        <!-- Reverse-Cycle AC -->
+        <article class="card p-6">
+          <h3 class="text-xl font-semibold">Reverse-Cycle Air Conditioning</h3>
+          <p class="mt-2 text-sm text-slate-700">
+            Efficient heating & cooling (single-split, multi-split, or ducted) eligible for VEU discounts.
+          </p>
+          <ul class="mt-4 text-sm space-y-2 list-disc pl-5">
+            <li>Heat & cool with one system</li>
+            <li>VEU incentives for approved models</li>
+            <li>Right-sizing guidance for each room/home</li>
+          </ul>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="badge">Daikin • Mitsubishi • Fujitsu</span>
+            <span class="badge">VEU eligible</span>
           </div>
+        </article>
+
+        <!-- Hydronics / Boilers -->
+        <article class="card p-6">
+          <h3 class="text-xl font-semibold">Hydronics & Boilers</h3>
+          <p class="mt-2 text-sm text-slate-700">
+            Hydronic panel or in-slab heating and boiler replacements for whisper-quiet, even warmth.
+          </p>
+          <ul class="mt-4 text-sm space-y-2 list-disc pl-5">
+            <li>Tailored design & installation</li>
+            <li>Rebate eligibility varies by activity & site</li>
+            <li>End-to-end project delivery</li>
+          </ul>
+          <div class="mt-5"><span class="badge">Custom quoted</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing (sample / from) -->
+  <section id="pricing" class="section">
+    <div class="mx-auto max-w-7xl px-4 md:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8">Indicative Pricing (after eligible incentives)</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card p-6">
+          <h3 class="font-semibold text-lg">Heat Pump Hot Water — 260–300 L</h3>
+          <p class="text-sm text-slate-700 mt-2">From <span class="font-semibold">$799</span> supplied & installed*</p>
+          <ul class="mt-4 text-sm list-disc pl-5 space-y-1">
+            <li>Standard install, old unit removal & recycling</li>
+            <li>5–7 yr tank warranties (brand dependent)</li>
+          </ul>
+        </div>
+        <div class="card p-6">
+          <h3 class="font-semibold text-lg">Split System RCAC — 2.5–3.5 kW</h3>
+          <p class="text-sm text-slate-700 mt-2">VEU-discounted — site-dependent</p>
+          <ul class="mt-4 text-sm list-disc pl-5 space-y-1">
+            <li>Single room/open plan comfort</li>
+            <li>Approved, efficient models only</li>
+          </ul>
+        </div>
+        <div class="card p-6">
+          <h3 class="font-semibold text-lg">Ducted RCAC — Whole Home</h3>
+          <p class="text-sm text-slate-700 mt-2">VEU-discounted — custom design</p>
+          <ul class="mt-4 text-sm list-disc pl-5 space-y-1">
+            <li>Efficient all-electric heating & cooling</li>
+            <li>Load calcs & right-sizing included</li>
+          </ul>
         </div>
       </div>
-    </footer>
-  );
-}
 
-/* ---------- page ---------- */
-export default function Page() {
-  // smooth anchors
-  useEffect(() => {
-    const handler = (e) => {
-      const a = e.target.closest('a[href^="#"]');
-      if (!a) return;
-      const id = a.getAttribute("href").slice(1);
-      const el = document.getElementById(id);
-      if (!el) return;
-      e.preventDefault();
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    };
-    document.addEventListener("click", handler);
-    return () => document.removeEventListener("click", handler);
-  }, []);
+      <p class="text-xs text-slate-500 mt-6">
+        *Price examples assume eligibility and standard metro installation. Final rebate amounts vary by postcode, existing system and approved product list.
+      </p>
+    </div>
+  </section>
 
-  return (
-    <>
-      <Head>
-        <title>GreenLine — Smart Energy. Lower Costs.</title>
-        <meta name="description" content="Energy-efficient air conditioning, heat-pump hot water, solar and batteries. We help you access VEU rebates." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+  <!-- Process -->
+  <section id="process" class="section bg-slate-50 border-y">
+    <div class="mx-auto max-w-7xl px-4 md:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10">How It Works</h2>
+      <ol class="grid md:grid-cols-5 gap-4 text-sm">
+        <li class="card p-5"><span class="badge mb-2">1</span> Quick eligibility check</li>
+        <li class="card p-5"><span class="badge mb-2">2</span> System selection & quote</li>
+        <li class="card p-5"><span class="badge mb-2">3</span> Licensed installation</li>
+        <li class="card p-5"><span class="badge mb-2">4</span> Old unit removal & recycling</li>
+        <li class="card p-5"><span class="badge mb-2">5</span> Apply rebates & enjoy savings</li>
+      </ol>
+    </div>
+  </section>
 
-      <div style={{ minHeight: "100vh", background: "#fff", fontFamily: 'ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif' }}>
-        <Nav />
-        <Hero />
-        <Contact />
-        <Footer />
+  <!-- CTA -->
+  <section id="cta" class="section">
+    <div class="mx-auto max-w-3xl px-4 md:px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold">Ready to upgrade?</h2>
+      <p class="mt-3 text-slate-700">Tell us about your home and current system. We’ll confirm eligibility and recommend the best upgrade.</p>
+      <form class="card mt-6 p-6 grid md:grid-cols-2 gap-4 text-left">
+        <label class="block">
+          <span class="text-sm font-medium">Full name</span>
+          <input type="text" required class="mt-1 w-full rounded-xl border-slate-300 focus:border-emerald-500 focus:ring-emerald-500" placeholder="Jane Citizen" />
+        </label>
+        <label class="block">
+          <span class="text-sm font-medium">Email</span>
+          <input type="email" required class="mt-1 w-full rounded-xl border-slate-300 focus:border-emerald-500 focus:ring-emerald-500" placeholder="jane@email.com" />
+        </label>
+        <label class="block md:col-span-2">
+          <span class="text-sm font-medium">Postcode</span>
+          <input type="text" required class="mt-1 w-full rounded-xl border-slate-300 focus:border-emerald-500 focus:ring-emerald-500" placeholder="3000" />
+        </label>
+        <label class="block md:col-span-2">
+          <span class="text-sm font-medium">Current system</span>
+          <select class="mt-1 w-full rounded-xl border-slate-300 focus:border-emerald-500 focus:ring-emerald-500">
+            <option>Electric storage hot water</option>
+            <option>Gas storage/instant hot water</option>
+            <option>Reverse-cycle split (existing)</option>
+            <option>Ducted gas heating</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <div class="md:col-span-2 flex gap-3">
+          <button type="submit" class="btn btn-primary w-full">Check Eligibility</button>
+          <a href="mailto:hello@greenline.energy" class="btn btn-ghost w-full">Email Us</a>
+        </div>
+      </form>
+      <p class="text-xs text-slate-500 mt-3">Submitting this form authorises GreenLine Energy Pty Ltd to contact you about rebates and installation.</p>
+    </div>
+  </section>
+
+  <!-- FAQ / Notes -->
+  <section id="faq" class="section bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 grid md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-xl font-semibold mb-3">About rebates & discounts</h3>
+        <ul class="text-sm text-slate-700 space-y-2 list-disc pl-5">
+          <li>Hot water rebates (Solar Victoria): up to $1,000, or up to $1,400 for eligible Australian-made products.</li>
+          <li>Additional incentives via the Victorian Energy Upgrades (VEU) program apply to approved products and activities.</li>
+          <li>Reverse-cycle air conditioners (single-split, multi-split, ducted) may receive VEU discounts if they meet eligibility criteria.</li>
+          <li>Final amounts depend on your address, existing system, and approved model selection.</li>
+        </ul>
       </div>
-    </>
-  );
-}
+      <div>
+        <h3 class="text-xl font-semibold mb-3">Why switch?</h3>
+        <ul class="text-sm text-slate-700 space-y-2 list-disc pl-5">
+          <li>Typical hot water running costs drop from about $1,015/yr (old electric storage) to ~$205/yr (heat pumps), depending on usage & tariffs.</li>
+          <li>One efficient RCAC can heat & cool year-round, replacing gas heating and adding summer comfort.</li>
+          <li>Lower emissions and quieter operation with modern, all-electric systems.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mx-auto max-w-7xl px-4 md:px-6 mt-8">
+      <p class="text-xs text-slate-500">
+        * Figures are indicative only. Eligibility, approved products and incentives are set by Solar Victoria and the Victorian Energy Upgrades (VEU) program and may change.
+        Always confirm current rebates before purchase.
+      </p>
+    </div>
+  </section>
 
-/* ---------- styles ---------- */
-const styles = {
-  container: { maxWidth: 1120, margin: "0 auto", padding: "0 16px" },
-  header: {
-    position: "sticky", top: 0, zIndex: 50,
-    background: "rgba(255,255,255,0.9)", backdropFilter: "blur(8px)",
-    borderBottom: "1px solid #e2e8f0"
-  },
-  navbar: { display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 },
-  brandLink: { display: "flex", alignItems: "center", gap: 12, textDecoration: "none", color: "#0f172a" },
-  brandName: { fontWeight: 800, fontSize: 20, letterSpacing: 0.2 },
-  brandSub: { fontSize: 12, color: "#64748b" },
-  navItem: { padding: "8px 12px", borderRadius: 10, textDecoration: "none", color: "#475569", fontWeight: 600 },
-  navItemActive: { background: "#ecfdf5", color: "#0f766e" },
-  btnPrimary: { background: "#10b981", color: "#fff", padding: "10px 16px", borderRadius: 12, fontWeight: 700, textDecoration: "none", display: "inline-block" },
-  btnOutline: { background:"#fff", color:"#0f172a", border:"1px solid #e2e8f0", padding:"10px 16px", borderRadius:12, fontWeight:700, textDecoration:"none", display:"inline-block" },
-  mobileBtn: { border: "1px solid #e2e8f0", padding: "8px 12px", borderRadius: 10, background: "#fff", fontWeight: 600 },
-  mobileDrawer: { position:"fixed", top:64, left:0, right:0, bottom:0, background:"rgba(255,255,255,0.97)", padding:16, borderTop:"1px solid #e2e8f0" },
+  <!-- Footer -->
+  <footer class="py-10 border-t">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+      <p class="text-slate-600">
+        © <span id="y"></span> GreenLine Energy Pty Ltd • All rights reserved
+      </p>
+      <div class="text-slate-500">
+        <a class="hover:text-emerald-700" href="https://www.energy.vic.gov.au/victorian-energy-upgrades">VEU program</a> •
+        <a class="hover:text-emerald-700" href="https://www.solar.vic.gov.au/hot-water-rebate">Solar Victoria hot water rebates</a>
+      </div>
+    </div>
+  </footer>
 
-  hero: { background: "linear-gradient(180deg,#f0fdf4 0%,#ffffff 70%)", padding: "56px 0" },
-  heroWrap: { display: "grid", gap: 24, gridTemplateColumns: "1.3fr 1fr" },
-  h1: { fontSize: 42, lineHeight: 1.1, margin: "10px 0" },
-  h2: { fontSize: 32, lineHeight: 1.2, margin: "0 0 8px" },
-  lead: { color: "#64748b", fontSize: 18, maxWidth: 720 },
-  badge: { display:"inline-block", background:"#ecfdf5", color:"#065f46", padding:"6px 10px", borderRadius: 999, fontSize:12, fontWeight: 800 },
-  ticks: { display:"flex", gap:16, margin:"16px 0 0", padding:0, listStyle:"none", color:"#64748b", fontSize:14, flexWrap:"wrap" },
-  card: { border:"1px solid #e2e8f0", borderRadius:16, background:"#fff", padding:16 },
-
-  contactGrid: { display:"grid", gap:24, gridTemplateColumns:"1.1fr 1fr", alignItems:"start" },
-  form: { display:"grid", gap:12, border:"1px solid #e2e8f0", borderRadius:16, background:"#fff", padding:16 },
-  label: { display:"grid", gap:6, fontWeight:600 },
-  input: { border:"1px solid #e2e8f0", borderRadius:10, padding:"10px 12px", font: "inherit" },
-  textarea: { border:"1px solid #e2e8f0", borderRadius:10, padding:"10px 12px", font: "inherit" },
-  muted: { color:"#64748b" },
-};
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+</html>
