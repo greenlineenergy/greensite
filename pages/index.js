@@ -1,8 +1,6 @@
 import Head from "next/head";
 
 export default function Home() {
-  const year = new Date().getFullYear(); // Current year: 2025
-
   return (
     <>
       <Head>
@@ -19,23 +17,14 @@ export default function Home() {
         <meta property="og:image" content="https://greensite-rouge.vercel.app/og-image.jpg" />
         <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="index, follow" /> {/* SEO improvement */}
-        <link rel="canonical" href="https://greensite-rouge.vercel.app" /> {/* SEO improvement */}
-        {/* Tailwind (for dev only; compile for prod) */}
         <link rel="preconnect" href="https://cdn.tailwindcss.com" />
         <script src="https://cdn.tailwindcss.com"></script>
-        {/* Fonts: Poppins (headings) + Inter (body) */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap"
-          rel="stylesheet"
-        />
-        {/* Favicon (recommend static file in public/ instead) */}
+        {/* favicon: eco green */}
         <link
           rel="icon"
-          href="/favicon.ico" // Replace with static file in public/
-          sizes="any"
+          href={`data:image/svg+xml,${encodeURIComponent(
+            `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256'><circle cx='128' cy='128' r='120' fill='#2E7D32'/><path d='M68 148c40-10 68-42 84-88 18 20 28 44 28 72 0 45-31 82-84 82-22 0-39-7-51-20 9-17 13-31 23-46z' fill='#fff'/></svg>`
+          )}`}
         />
         {/* LocalBusiness JSON-LD */}
         <script type="application/ld+json">
@@ -61,152 +50,136 @@ export default function Home() {
             ],
           })}
         </script>
-        {/* Inline font and color classes */}
-        <style>{`
-          :root {
-            --forest: #2E7D32;
-            --teal: #26A69A;
-            --ink: #1A237E;
-            --slate: #455A64;
-            --muted: #E5E7EB;
-          }
-          .font-display { font-family: 'Poppins', sans-serif; }
-          .font-body { font-family: 'Inter', sans-serif; }
-        `}</style>
       </Head>
       {/* SITE WRAPPER */}
-      <div className="font-body bg-gradient-to-b from-white via-white to-[var(--muted)] text-[var(--ink)] antialiased">
+      <div className="bg-gradient-to-b from-[#F9F9F9] via-[#F9F9F9] to-[#E0E0E0] text-[#1A237E] antialiased">
         {/* Banner */}
         <div className="w-full">
           <img
-            src="/greenline-banner.png" // Adjusted to match typical filename
-            alt="GreenLine Energy Savings Banner"
-            className="w-full h-auto max-h-[200px] object-cover rounded-b-xl shadow-md"
-            loading="lazy" // Lazy load for performance
+            src="/greenline-banner.png.png.png"
+            alt="GreenLine Energy Savings"
+            className="w-full h-auto max-h-[200px] object-cover rounded-b-lg shadow-md"
+            loading="lazy"
           />
         </div>
-        {/* Header */}
-        <header className="sticky top-0 z-50 bg-[var(--teal)] text-white shadow-sm/50 backdrop-blur supports-[backdrop-filter]:bg-[color:rgb(38_166_154_/_0.85)]">
+        {/* Header (Teal with professional accent) */}
+        <header className="sticky top-0 z-50 bg-[#26A69A] text-white shadow-sm">
           <div className="mx-auto max-w-7xl px-4 md:px-6">
             <div className="flex items-center justify-between h-16">
               <a href="#top" className="flex items-center gap-3 font-semibold text-white">
                 <img
-                  src="/greenline-logo-mark.png" // Adjusted to match typical filename
-                  alt="GreenLine Energy logo"
-                  className="h-10 w-10 rounded-full ring-1 ring-white/20"
+                  src="/greenline-logo-mark.png.jpeg"
+                  alt="GreenLine Energy Logo"
+                  className="h-10 w-10 rounded-full"
                   loading="lazy"
                 />
-                <span className="font-display text-lg tracking-tight">GreenLine Energy</span>
+                <span className="sr-only">GreenLine Energy</span>
               </a>
               <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-                {[
-                  ["#solutions", "Solutions"],
-                  ["#pricing", "Pricing"],
-                  ["#process", "Process"],
-                  ["#faq", "FAQ"],
-                  ["#contact", "Contact"],
-                ].map(([href, label]) => (
-                  <a
-                    key={href}
-                    href={href}
-                    className="hover:text-white/90 focus:outline-none focus:ring-2 focus:ring-white/40 rounded"
-                  >
-                    {label}
-                  </a>
-                ))}
+                <a href="#solutions" className="hover:text-[#4DA8DA]">Solutions</a>
+                <a href="#pricing" className="hover:text-[#4DA8DA]">Pricing</a>
+                <a href="#process" className="hover:text-[#4DA8DA]">Process</a>
+                <a href="#faq" className="hover:text-[#4DA8DA]">FAQ</a>
+                <a href="#contact" className="hover:text-[#4DA8DA]">Contact</a>
               </nav>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-lg px-5 py-2 font-semibold bg-[var(--forest)] text-white hover:bg-[#225522] focus:ring-4 focus:ring-[color:rgb(46_125_50_/_0.35)] transition-colors duration-200"
-                aria-label="Get a quote"
+                className="inline-flex items-center justify-center rounded-lg px-5 py-2 font-semibold bg-[#2E7D32] text-white hover:bg-[#225522] transition-colors duration-200"
               >
                 Get a Quote
               </a>
             </div>
           </div>
         </header>
-        {/* Hero */}
-        <section id="top" className="py-16 md:py-24 bg-white">
-          <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-12 gap-10 items-center">
+        {/* Hero - Professional and Inviting */}
+        <section id="top" className="py-16 md:py-24 bg-[#F9F9F9]">
+          <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-12 gap-8 items-center">
             <div className="md:col-span-7 space-y-6">
-              <span className="inline-flex items-center rounded-full px-3 py-1 text-xs md:text-sm font-medium bg-[var(--muted)] text-[var(--ink)] ring-1 ring-[color:rgb(38_166_154_/_0.3)]">
+              <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-[#E0E0E0] text-[#1A237E] ring-1 ring-[#26A69A]/30">
                 VEU-Accredited Upgrades
               </span>
-              <h1 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-[var(--ink)]">
-                Transform Your Home with <span className="text-[var(--forest)]">Real Savings</span>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#1A237E]">
+                Transform Your Home with Energy Savings
               </h1>
-              <p className="text-lg md:text-xl text-[var(--slate)]">
-                GreenLine Energy delivers VEU-accredited upgrades that cut costs and emissions. Save up to <b>$4,000</b> with government rebates.
+              <p className="text-lg md:text-xl text-[#455A64]">
+                GreenLine Energy offers VEU-accredited upgrades to cut costs and emissions. Save up to $4,000 with
+                government rebates!
               </p>
-              {/* Savings strip */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {[
-                  ["Up to $4,000", "Combined rebates*"],
-                  ["Up to $1,500", "Hot water savings"],
-                  ["Save $1,500/yr", "vs older systems"],
-                  ["Expert Team", "Fast installs"],
-                ].map(([t, s], i) => (
-                  <div key={i} className="rounded-xl bg-[var(--muted)] ring-1 ring-gray-200 p-3 text-center shadow-sm">
-                    <div className="font-semibold">{t}</div>
-                    <div className="text-xs text-[var(--slate)]">{s}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex gap-4">
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-[var(--forest)] text-white hover:bg-[#225522] focus:ring-4 focus:ring-[color:rgb(46_125_50_/_0.35)] transition-all"
+                  className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-[#2E7D32] text-white hover:bg-[#225522] focus:ring-4 focus:ring-[#2E7D32]/30 transition-all duration-200"
                 >
                   Contact Us
                 </a>
                 <a
                   href="#rebates"
-                  className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-white text-[var(--ink)] ring-1 ring-[color:rgb(38_166_154_/_0.3)] hover:bg-[var(--muted)]"
+                  className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-[#F9F9F9] text-[#1A237E] ring-1 ring-[#26A69A]/30 hover:bg-[#E0E0E0]"
                 >
                   Explore Rebates
                 </a>
               </div>
-              <p className="text-xs text-[#78909C]">*Savings vary by location, eligibility, and product. Contact us for details.</p>
+              <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                {[
+                  ["Up to $4,000", "in Rebates*"],
+                  ["Up to $1,500", "Hot Water Savings"],
+                  ["Save $1,500/yr", "vs Old Systems"],
+                  ["Expert Team", "Quick Installs"],
+                ].map(([t, s], i) => (
+                  <li
+                    key={i}
+                    className="bg-[#E0E0E0] rounded-lg shadow-sm ring-1 ring-gray-300 p-3 text-center"
+                  >
+                    <strong className="block text-base">{t}</strong>
+                    <span className="text-sm text-[#455A64]">{s}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-[#78909C]">
+                *Savings vary by location, eligibility, and product. Contact for details.
+              </p>
             </div>
             <div className="md:col-span-5">
-              <div className="bg-white rounded-2xl shadow-md ring-1 ring-gray-200 p-4">
+              <div className="bg-[#F9F9F9] rounded-2xl shadow-md ring-1 ring-gray-300 p-5">
                 <img
-                  src="/hero-bg.png" // Adjusted to match typical filename
-                  alt="Modern home with solar and heat pump"
+                  src="/hero-bg.png.png.png" // Updated to hero-bg.png.png.png
+                  alt="Modern home with energy-efficient upgrades"
                   width="600"
                   height="400"
-                  className="rounded-xl object-cover w-full h-auto"
+                  className="rounded-2xl object-cover w-full h-auto"
                   loading="lazy"
                 />
-                <p className="text-sm text-[var(--slate)] mt-2 text-center">
-                  Upgrade to a cleaner, more efficient home.
+                <p className="text-sm text-[#455A64] mt-2 text-center">
+                  Upgrade to a more efficient, cost-saving home.
                 </p>
               </div>
             </div>
           </div>
         </section>
-        {/* Trust */}
-        <section aria-label="Trust and Accreditation" className="py-8 bg-[var(--muted)]">
+        {/* Trust and Accreditation */}
+        <section aria-label="Trust and Accreditation" className="py-8 bg-[#E0E0E0]">
           <div className="mx-auto max-w-7xl px-6 md:px-12 flex flex-wrap items-center justify-center gap-6">
             <img
-              src="/veu.png" // Adjusted to match typical filename
-              alt="Victorian Energy Upgrades accreditation"
+              src="/veu.png.jpeg"
+              alt="Victorian Energy Upgrades Accreditation"
               className="h-12"
               loading="lazy"
             />
             <img
-              src="/esc.png" // Adjusted to match typical filename
-              alt="Essential Services Commission accreditation"
+              src="/esc.png.jpeg"
+              alt="Essential Services Commission Accreditation"
               className="h-12"
               loading="lazy"
             />
-            <span className="text-sm text-[var(--slate)]">Licensed, insured, and committed to excellence</span>
+            <span className="text-sm text-[#455A64]">
+              Licensed, Insured, and Committed to Excellence
+            </span>
           </div>
         </section>
-        {/* Solutions */}
-        <section id="solutions" className="py-16 md:py-20 bg-white">
+        {/* Solutions - Professional and Clear */}
+        <section id="solutions" className="py-16 md:py-20 bg-[#F9F9F9]">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-10 text-[var(--ink)]">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-[#1A237E]">
               Our Energy-Efficient Solutions
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
@@ -215,7 +188,7 @@ export default function Home() {
                   title: "Heat Pump Hot Water",
                   body: "Efficient, quiet systems to reduce heating costs.",
                   bullets: ["Up to 80% energy savings", "Smart technology", "VEU & STC eligible"],
-                  chips: "Emerald • EcoGenica • Neopower",
+                  chips: "Emerald / EcoGenica / Neopower",
                 },
                 {
                   title: "Reverse-Cycle Air Conditioning",
@@ -230,18 +203,21 @@ export default function Home() {
                   chips: "Custom Quotes",
                 },
               ].map((card, i) => (
-                <article key={i} className="bg-[var(--muted)] rounded-2xl shadow-sm ring-1 ring-gray-200 p-5 hover:shadow-md transition-shadow">
-                  <h3 className="text-xl font-semibold text-[var(--teal)] mb-3">{card.title}</h3>
-                  <p className="text-sm text-[var(--slate)] mb-3">{card.body}</p>
-                  <ul className="text-sm space-y-1 list-disc pl-5 text-[var(--slate)]">
+                <article
+                  key={i}
+                  className="bg-[#E0E0E0] rounded-2xl shadow-sm ring-1 ring-gray-300 p-5 hover:shadow-md transition-shadow duration-300"
+                >
+                  <h3 className="text-xl font-semibold text-[#26A69A] mb-3">{card.title}</h3>
+                  <p className="text-sm text-[#455A64] mb-3">{card.body}</p>
+                  <ul className="text-sm space-y-1 list-disc pl-5 text-[#455A64]">
                     {card.bullets.map((b) => (
                       <li key={b} className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[var(--teal)] rounded-full" />
+                        <span className="w-1.5 h-1.5 bg-[#26A69A] rounded-full"></span>
                         {b}
                       </li>
                     ))}
                   </ul>
-                  <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-white text-[#00695C] ring-1 ring-[color:rgb(38_166_154_/_0.2)] mt-3">
+                  <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-[#F9F9F9] text-[#00695C] ring-1 ring-[#26A69A]/20 mt-3">
                     {card.chips}
                   </span>
                 </article>
@@ -249,59 +225,68 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* Rebates */}
-        <section id="rebates" className="py-16 md:py-20 bg-[var(--muted)]">
+        {/* Rebates - Informative and Inviting */}
+        <section id="rebates" className="py-16 md:py-20 bg-[#E0E0E0]">
           <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-5">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-[var(--ink)]">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1A237E]">
                 Unlock Your Rebate Savings
               </h2>
-              <p className="text-lg text-[var(--slate)]">
-                As a VEU-accredited provider, GreenLine Energy secures government rebates to make your upgrades affordable.
+              <p className="text-lg text-[#455A64]">
+                As a VEU-accredited provider, GreenLine Energy secures government rebates to make your upgrades
+                affordable.
               </p>
-              <ul className="text-sm text-[var(--slate)] space-y-2">
-                {[
-                  "Up to $4,000 in combined rebates",
-                  "Up to $1,500 hot water savings",
-                  "Discounts on air conditioners",
-                ].map((x) => (
-                  <li key={x} className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[var(--forest)] rounded-full" />
-                    {x}
-                  </li>
-                ))}
+              <ul className="text-sm text-[#455A64] space-y-2 list-none">
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-[#2E7D32] rounded-full"></span>
+                  Up to $4,000 in combined rebates
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-[#2E7D32] rounded-full"></span>
+                  Up to $1,500 hot water savings
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-[#2E7D32] rounded-full"></span>
+                  Discounts on air conditioners
+                </li>
               </ul>
-              <p className="text-xs text-[#78909C]">*Depends on location and eligibility. Contact for a personalized estimate.</p>
+              <p className="text-xs text-[#78909C]">
+                *Depends on location and eligibility. Contact for a personalized estimate.
+              </p>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-[var(--forest)] text-white hover:bg-[#225522] focus:ring-4 focus:ring-[color:rgb(46_125_50_/_0.35)] transition-all"
+                className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-[#2E7D32] text-white hover:bg-[#225522] focus:ring-4 focus:ring-[#2E7D32]/30 transition-all duration-200"
               >
                 Check Eligibility
               </a>
             </div>
             <div className="md:pl-6">
               <img
-                src="/rebates-illustration.png" // Adjusted to match typical filename
-                alt="Rebate certificate and solar panel"
+                src="/rebates-illustration.png.png"
+                alt="Energy-efficient home upgrades"
                 width="400"
                 height="300"
-                className="rounded-2xl shadow-sm ring-1 ring-gray-200 object-cover"
+                className="rounded-2xl shadow-sm ring-1 ring-gray-300 object-cover"
                 loading="lazy"
               />
             </div>
           </div>
         </section>
-        {/* Pricing */}
-        <section id="pricing" className="py-16 md:py-20 bg-white">
+        {/* Pricing - Structured and Clear */}
+        <section id="pricing" className="py-16 md:py-20 bg-[#F9F9F9]">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-10 text-[var(--ink)]">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-[#1A237E]">
               Pricing After Rebates
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 {
                   title: "Heat Pump Hot Water (260–300L)",
-                  desc: <>From <span className="font-semibold text-[var(--forest)]">$799</span> installed*</>,
+                  desc: (
+                    <>
+                      From <span className="font-semibold text-[#2E7D32]">$799</span> installed*
+                    </>
+                  ),
                   points: ["Full install & removal", "5–7 year warranties", "Rebates applied"],
                 },
                 {
@@ -315,13 +300,16 @@ export default function Home() {
                   points: ["Whole-home efficiency", "Load planning", "Professional install"],
                 },
               ].map((p) => (
-                <div key={p.title} className="bg-[var(--muted)] rounded-2xl shadow-sm ring-1 ring-gray-200 p-5 hover:shadow-md transition-shadow">
-                  <h3 className="text-lg font-semibold text-[var(--ink)] mb-2">{p.title}</h3>
-                  <p className="text-sm text-[var(--slate)] mb-3">{p.desc}</p>
-                  <ul className="text-sm space-y-1 list-disc pl-5 text-[var(--slate)]">
+                <div
+                  key={p.title}
+                  className="bg-[#E0E0E0] rounded-2xl shadow-sm ring-1 ring-gray-300 p-5 hover:shadow-md transition-shadow duration-300"
+                >
+                  <h3 className="text-lg font-semibold text-[#1A237E] mb-2">{p.title}</h3>
+                  <p className="text-sm text-[#455A64] mb-3">{p.desc}</p>
+                  <ul className="text-sm space-y-1 list-disc pl-5 text-[#455A64]">
                     {p.points.map((x) => (
                       <li key={x} className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[var(--teal)] rounded-full" />
+                        <span className="w-1.5 h-1.5 bg-[#26A69A] rounded-full"></span>
                         {x}
                       </li>
                     ))}
@@ -329,56 +317,91 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <p className="text-xs text-[#78909C] mt-4 text-center">*Based on eligibility. Confirm exact costs with us.</p>
+            <p className="text-xs text-[#78909C] mt-4 text-center">
+              *Based on eligibility. Confirm with us for exact costs.
+            </p>
           </div>
         </section>
-        {/* Process */}
-        <section id="process" className="py-16 md:py-20 bg-[var(--muted)]">
+        {/* Process - Streamlined Flow */}
+        <section id="process" className="py-16 md:py-20 bg-[#E0E0E0]">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-10 text-[var(--ink)]">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-[#1A237E]">
               Your Upgrade Process
             </h2>
             <ol className="grid md:grid-cols-5 gap-5 text-sm text-center">
               {["Eligibility Check", "System Selection", "Installation", "Removal & Recycling", "Rebate Application"].map(
                 (step, i) => (
-                  <li key={step} className="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200 p-4 hover:shadow-md transition-shadow">
-                    <span className="inline-flex items-center justify-center rounded-full bg-white text-[var(--ink)] w-8 h-8 mx-auto mb-2 ring-1 ring-gray-200">
+                  <li
+                    key={i}
+                    className="bg-[#F9F9F9] rounded-2xl shadow-sm ring-1 ring-gray-300 p-4 hover:shadow-md transition-shadow duration-300"
+                  >
+                    <span className="inline-flex items-center justify-center rounded-full bg-[#F9F9F9] text-[#1A237E] w-8 h-8 mx-auto mb-2">
                       {i + 1}
                     </span>
-                    <p className="text-[var(--slate)]">{step}</p>
+                    <p className="text-[#455A64]">{step}</p>
                   </li>
                 )
               )}
             </ol>
           </div>
         </section>
-        {/* Contact */}
-        <section id="contact" className="py-16 md:py-20 bg-white">
+        {/* Contact - Professional and Accessible */}
+        <section id="contact" className="py-16 md:py-20 bg-[#F9F9F9]">
           <div className="mx-auto max-w-3xl px-6 md:px-12 text-center">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[var(--ink)] mb-5">Let’s Get Started</h2>
-            <p className="text-lg text-[var(--slate)] mb-5">Our team is here to assist with your energy upgrade needs.</p>
-            <form className="bg-[var(--muted)] rounded-2xl shadow-sm ring-1 ring-gray-200 p-5 grid md:grid-cols-2 gap-4 text-left">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A237E] mb-5">
+              Let’s Get Started
+            </h2>
+            <p className="text-lg text-[#455A64] mb-5">
+              Our team is here to assist with your energy upgrade needs.
+            </p>
+            <form className="bg-[#E0E0E0] rounded-2xl shadow-sm ring-1 ring-gray-300 p-5 grid md:grid-cols-2 gap-4 text-left">
               <label className="block">
-                <span className="text-sm font-medium text-[var(--ink)]">Full Name</span>
-                <input type="text" required className="mt-2 w-full rounded-lg border-gray-200 focus:border-[var(--teal)] focus:ring-[var(--teal)] p-2 bg-white" placeholder="Jane Citizen" />
+                <span className="text-sm font-medium text-[#1A237E]">Full Name</span>
+                <input
+                  type="text"
+                  required
+                  className="mt-2 w-full rounded-lg border-gray-300 focus:border-[#26A69A] focus:ring-[#26A69A] p-2 bg-white"
+                  placeholder="Jane Citizen"
+                />
               </label>
               <label className="block">
-                <span className="text-sm font-medium text-[var(--ink)]">Email</span>
-                <input type="email" required className="mt-2 w-full rounded-lg border-gray-200 focus:border-[var(--teal)] focus:ring-[var(--teal)] p-2 bg-white" placeholder="jane@email.com" />
+                <span className="text-sm font-medium text-[#1A237E]">Email</span>
+                <input
+                  type="email"
+                  required
+                  className="mt-2 w-full rounded-lg border-gray-300 focus:border-[#26A69A] focus:ring-[#26A69A] p-2 bg-white"
+                  placeholder="jane@email.com"
+                />
               </label>
               <label className="block md:col-span-2">
-                <span className="text-sm font-medium text-[var(--ink)]">Postcode</span>
-                <input type="text" required className="mt-2 w-full rounded-lg border-gray-200 focus:border-[var(--teal)] focus:ring-[var(--teal)] p-2 bg-white" placeholder="3000" />
+                <span className="text-sm font-medium text-[#1A237E]">Postcode</span>
+                <input
+                  type="text"
+                  required
+                  className="mt-2 w-full rounded-lg border-gray-300 focus:border-[#26A69A] focus:ring-[#26A69A] p-2 bg-white"
+                  placeholder="3000"
+                />
               </label>
               <label className="block md:col-span-2">
-                <span className="text-sm font-medium text-[var(--ink)]">Message</span>
-                <textarea rows={4} required className="mt-2 w-full rounded-lg border-gray-200 focus:border-[var(--teal)] focus:ring-[var(--teal)] p-2 bg-white" placeholder="How can we assist you?" />
+                <span className="text-sm font-medium text-[#1A237E]">Message</span>
+                <textarea
+                  rows={4}
+                  required
+                  className="mt-2 w-full rounded-lg border-gray-300 focus:border-[#26A69A] focus:ring-[#26A69A] p-2 bg-white"
+                  placeholder="How can we assist you?"
+                />
               </label>
               <div className="md:col-span-2 flex gap-4">
-                <button type="submit" className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-[var(--forest)] text-white hover:bg-[#225522] focus:ring-4 focus:ring-[color:rgb(46_125_50_/_0.35)] transition-all">
+                <button
+                  type="submit"
+                  className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-[#2E7D32] text-white hover:bg-[#225522] focus:ring-4 focus:ring-[#2E7D32]/30 transition-all duration-200"
+                >
                   Submit Inquiry
                 </button>
-                <a href="mailto:contact@GLEnergy.com.au" className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-white text-[var(--ink)] ring-1 ring-[color:rgb(38_166_154_/_0.3)] hover:bg-[var(--muted)] transition-colors">
+                <a
+                  href="mailto:contact@GLEnergy.com.au"
+                  className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-white text-[#1A237E] ring-1 ring-[#26A69A]/30 hover:bg-[#E0E0E0] transition-colors duration-200"
+                >
                   Email Us
                 </a>
               </div>
@@ -388,54 +411,91 @@ export default function Home() {
             </p>
           </div>
         </section>
-        {/* FAQ */}
-        <section id="faq" className="py-16 md:py-20 bg-[var(--muted)]">
+        {/* Refer a Friend - $100 Cash */}
+        <section className="w-full py-12 bg-[#E0E0E0]">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="bg-white rounded-2xl shadow-md overflow-hidden">
+              <div className="bg-[#26A69A] text-white text-center py-6">
+                <h2 className="text-3xl font-bold tracking-tight flex items-center justify-center gap-2">
+                  Refer a Friend, $100 Cash!
+                </h2>
+              </div>
+              <div className="p-8 space-y-4 text-center">
+                <p className="text-lg text-[#455A64]">
+                  Invite your friends to join GreenLine Energy and earn <strong>$100 cash</strong> for each successful referral!
+                </p>
+                <p className="text-sm text-[#78909C]">
+                  No limit—refer more friends to boost your rewards!
+                </p>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-[#2E7D32] text-white hover:bg-[#225522] focus:ring-4 focus:ring-[#2E7D32]/30 transition-all duration-200"
+                >
+                  Refer Now
+                </a>
+                <p className="flex justify-center mt-4 text-sm text-[#78909C]">
+                  Quick, easy, and rewarding way to share the savings.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* FAQ - Informative and Clear */}
+        <section id="faq" className="py-16 md:py-20 bg-[#E0E0E0]">
           <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="font-display text-xl font-semibold mb-4 text-[var(--ink)]">Rebate Details</h3>
-              <ul className="text-sm text-[var(--slate)] space-y-2">
-                {[
-                  "Hot water rebates up to $1,500",
-                  "Up to $4,000 in combined incentives",
-                  "Aircon discounts available",
-                ].map((x) => (
-                  <li key={x} className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[var(--teal)] rounded-full" />
-                    {x}
-                  </li>
-                ))}
+              <h3 className="text-xl font-semibold mb-4 text-[#1A237E]">Rebate Details</h3>
+              <ul className="text-sm text-[#455A64] space-y-2 list-none">
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-[#26A69A] rounded-full"></span>
+                  Hot water rebates up to $1,500
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-[#26A69A] rounded-full"></span>
+                  Up to $4,000 in combined incentives
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-[#26A69A] rounded-full"></span>
+                  Aircon discounts available
+                </li>
               </ul>
             </div>
             <div>
-              <h3 className="font-display text-xl font-semibold mb-4 text-[var(--ink)]">Benefits of Switching</h3>
-              <ul className="text-sm text-[var(--slate)] space-y-2">
-                {[
-                  "Save up to $1,500/year on energy",
-                  "Upgrade to efficient heating",
-                  "Lower your carbon footprint",
-                ].map((x) => (
-                  <li key={x} className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[var(--teal)] rounded-full" />
-                    {x}
-                  </li>
-                ))}
+              <h3 className="text-xl font-semibold mb-4 text-[#1A237E]">Benefits of Switching</h3>
+              <ul className="text-sm text-[#455A64] space-y-2 list-none">
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-[#26A69A] rounded-full"></span>
+                  Save up to $1,500/year on energy
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-[#26A69A] rounded-full"></span>
+                  Upgrade to efficient heating
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-[#26A69A] rounded-full"></span>
+                  Lower your carbon footprint
+                </li>
               </ul>
             </div>
           </div>
           <div className="mx-auto max-w-7xl px-6 md:px-12 mt-4">
-            <p className="text-sm text-[#78909C] text-center">*Estimates vary. Contact us for a detailed assessment.</p>
+            <p className="text-sm text-[#78909C] text-center">
+              *Estimates vary. Contact us for a detailed assessment.
+            </p>
           </div>
         </section>
-        {/* Footer */}
-        <footer className="py-8 bg-[var(--forest)] text-white">
+        {/* Footer - Professional and Clear */}
+        <footer className="py-8 bg-[#2E7D32] text-white">
           <div className="mx-auto max-w-7xl px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-            <p>© {year} GreenLine Energy Pty Ltd • ABN 12 345 678 901</p>
+            <p className="text-white">
+              © {new Date().getFullYear()} GreenLine Energy Pty Ltd • ABN 12 345 678 901
+            </p>
             <div className="flex items-center gap-4">
               <a
                 href="https://www.energy.vic.gov.au/victorian-energy-upgrades"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#4DA8DA] transition-colors"
+                className="hover:text-[#4DA8DA] transition-colors duration-200"
               >
                 VEU Program
               </a>
@@ -444,12 +504,15 @@ export default function Home() {
                 href="https://www.solar.vic.gov.au/hot-water-rebate"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#4DA8DA] transition-colors"
+                className="hover:text-[#4DA8DA] transition-colors duration-200"
               >
                 Solar Victoria Rebates
               </a>
               <span className="text-white/50">•</span>
-              <a href="mailto:contact@GLEnergy.com.au" className="hover:text-[#4DA8DA] transition-colors">
+              <a
+                href="mailto:contact@GLEnergy.com.au"
+                className="hover:text-[#4DA8DA] transition-colors duration-200"
+              >
                 Contact
               </a>
             </div>
