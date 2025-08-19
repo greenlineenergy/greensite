@@ -142,7 +142,7 @@ export default function Home() {
             <div className="md:col-span-5">
               <div className="bg-[#F9F9F9] rounded-2xl shadow-md ring-1 ring-gray-300 p-5">
                 <img
-                  src="/hero-bg.png.png.png" // Updated to hero-bg.png.png.png
+                  src="/hero-bg.png.png.png"
                   alt="Modern home with energy-efficient upgrades"
                   width="600"
                   height="400"
@@ -437,6 +437,15 @@ export default function Home() {
                   Quick, easy, and rewarding way to share the savings.
                 </p>
               </div>
+            </div>
+            {/* New Image Section */}
+            <div className="mt-6">
+              <img
+                src="/refer.png"
+                alt="Refer a Friend Illustration"
+                className="w-full h-auto max-h-[300px] object-cover rounded-lg shadow-md"
+                loading="lazy"
+              />
             </div>
           </div>
         </section>
