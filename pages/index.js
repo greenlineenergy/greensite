@@ -34,6 +34,7 @@ export default function Home() {
             name: "GreenLine Energy Pty Ltd",
             url: "https://greensite-rouge.vercel.app",
             telephone: "+61 412 345 678",
+            email: "contact@GLEnergy.com.au",
             areaServed: "Victoria, Australia",
             address: {
               "@type": "PostalAddress",
@@ -55,7 +56,7 @@ export default function Home() {
         {/* Banner */}
         <div className="w-full">
           <img
-            src="/greenline-banner.png.png"
+            src="/greenline-banner.png.png.png"
             alt="GreenLine Energy Savings"
             className="w-full h-auto max-h-[200px] object-cover rounded-b-lg shadow-md"
           />
@@ -66,15 +67,11 @@ export default function Home() {
             <div className="flex items-center justify-between h-16">
               <a href="#top" className="flex items-center gap-3 font-semibold text-white">
                 <img
-                  src="/greenline-logo-mark.png"
+                  src="/greenline-logo-mark.png.jpeg"
                   alt="GreenLine Energy Logo"
                   className="h-10 w-10 rounded-full"
                 />
-                <img
-                  src="/greenline-logo-word.png.jpeg.png"
-                  alt="GreenLine Energy"
-                  className="hidden sm:block h-6"
-                />
+                <span className="sr-only">GreenLine Energy</span>
               </a>
               <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
                 <a href="#solutions" className="hover:text-[#4DA8DA]">Solutions</a>
@@ -160,13 +157,13 @@ export default function Home() {
         <section aria-label="Trust and Accreditation" className="py-8 bg-[#E5E7EB]">
           <div className="mx-auto max-w-7xl px-6 md:px-12 flex flex-wrap items-center justify-center gap-6">
             <img
-              src="/veu.png"
+              src="/veu.png.jpeg"
               alt="Victorian Energy Upgrades Accreditation"
               className="h-12"
               loading="lazy"
             />
             <img
-              src="/esc.png"
+              src="/esc.png.jpeg"
               alt="Essential Services Commission Accreditation"
               className="h-12"
               loading="lazy"
@@ -398,7 +395,7 @@ export default function Home() {
                   Submit Inquiry
                 </button>
                 <a
-                  href="mailto:info@greenline.energy"
+                  href="mailto:contact@GLEnergy.com.au"
                   className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-white text-[#1A237E] ring-1 ring-[#26A69A]/30 hover:bg-[#E5E7EB] transition-colors duration-200"
                 >
                   Email Us
@@ -479,7 +476,10 @@ export default function Home() {
                 Solar Victoria Rebates
               </a>
               <span className="text-white/50">•</span>
-              <a href="#contact" className="hover:text-[#4DA8DA] transition-colors duration-200">
+              <a
+                href="mailto:contact@GLEnergy.com.au"
+                className="hover:text-[#4DA8DA] transition-colors duration-200"
+              >
                 Contact
               </a>
             </div>
