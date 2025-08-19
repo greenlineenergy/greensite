@@ -56,7 +56,7 @@ export default function Home() {
         <div className="w-full">
           <img
             src="/greenline-banner.png.png.png"
-            alt="GreenLine Energy Savings"
+            alt="GreenLine Energy Savings Banner"
             className="w-full h-[150px] md:h-[200px] object-cover rounded-b-lg shadow-md"
             loading="lazy"
           />
@@ -141,11 +141,11 @@ export default function Home() {
             <div className="md:col-span-5">
               <div className="bg-[#F9F9F9] rounded-2xl shadow-md ring-1 ring-gray-300 p-5">
                 <img
-                  src="/hero-bg.png.png.png"
+                  src="/heatpump.jpeg"
                   alt="Modern home with energy-efficient upgrades"
                   width="600"
                   height="400"
-                  className="rounded-2xl object-cover w-full h-auto"
+                  className="rounded-2xl object-cover w-full h-[250px] md:h-[400px]"
                   loading="lazy"
                 />
                 <p className="text-sm text-[#455A64] mt-2 text-center">
@@ -159,13 +159,13 @@ export default function Home() {
         <section aria-label="Trust and Accreditation" className="py-8 bg-[#E0E0E0]">
           <div className="mx-auto max-w-7xl px-6 md:px-12 flex flex-wrap items-center justify-center gap-6">
             <img
-              src="/veu.png.jpeg"
+              src="/trust-veu.png"
               alt="Victorian Energy Upgrades Accreditation"
               className="h-12"
               loading="lazy"
             />
             <img
-              src="/esc.png.jpeg"
+              src="/trust-esc.png"
               alt="Essential Services Commission Accreditation"
               className="h-12"
               loading="lazy"
@@ -188,24 +188,33 @@ export default function Home() {
                   body: "Efficient, quiet systems to reduce heating costs.",
                   bullets: ["Up to 80% energy savings", "Smart technology", "VEU & STC eligible"],
                   chips: "Emerald / EcoGenica / Neopower",
+                  image: "/heatpumphotwater.jpeg",
                 },
                 {
                   title: "Reverse-Cycle Air Conditioning",
                   body: "Year-round comfort with VEU-approved units.",
                   bullets: ["All-season efficiency", "Custom sizing", "Rebate discounts"],
                   chips: "Daikin • Mitsubishi • Fujitsu",
+                  image: "/revcycair.jpeg",
                 },
                 {
                   title: "Hydronics & Boilers",
                   body: "Custom heating for consistent warmth.",
                   bullets: ["Tailored designs", "Site eligibility", "Complete service"],
                   chips: "Custom Quotes",
+                  image: "/hydronicsboilers.jpeg",
                 },
               ].map((card, i) => (
                 <article
                   key={i}
                   className="bg-[#E0E0E0] rounded-2xl shadow-sm ring-1 ring-gray-300 p-5 hover:shadow-md transition-shadow duration-300"
                 >
+                  <img
+                    src={card.image}
+                    alt={`${card.title} Solution`}
+                    className="w-full h-[200px] md:h-[250px] object-cover rounded-lg mb-4"
+                    loading="lazy"
+                  />
                   <h3 className="text-xl font-semibold text-[#26A69A] mb-3">{card.title}</h3>
                   <p className="text-sm text-[#455A64] mb-3">{card.body}</p>
                   <ul className="text-sm space-y-1 list-disc pl-5 text-[#455A64]">
@@ -265,7 +274,7 @@ export default function Home() {
                 alt="Energy-efficient home upgrades"
                 width="400"
                 height="300"
-                className="rounded-2xl shadow-sm ring-1 ring-gray-300 object-cover"
+                className="rounded-2xl shadow-sm ring-1 ring-gray-300 object-cover w-full h-[250px] md:h-[300px]"
                 loading="lazy"
               />
             </div>
@@ -287,22 +296,31 @@ export default function Home() {
                     </>
                   ),
                   points: ["Full install & removal", "5–7 year warranties", "Rebates applied"],
+                  image: "/heatpumphotwater.jpeg",
                 },
                 {
                   title: "Split System RCAC (2.5–3.5 kW)",
                   desc: <>VEU-discounted, site-specific</>,
                   points: ["Efficient single-room comfort", "Certified units", "Quick setup"],
+                  image: "/splitrcac.jpeg",
                 },
                 {
                   title: "Ducted RCAC (Whole Home)",
                   desc: <>Custom, VEU-discounted</>,
                   points: ["Whole-home efficiency", "Load planning", "Professional install"],
+                  image: "/ductedrcac.jpeg",
                 },
               ].map((p) => (
                 <div
                   key={p.title}
                   className="bg-[#E0E0E0] rounded-2xl shadow-sm ring-1 ring-gray-300 p-5 hover:shadow-md transition-shadow duration-300"
                 >
+                  <img
+                    src={p.image}
+                    alt={`${p.title} Pricing`}
+                    className="w-full h-[200px] md:h-[250px] object-cover rounded-lg mb-4"
+                    loading="lazy"
+                  />
                   <h3 className="text-lg font-semibold text-[#1A237E] mb-2">{p.title}</h3>
                   <p className="text-sm text-[#455A64] mb-3">{p.desc}</p>
                   <ul className="text-sm space-y-1 list-disc pl-5 text-[#455A64]">
@@ -327,21 +345,14 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-[#1A237E]">
               Your Upgrade Process
             </h2>
-            <ol className="grid md:grid-cols-5 gap-5 text-sm text-center">
-              {["Eligibility Check", "System Selection", "Installation", "Removal & Recycling", "Rebate Application"].map(
-                (step, i) => (
-                  <li
-                    key={i}
-                    className="bg-[#F9F9F9] rounded-2xl shadow-sm ring-1 ring-gray-300 p-4 hover:shadow-md transition-shadow duration-300"
-                  >
-                    <span className="inline-flex items-center justify-center rounded-full bg-[#F9F9F9] text-[#1A237E] w-8 h-8 mx-auto mb-2">
-                      {i + 1}
-                    </span>
-                    <p className="text-[#455A64]">{step}</p>
-                  </li>
-                )
-              )}
-            </ol>
+            <div className="flex justify-center">
+              <img
+                src="/eligible.png"
+                alt="Eligibility Process"
+                className="w-full max-w-[600px] h-[300px] md:h-[400px] object-cover rounded-lg shadow-md"
+                loading="lazy"
+              />
+            </div>
           </div>
         </section>
         {/* Contact - Professional and Accessible */}
