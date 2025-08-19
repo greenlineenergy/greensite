@@ -1,5 +1,4 @@
 import Head from "next/head";
-
 export default function Home() {
   return (
     <>
@@ -58,7 +57,7 @@ export default function Home() {
           <img
             src="/greenline-banner.png.png.png"
             alt="GreenLine Energy Savings"
-            className="w-full h-auto max-h-[200px] object-cover rounded-b-lg shadow-md"
+            className="w-full h-[150px] md:h-[200px] object-cover rounded-b-lg shadow-md"
             loading="lazy"
           />
         </div>
@@ -443,7 +442,7 @@ export default function Home() {
               <img
                 src="/refer.png"
                 alt="Refer a Friend Illustration"
-                className="w-full h-auto max-h-[300px] object-cover rounded-lg shadow-md"
+                className="w-full h-[200px] md:h-[300px] object-cover rounded-lg shadow-md"
                 loading="lazy"
               />
             </div>
