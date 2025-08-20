@@ -57,7 +57,7 @@ export default function Home() {
           <img
             src="./greenline-banner.png.png.png"
             alt="GreenLine Energy Savings Banner"
-            className="w-full h-[150px] md:h-[200px] object-cover rounded-b-lg shadow-md"
+            className="w-full h-auto object-cover rounded-b-lg shadow-md"
             loading="lazy"
           />
         </div>
@@ -141,9 +141,9 @@ export default function Home() {
             <div className="md:col-span-5">
               <div className="bg-[#F9F9F9] rounded-2xl shadow-md ring-1 ring-gray-300 p-5">
                 <img
-                  src="./hero.png"
+                  src="./hero.jpeg"
                   alt="Modern home with energy-efficient upgrades"
-                  className="rounded-2xl object-cover w-full"
+                  className="rounded-2xl object-cover w-full h-auto"
                   loading="lazy"
                 />
                 <p className="text-sm text-[#455A64] mt-2 text-center">
@@ -157,13 +157,13 @@ export default function Home() {
         <section aria-label="Trust and Accreditation" className="py-8 bg-[#E0E0E0]">
           <div className="mx-auto max-w-7xl px-6 md:px-12 flex flex-wrap items-center justify-center gap-6">
             <img
-              src="./trust-veu.png"
+              src="./veu.png.jpeg"
               alt="Victorian Energy Upgrades Accreditation"
               className="h-12"
               loading="lazy"
             />
             <img
-              src="./trust-esc.png"
+              src="./esc.png.jpeg"
               alt="Essential Services Commission Accreditation"
               className="h-12"
               loading="lazy"
@@ -210,7 +210,7 @@ export default function Home() {
                   <img
                     src={card.image}
                     alt={`${card.title} Solution`}
-                    className="w-full h-[200px] md:h-[250px] object-cover rounded-lg mb-4"
+                    className="w-full h-auto object-cover rounded-lg mb-4"
                     loading="lazy"
                   />
                   <h3 className="text-xl font-semibold text-[#26A69A] mb-3">{card.title}</h3>
@@ -270,9 +270,7 @@ export default function Home() {
               <img
                 src="./rebates-illustration.png.png"
                 alt="Energy-efficient home upgrades"
-                width="400"
-                height="300"
-                className="rounded-2xl shadow-sm ring-1 ring-gray-300 object-cover w-full h-[250px] md:h-[300px]"
+                className="rounded-2xl shadow-sm ring-1 ring-gray-300 object-cover w-full h-auto"
                 loading="lazy"
               />
             </div>
@@ -316,7 +314,7 @@ export default function Home() {
                   <img
                     src={p.image}
                     alt={`${p.title} Pricing`}
-                    className="w-full h-[200px] md:h-[250px] object-cover rounded-lg mb-4"
+                    className="w-full h-auto object-cover rounded-lg mb-4"
                     loading="lazy"
                   />
                   <h3 className="text-lg font-semibold text-[#1A237E] mb-2">{p.title}</h3>
@@ -347,7 +345,7 @@ export default function Home() {
               <img
                 src="./eligible.png"
                 alt="Eligibility Process"
-                className="w-full max-w-[600px] h-[300px] md:h-[400px] object-cover rounded-lg shadow-md"
+                className="w-full h-auto object-cover rounded-lg shadow-md"
                 loading="lazy"
               />
             </div>
@@ -449,9 +447,9 @@ export default function Home() {
             {/* New Image Section */}
             <div className="mt-6">
               <img
-                src="./refer.png"
+                src="./refer.jpeg"
                 alt="Refer a Friend Illustration"
-                className="w-full h-[200px] md:h-[300px] object-cover rounded-lg shadow-md"
+                className="w-full h-auto object-cover rounded-lg shadow-md"
                 loading="lazy"
               />
             </div>
