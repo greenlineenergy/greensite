@@ -19,12 +19,7 @@ export default function Home() {
         <link rel="preconnect" href="https://cdn.tailwindcss.com" />
         <script src="https://cdn.tailwindcss.com"></script>
         {/* favicon: eco green */}
-        <link
-          rel="icon"
-          href={`data:image/svg+xml,${encodeURIComponent(
-            `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256'><circle cx='128' cy='128' r='120' fill='#2E7D32'/><path d='M68 148c40-10 68-42 84-88 18 20 28 44 28 72 0 45-31 82-84 82-22 0-39-7-51-20 9-17 13-31 23-46z' fill='#fff'/></svg>`
-          )}`}
-        />
+        <link rel="icon" href="./favicon.ico" />
         {/* LocalBusiness JSON-LD */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -61,8 +56,8 @@ export default function Home() {
             loading="lazy"
           />
         </div>
-        {/* Header (Teal with professional accent) */}
-        <header className="sticky top-0 z-50 bg-[#26A69A] text-white shadow-sm">
+        {/* Header (Green with professional accent) */}
+        <header className="sticky top-0 z-50 bg-[#2E7D32] text-white shadow-sm">
           <div className="mx-auto max-w-7xl px-4 md:px-6">
             <div className="flex items-center justify-between h-16">
               <a href="#top" className="flex items-center gap-3 font-semibold text-white">
@@ -72,7 +67,12 @@ export default function Home() {
                   className="h-10 w-10 rounded-full"
                   loading="lazy"
                 />
-                <span className="sr-only">GreenLine Energy</span>
+                <img
+                  src="./greenline-logo-word.png.jpeg.png.jpeg"
+                  alt="GreenLine Energy Wordmark"
+                  className="h-6"
+                  loading="lazy"
+                />
               </a>
               <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
                 <a href="#solutions" className="hover:text-[#4DA8DA]">Solutions</a>
@@ -83,7 +83,7 @@ export default function Home() {
               </nav>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-lg px-5 py-2 font-semibold bg-[#2E7D32] text-white hover:bg-[#225522] transition-colors duration-200"
+                className="inline-flex items-center justify-center rounded-lg px-5 py-2 font-semibold bg-[#225522] text-white hover:bg-[#1A401A] transition-colors duration-200"
               >
                 Get a Quote
               </a>
@@ -94,7 +94,7 @@ export default function Home() {
         <section id="top" className="py-16 md:py-24 bg-[#F9F9F9]">
           <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-12 gap-8 items-center">
             <div className="md:col-span-7 space-y-6">
-              <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-[#E0E0E0] text-[#1A237E] ring-1 ring-[#26A69A]/30">
+              <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-[#E0E0E0] text-[#1A237E] ring-1 ring-[#2E7D32]/30">
                 VEU-Accredited Upgrades
               </span>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#1A237E]">
@@ -113,7 +113,7 @@ export default function Home() {
                 </a>
                 <a
                   href="#rebates"
-                  className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-[#F9F9F9] text-[#1A237E] ring-1 ring-[#26A69A]/30 hover:bg-[#E0E0E0]"
+                  className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-[#F9F9F9] text-[#1A237E] ring-1 ring-[#2E7D32]/30 hover:bg-[#E0E0E0]"
                 >
                   Explore Rebates
                 </a>
@@ -200,7 +200,7 @@ export default function Home() {
                   body: "Custom heating for consistent warmth.",
                   bullets: ["Tailored designs", "Site eligibility", "Complete service"],
                   chips: "Custom Quotes",
-                  image: "./hydronicsboilers.jpeg",
+                  image: "./hydronicsboilers.png",
                 },
               ].map((card, i) => (
                 <article
@@ -213,17 +213,17 @@ export default function Home() {
                     className="w-full h-auto object-cover rounded-lg mb-4"
                     loading="lazy"
                   />
-                  <h3 className="text-xl font-semibold text-[#26A69A] mb-3">{card.title}</h3>
+                  <h3 className="text-xl font-semibold text-[#2E7D32] mb-3">{card.title}</h3>
                   <p className="text-sm text-[#455A64] mb-3">{card.body}</p>
                   <ul className="text-sm space-y-1 list-disc pl-5 text-[#455A64]">
                     {card.bullets.map((b) => (
                       <li key={b} className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[#26A69A] rounded-full"></span>
+                        <span className="w-1.5 h-1.5 bg-[#2E7D32] rounded-full"></span>
                         {b}
                       </li>
                     ))}
                   </ul>
-                  <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-[#F9F9F9] text-[#00695C] ring-1 ring-[#26A69A]/20 mt-3">
+                  <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-[#F9F9F9] text-[#00695C] ring-1 ring-[#2E7D32]/20 mt-3">
                     {card.chips}
                   </span>
                 </article>
@@ -322,7 +322,7 @@ export default function Home() {
                   <ul className="text-sm space-y-1 list-disc pl-5 text-[#455A64]">
                     {p.points.map((x) => (
                       <li key={x} className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[#26A69A] rounded-full"></span>
+                        <span className="w-1.5 h-1.5 bg-[#2E7D32] rounded-full"></span>
                         {x}
                       </li>
                     ))}
@@ -366,7 +366,7 @@ export default function Home() {
                 <input
                   type="text"
                   required
-                  className="mt-2 w-full rounded-lg border-gray-300 focus:border-[#26A69A] focus:ring-[#26A69A] p-2 bg-white"
+                  className="mt-2 w-full rounded-lg border-gray-300 focus:border-[#2E7D32] focus:ring-[#2E7D32] p-2 bg-white"
                   placeholder="Jane Citizen"
                 />
               </label>
@@ -375,7 +375,7 @@ export default function Home() {
                 <input
                   type="email"
                   required
-                  className="mt-2 w-full rounded-lg border-gray-300 focus:border-[#26A69A] focus:ring-[#26A69A] p-2 bg-white"
+                  className="mt-2 w-full rounded-lg border-gray-300 focus:border-[#2E7D32] focus:ring-[#2E7D32] p-2 bg-white"
                   placeholder="jane@email.com"
                 />
               </label>
@@ -384,7 +384,7 @@ export default function Home() {
                 <input
                   type="text"
                   required
-                  className="mt-2 w-full rounded-lg border-gray-300 focus:border-[#26A69A] focus:ring-[#26A69A] p-2 bg-white"
+                  className="mt-2 w-full rounded-lg border-gray-300 focus:border-[#2E7D32] focus:ring-[#2E7D32] p-2 bg-white"
                   placeholder="3000"
                 />
               </label>
@@ -393,7 +393,7 @@ export default function Home() {
                 <textarea
                   rows={4}
                   required
-                  className="mt-2 w-full rounded-lg border-gray-300 focus:border-[#26A69A] focus:ring-[#26A69A] p-2 bg-white"
+                  className="mt-2 w-full rounded-lg border-gray-300 focus:border-[#2E7D32] focus:ring-[#2E7D32] p-2 bg-white"
                   placeholder="How can we assist you?"
                 />
               </label>
@@ -406,7 +406,7 @@ export default function Home() {
                 </button>
                 <a
                   href="mailto:contact@GLEnergy.com.au"
-                  className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-white text-[#1A237E] ring-1 ring-[#26A69A]/30 hover:bg-[#E0E0E0] transition-colors duration-200"
+                  className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-white text-[#1A237E] ring-1 ring-[#2E7D32]/30 hover:bg-[#E0E0E0] transition-colors duration-200"
                 >
                   Email Us
                 </a>
@@ -421,7 +421,7 @@ export default function Home() {
         <section className="w-full py-12 bg-[#E0E0E0]">
           <div className="max-w-4xl mx-auto px-6">
             <div className="bg-white rounded-2xl shadow-md overflow-hidden">
-              <div className="bg-[#26A69A] text-white text-center py-6">
+              <div className="bg-[#2E7D32] text-white text-center py-6">
                 <h2 className="text-3xl font-bold tracking-tight flex items-center justify-center gap-2">
                   Refer a Friend, $100 Cash!
                 </h2>
@@ -462,15 +462,15 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-4 text-[#1A237E]">Rebate Details</h3>
               <ul className="text-sm text-[#455A64] space-y-2 list-none">
                 <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#26A69A] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#2E7D32] rounded-full"></span>
                   Hot water rebates up to $1,500
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#26A69A] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#2E7D32] rounded-full"></span>
                   Up to $4,000 in combined incentives
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#26A69A] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#2E7D32] rounded-full"></span>
                   Aircon discounts available
                 </li>
               </ul>
@@ -479,15 +479,15 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-4 text-[#1A237E]">Benefits of Switching</h3>
               <ul className="text-sm text-[#455A64] space-y-2 list-none">
                 <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#26A69A] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#2E7D32] rounded-full"></span>
                   Save up to $1,500/year on energy
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#26A69A] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#2E7D32] rounded-full"></span>
                   Upgrade to efficient heating
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#26A69A] rounded-full"></span>
+                  <span className="w-2 h-2 bg-[#2E7D32] rounded-full"></span>
                   Lower your carbon footprint
                 </li>
               </ul>
