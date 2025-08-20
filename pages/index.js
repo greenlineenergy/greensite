@@ -55,7 +55,7 @@ export default function Home() {
         {/* Banner */}
         <div className="w-full">
           <img
-            src="/greenline-banner.png.png.png"
+            src="./greenline-banner.png.png.png"
             alt="GreenLine Energy Savings Banner"
             className="w-full h-[150px] md:h-[200px] object-cover rounded-b-lg shadow-md"
             loading="lazy"
@@ -67,7 +67,7 @@ export default function Home() {
             <div className="flex items-center justify-between h-16">
               <a href="#top" className="flex items-center gap-3 font-semibold text-white">
                 <img
-                  src="/greenline-logo-mark.png.jpeg"
+                  src="./greenline-logo-mark.png.jpeg"
                   alt="GreenLine Energy Logo"
                   className="h-10 w-10 rounded-full"
                   loading="lazy"
@@ -141,11 +141,9 @@ export default function Home() {
             <div className="md:col-span-5">
               <div className="bg-[#F9F9F9] rounded-2xl shadow-md ring-1 ring-gray-300 p-5">
                 <img
-                  src="/heatpump.jpeg"
+                  src="./hero.png"
                   alt="Modern home with energy-efficient upgrades"
-                  width="600"
-                  height="400"
-                  className="rounded-2xl object-cover w-full h-[250px] md:h-[400px]"
+                  className="rounded-2xl object-cover w-full"
                   loading="lazy"
                 />
                 <p className="text-sm text-[#455A64] mt-2 text-center">
@@ -159,13 +157,13 @@ export default function Home() {
         <section aria-label="Trust and Accreditation" className="py-8 bg-[#E0E0E0]">
           <div className="mx-auto max-w-7xl px-6 md:px-12 flex flex-wrap items-center justify-center gap-6">
             <img
-              src="/trust-veu.png"
+              src="./trust-veu.png"
               alt="Victorian Energy Upgrades Accreditation"
               className="h-12"
               loading="lazy"
             />
             <img
-              src="/trust-esc.png"
+              src="./trust-esc.png"
               alt="Essential Services Commission Accreditation"
               className="h-12"
               loading="lazy"
@@ -188,21 +186,21 @@ export default function Home() {
                   body: "Efficient, quiet systems to reduce heating costs.",
                   bullets: ["Up to 80% energy savings", "Smart technology", "VEU & STC eligible"],
                   chips: "Emerald / EcoGenica / Neopower",
-                  image: "/heatpumphotwater.jpeg",
+                  image: "./heatpumphotwater.jpeg",
                 },
                 {
                   title: "Reverse-Cycle Air Conditioning",
                   body: "Year-round comfort with VEU-approved units.",
                   bullets: ["All-season efficiency", "Custom sizing", "Rebate discounts"],
                   chips: "Daikin • Mitsubishi • Fujitsu",
-                  image: "/revcycair.jpeg",
+                  image: "./revcycair.jpeg",
                 },
                 {
                   title: "Hydronics & Boilers",
                   body: "Custom heating for consistent warmth.",
                   bullets: ["Tailored designs", "Site eligibility", "Complete service"],
                   chips: "Custom Quotes",
-                  image: "/hydronicsboilers.jpeg",
+                  image: "./hydronicsboilers.jpeg",
                 },
               ].map((card, i) => (
                 <article
@@ -270,7 +268,7 @@ export default function Home() {
             </div>
             <div className="md:pl-6">
               <img
-                src="/rebates-illustration.png.png"
+                src="./rebates-illustration.png.png"
                 alt="Energy-efficient home upgrades"
                 width="400"
                 height="300"
@@ -296,19 +294,19 @@ export default function Home() {
                     </>
                   ),
                   points: ["Full install & removal", "5–7 year warranties", "Rebates applied"],
-                  image: "/heatpumphotwater.jpeg",
+                  image: "./heatpumphotwater.jpeg",
                 },
                 {
                   title: "Split System RCAC (2.5–3.5 kW)",
                   desc: <>VEU-discounted, site-specific</>,
                   points: ["Efficient single-room comfort", "Certified units", "Quick setup"],
-                  image: "/splitrcac.jpeg",
+                  image: "./splitrcac.jpeg",
                 },
                 {
                   title: "Ducted RCAC (Whole Home)",
                   desc: <>Custom, VEU-discounted</>,
                   points: ["Whole-home efficiency", "Load planning", "Professional install"],
-                  image: "/ductedrcac.jpeg",
+                  image: "./ductedrcac.jpeg",
                 },
               ].map((p) => (
                 <div
@@ -347,7 +345,7 @@ export default function Home() {
             </h2>
             <div className="flex justify-center">
               <img
-                src="/eligible.png"
+                src="./eligible.png"
                 alt="Eligibility Process"
                 className="w-full max-w-[600px] h-[300px] md:h-[400px] object-cover rounded-lg shadow-md"
                 loading="lazy"
@@ -451,7 +449,7 @@ export default function Home() {
             {/* New Image Section */}
             <div className="mt-6">
               <img
-                src="/refer.png"
+                src="./refer.png"
                 alt="Refer a Friend Illustration"
                 className="w-full h-[200px] md:h-[300px] object-cover rounded-lg shadow-md"
                 loading="lazy"
