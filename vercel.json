@@ -1,3 +1,4 @@
+```json
 {
   "builds": [
     {
@@ -24,11 +25,53 @@
         }
       ]
     }
-  ],
-  "routes": [
+  ]
+}
+```
+
+### Notes on the Update
+- **Removed `routes`**: The `"src": "/(.*)", "dest": "/"` route was removed to comply with Vercel’s configuration rules, as `headers` is present. Since this is a single-page Next.js app, the default routing (handled by `pages/index.jsx`) is sufficient, and no explicit `routes` are needed.
+- **Kept `headers`**: The `headers` configuration ensures static assets (images, videos, and CSS) are cached for one year, optimizing performance.
+- **Kept `builds`**: The `builds` section ensures Vercel recognizes the project as a Next.js app.
+
+### Additional Steps to Ensure Fast Deployment
+The `index.jsx` from the previous response is already optimized for fast Vercel deployment (pre-built Tailwind CSS, Next.js `<Image>`, ISR, etc.). To proceed:
+1. **Use the Corrected `vercel.json`**:
+   - Save the updated `vercel.json` (above) in your project root.
+   - This ensures no configuration conflicts during deployment.
+2. **Verify Assets**:
+   - Ensure all referenced assets in `index.jsx` (e.g., `/greenline-logo-mark.webp`, `/landingvid.mp4`, etc.) exist in `/public`. Convert images to `.webp` and compress videos as described previously.
+3. **Generate Tailwind CSS**:
+   - Run `npx tailwindcss -i ./src/input.css -o ./public/styles.css --minify` to create `/public/styles.css`.
+4. **Deploy**:
+   - Commit and push changes:
+     ```bash
+     git add .
+     git commit -m "Updated vercel.json and index.jsx for faster deployment"
+     git push origin main
+     ```
+   - Deploy with:
+     ```bash
+     vercel --prod
+     ```
+   - Or let Vercel’s Git integration handle automatic deployment.
+5. **Test**:
+   - Check the Vercel deployment logs for errors.
+   - Use Lighthouse to verify performance (aim for >90/100).
+   - Ensure the form, images, and videos load correctly.
+
+### If You Need `rewrites` or `redirects` Later
+If you plan to add features like dynamic routes or redirects (e.g., for a multi-page site or URL aliases), you can include `rewrites` or `redirects` in `vercel.json`, but keep `routes` removed. For example, to redirect `/old-page` to `/`:
+```json
+{
+  "redirects": [
     {
-      "src": "/(.*)",
-      "dest": "/"
+      "source": "/old-page",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
+```
+
+If you’re sticking with a single-page app, the current `vercel.json` is sufficient. Let me know if you need help with asset preparation, form integration, or further Vercel configuration tweaks!
