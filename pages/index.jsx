@@ -50,7 +50,7 @@ export default function Home() {
         {/* Banner */}
         <div className="w-full">
           <img
-            src="/greenline-banner.png.png.jpeg"
+            src="/limebanner.png"
             alt="GreenLine Energy Savings Banner"
             className="w-full h-auto object-cover rounded-b-lg shadow-md"
             loading="lazy"
@@ -141,7 +141,7 @@ export default function Home() {
             <div className="md:col-span-5">
               <div className="bg-[#2E2E2E] rounded-2xl shadow-md ring-1 ring-gray-700 p-5">
                 <img
-                  src="/hero.jpeg"
+                  src="/hero1.png"
                   alt="Modern home with energy-efficient upgrades"
                   className="rounded-2xl object-cover w-full h-auto"
                   loading="lazy"
