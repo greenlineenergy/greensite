@@ -443,15 +443,15 @@ export default function Home() {
                   Quick, easy, and rewarding way to share the savings.
                 </p>
               </div>
-            </div>
-            {/* New Image Section */}
-            <div className="mt-6">
-              <img
-                src="/refer.jpeg"
-                alt="Refer a Friend Illustration"
-                className="w-full h-auto object-cover rounded-lg shadow-md"
-                loading="lazy"
-              />
+              {/* New Image Section */}
+              <div className="mt-6">
+                <img
+                  src="/refercash.png"
+                  alt="Refer a Friend Cash Illustration"
+                  className="w-full h-auto object-cover rounded-lg shadow-md"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </section>
