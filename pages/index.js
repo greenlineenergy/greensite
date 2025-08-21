@@ -54,10 +54,10 @@ export default function Home() {
           />
         </div>
         {/* Header */}
-        <header className="sticky top-0 z-50 bg-[#1A3C1A] text-[#D3D3D3] shadow-md">
+        <header className="sticky top-0 z-50 bg-[#1A3C1A] text-[#FFFFFF] shadow-md">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
             <div className="flex items-center justify-between h-20">
-              <a href="#top" className="flex items-center gap-4 font-semibold text-[#D3D3D3]">
+              <a href="#top" className="flex items-center gap-4 font-bold text-[#FFFFFF]">
                 <img
                   src="/greenline-logo-mark.png.jpeg"
                   alt="GreenLine Energy Logo"
@@ -71,7 +71,7 @@ export default function Home() {
                   loading="lazy"
                 />
               </a>
-              <nav className="hidden md:flex items-center gap-8 text-base font-medium">
+              <nav className="hidden md:flex items-center gap-8 text-lg font-medium">
                 <a href="#solutions" className="hover:text-[#3CB371]">Solutions</a>
                 <a href="#pricing" className="hover:text-[#3CB371]">Pricing</a>
                 <a href="#process" className="hover:text-[#3CB371]">Process</a>
@@ -80,7 +80,7 @@ export default function Home() {
               </nav>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold bg-[#228B22] text-[#D3D3D3] hover:bg-[#3CB371] transition-colors duration-200"
+                className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] transition-colors duration-200"
               >
                 Get a Quote
               </a>
@@ -91,31 +91,31 @@ export default function Home() {
         <section id="top" className="py-20 md:py-28 bg-[#1C2525]">
           <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-12 gap-10 items-center">
             <div className="md:col-span-7 space-y-8">
-              <span className="inline-flex items-center rounded-full px-4 py-2 text-sm font-medium bg-[#98FB98] text-[#1C2525] ring-1 ring-[#228B22]/30">
+              <span className="inline-flex items-center rounded-full px-4 py-2 text-sm font-bold bg-[#6B8E23] text-[#FFFFFF] ring-1 ring-[#228B22]/30">
                 VEU-Accredited Upgrades
               </span>
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-[#D3D3D3]">
+              <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-[#FFFFFF]">
                 Transform Your Home with Energy Savings
               </h1>
-              <p className="text-xl md:text-2xl text-[#B0B0B0]">
+              <p className="text-xl md:text-2xl font-medium text-[#F0FFF0]">
                 GreenLine Energy offers VEU-accredited upgrades to cut costs and emissions. Save up to $4,000 with
                 government rebates!
               </p>
               <div className="flex gap-6">
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-semibold bg-[#228B22] text-[#D3D3D3] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
+                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
                 >
                   Contact Us
                 </a>
                 <a
                   href="#rebates"
-                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-semibold bg-[#1C2525] text-[#D3D3D3] ring-1 ring-[#228B22]/30 hover:bg-[#2F4F4F]"
+                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#1C2525] text-[#FFFFFF] ring-1 ring-[#228B22]/30 hover:bg-[#2F4F4F]"
                 >
                   Explore Rebates
                 </a>
               </div>
-              <ul className="grid grid-cols-2 md:grid-cols-4 gap-6 text-base">
+              <ul className="grid grid-cols-2 md:grid-cols-4 gap-6 text-lg">
                 {[
                   ["Up to $4,000", "in Rebates*"],
                   ["Up to $1,500", "Hot Water Savings"],
@@ -124,14 +124,14 @@ export default function Home() {
                 ].map(([t, s], i) => (
                   <li
                     key={i}
-                    className="bg-[#98FB98] rounded-lg shadow-md ring-1 ring-gray-700 p-4 text-center"
+                    className="bg-[#6B8E23] rounded-lg shadow-md ring-1 ring-gray-700 p-4 text-center"
                   >
-                    <strong className="block text-lg">{t}</strong>
-                    <span className="text-sm text-[#1C2525]">{s}</span>
+                    <strong className="block text-xl font-bold text-[#FFFFFF]">{t}</strong>
+                    <span className="text-base text-[#F0FFF0]">{s}</span>
                   </li>
                 ))}
               </ul>
-              <p className="text-sm text-[#8A8A8A]">
+              <p className="text-sm text-[#A9A9A9]">
                 *Savings vary by location, eligibility, and product. Contact for details.
               </p>
             </div>
@@ -143,7 +143,7 @@ export default function Home() {
                   className="rounded-2xl object-cover w-full h-auto"
                   loading="lazy"
                 />
-                <p className="text-base text-[#B0B0B0] mt-3 text-center">
+                <p className="text-base font-medium text-[#F0FFF0] mt-3 text-center">
                   Upgrade to a more efficient, cost-saving home.
                 </p>
               </div>
@@ -165,7 +165,7 @@ export default function Home() {
               className="h-14"
               loading="lazy"
             />
-            <span className="text-base text-[#B0B0B0]">
+            <span className="text-base font-medium text-[#F0FFF0]">
               Licensed, Insured, and Committed to Excellence
             </span>
           </div>
@@ -173,7 +173,7 @@ export default function Home() {
         {/* Solutions */}
         <section id="solutions" className="py-20 md:py-24 bg-[#1C2525]">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-[#D3D3D3]">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-[#FFFFFF]">
               Our Energy-Efficient Solutions
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
@@ -202,7 +202,7 @@ export default function Home() {
               ].map((card, i) => (
                 <article
                   key={i}
-                  className="bg-[#98FB98] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6 hover:shadow-xl transition-shadow duration-300"
+                  className="bg-[#6B8E23] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6 hover:shadow-xl transition-shadow duration-300"
                 >
                   <img
                     src={card.image}
@@ -210,9 +210,9 @@ export default function Home() {
                     className="w-full h-48 object-cover rounded-lg mb-6"
                     loading="lazy"
                   />
-                  <h3 className="text-2xl font-semibold text-[#228B22] mb-4">{card.title}</h3>
-                  <p className="text-lg text-[#1C2525] mb-4">{card.body}</p>
-                  <ul className="text-base space-y-2 list-disc pl-6 text-[#1C2525]">
+                  <h3 className="text-2xl font-bold text-[#FFFFFF] mb-4">{card.title}</h3>
+                  <p className="text-lg font-medium text-[#F0FFF0] mb-4">{card.body}</p>
+                  <ul className="text-base space-y-2 list-disc pl-6 text-[#F0FFF0]">
                     {card.bullets.map((b) => (
                       <li key={b} className="flex items-center gap-2">
                         <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
@@ -220,7 +220,7 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <span className="inline-flex items-center rounded-full px-4 py-2 text-base font-medium bg-[#1C2525] text-[#98FB98] ring-1 ring-[#228B22]/20 mt-4">
+                  <span className="inline-flex items-center rounded-full px-4 py-2 text-base font-medium bg-[#1C2525] text-[#6B8E23] ring-1 ring-[#228B22]/20 mt-4">
                     {card.chips}
                   </span>
                 </article>
@@ -232,14 +232,14 @@ export default function Home() {
         <section id="rebates" className="py-20 md:py-24 bg-[#2F4F4F]">
           <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-2 gap-10 items-center">
             <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold text-[#D3D3D3]">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-[#FFFFFF]">
                 Unlock Your Rebate Savings
               </h2>
-              <p className="text-xl text-[#B0B0B0]">
+              <p className="text-xl font-medium text-[#F0FFF0]">
                 As a VEU-accredited provider, GreenLine Energy secures government rebates to make your upgrades
                 affordable.
               </p>
-              <ul className="text-base text-[#B0B0B0] space-y-3 list-none">
+              <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
                   Up to $4,000 in combined rebates
@@ -253,12 +253,12 @@ export default function Home() {
                   Discounts on air conditioners
                 </li>
               </ul>
-              <p className="text-sm text-[#8A8A8A]">
+              <p className="text-sm text-[#A9A9A9]">
                 *Depends on location and eligibility. Contact for a personalized estimate.
               </p>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-semibold bg-[#228B22] text-[#D3D3D3] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
+                className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
               >
                 Check Eligibility
               </a>
@@ -276,7 +276,7 @@ export default function Home() {
         {/* Pricing */}
         <section id="pricing" className="py-20 md:py-24 bg-[#1C2525]">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-[#D3D3D3]">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-[#FFFFFF]">
               Pricing After Rebates
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
@@ -285,7 +285,7 @@ export default function Home() {
                   title: "Heat Pump Hot Water (260–300L)",
                   desc: (
                     <>
-                      From <span className="font-semibold text-[#228B22]">$799</span> installed*
+                      From <span className="font-bold text-[#FFFFFF]">$799</span> installed*
                     </>
                   ),
                   points: ["Full install & removal", "5–7 year warranties", "Rebates applied"],
@@ -306,7 +306,7 @@ export default function Home() {
               ].map((p) => (
                 <div
                   key={p.title}
-                  className="bg-[#98FB98] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6 hover:shadow-xl transition-shadow duration-300"
+                  className="bg-[#6B8E23] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6 hover:shadow-xl transition-shadow duration-300"
                 >
                   <img
                     src={p.image}
@@ -314,9 +314,9 @@ export default function Home() {
                     className="w-full h-48 object-cover rounded-lg mb-6"
                     loading="lazy"
                   />
-                  <h3 className="text-xl font-semibold text-[#1C2525] mb-3">{p.title}</h3>
-                  <p className="text-base text-[#1C2525] mb-3">{p.desc}</p>
-                  <ul className="text-base space-y-2 list-disc pl-6 text-[#1C2525]">
+                  <h3 className="text-xl font-bold text-[#FFFFFF] mb-3">{p.title}</h3>
+                  <p className="text-base font-medium text-[#F0FFF0] mb-3">{p.desc}</p>
+                  <ul className="text-base space-y-2 list-disc pl-6 text-[#F0FFF0]">
                     {p.points.map((x) => (
                       <li key={x} className="flex items-center gap-2">
                         <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
@@ -327,7 +327,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <p className="text-sm text-[#8A8A8A] mt-6 text-center">
+            <p className="text-sm text-[#A9A9A9] mt-6 text-center">
               *Based on eligibility. Confirm with us for exact costs.
             </p>
           </div>
@@ -335,7 +335,7 @@ export default function Home() {
         {/* Process */}
         <section id="process" className="py-20 md:py-24 bg-[#2F4F4F]">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-[#D3D3D3]">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-[#FFFFFF]">
               Your Upgrade Process
             </h2>
             <div className="flex justify-center">
@@ -351,15 +351,15 @@ export default function Home() {
         {/* Contact */}
         <section id="contact" className="py-20 md:py-24 bg-[#1C2525]">
           <div className="mx-auto max-w-4xl px-6 md:px-12 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#D3D3D3] mb-6">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#FFFFFF] mb-6">
               Let’s Get Started
             </h2>
-            <p className="text-xl text-[#B0B0B0] mb-6">
+            <p className="text-xl font-medium text-[#F0FFF0] mb-6">
               Our team is here to assist with your energy upgrade needs.
             </p>
-            <form className="bg-[#98FB98] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6 grid md:grid-cols-2 gap-6 text-left">
+            <form className="bg-[#6B8E23] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6 grid md:grid-cols-2 gap-6 text-left">
               <label className="block">
-                <span className="text-base font-medium text-[#1C2525]">Full Name</span>
+                <span className="text-base font-bold text-[#FFFFFF]">Full Name</span>
                 <input
                   type="text"
                   required
@@ -368,7 +368,7 @@ export default function Home() {
                 />
               </label>
               <label className="block">
-                <span className="text-base font-medium text-[#1C2525]">Email</span>
+                <span className="text-base font-bold text-[#FFFFFF]">Email</span>
                 <input
                   type="email"
                   required
@@ -377,7 +377,7 @@ export default function Home() {
                 />
               </label>
               <label className="block md:col-span-2">
-                <span className="text-base font-medium text-[#1C2525]">Postcode</span>
+                <span className="text-base font-bold text-[#FFFFFF]">Postcode</span>
                 <input
                   type="text"
                   required
@@ -386,7 +386,7 @@ export default function Home() {
                 />
               </label>
               <label className="block md:col-span-2">
-                <span className="text-base font-medium text-[#1C2525]">Message</span>
+                <span className="text-base font-bold text-[#FFFFFF]">Message</span>
                 <textarea
                   rows={5}
                   required
@@ -397,19 +397,19 @@ export default function Home() {
               <div className="md:col-span-2 flex gap-6">
                 <button
                   type="submit"
-                  className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-8 py-3 font-semibold bg-[#228B22] text-[#D3D3D3] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
+                  className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
                 >
                   Submit Inquiry
                 </button>
                 <a
                   href="mailto:contact@GLEnergy.com.au"
-                  className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-8 py-3 font-semibold bg-[#1C2525] text-[#D3D3D3] ring-1 ring-[#228B22]/30 hover:bg-[#2F4F4F] transition-colors duration-200"
+                  className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#1C2525] text-[#FFFFFF] ring-1 ring-[#228B22]/30 hover:bg-[#2F4F4F] transition-colors duration-200"
                 >
                   Email Us
                 </a>
               </div>
             </form>
-            <p className="text-sm text-[#8A8A8A] mt-4">
+            <p className="text-sm text-[#A9A9A9] mt-4">
               Refer a friend and get $100 off your next upgrade! By submitting, you agree to let us contact you.
             </p>
           </div>
@@ -418,25 +418,25 @@ export default function Home() {
         <section className="w-full py-16 md:py-20 bg-[#2F4F4F]">
           <div className="max-w-4xl mx-auto px-6">
             <div className="bg-[#1C2525] rounded-2xl shadow-lg overflow-hidden">
-              <div className="bg-[#1A3C1A] text-[#D3D3D3] text-center py-8">
-                <h2 className="text-4xl font-bold tracking-tight flex items-center justify-center gap-2">
+              <div className="bg-[#1A3C1A] text-[#FFFFFF] text-center py-8">
+                <h2 className="text-4xl font-extrabold tracking-tight flex items-center justify-center gap-2">
                   Refer a Friend, $100 Cash!
                 </h2>
               </div>
               <div className="p-8 space-y-6 text-center">
-                <p className="text-xl text-[#B0B0B0]">
+                <p className="text-xl font-bold text-[#FFFFFF]">
                   Invite your friends to join GreenLine Energy and earn <strong>$100 cash</strong> for each successful referral!
                 </p>
-                <p className="text-base text-[#8A8A8A]">
+                <p className="text-base font-medium text-[#F0FFF0]">
                   No limit—refer more friends to boost your rewards!
                 </p>
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-semibold bg-[#228B22] text-[#D3D3D3] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
+                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
                 >
                   Refer Now
                 </a>
-                <p className="flex justify-center mt-4 text-base text-[#8A8A8A]">
+                <p className="flex justify-center mt-4 text-base font-medium text-[#F0FFF0]">
                   Quick, easy, and rewarding way to share the savings.
                 </p>
               </div>
@@ -455,8 +455,8 @@ export default function Home() {
         <section id="faq" className="py-20 md:py-24 bg-[#2F4F4F]">
           <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-2xl font-semibold mb-6 text-[#D3D3D3]">Rebate Details</h3>
-              <ul className="text-base text-[#B0B0B0] space-y-3 list-none">
+              <h3 className="text-2xl font-extrabold mb-6 text-[#FFFFFF]">Rebate Details</h3>
+              <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
                   Hot water rebates up to $1,500
@@ -472,8 +472,8 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mb-6 text-[#D3D3D3]">Benefits of Switching</h3>
-              <ul className="text-base text-[#B0B0B0] space-y-3 list-none">
+              <h3 className="text-2xl font-extrabold mb-6 text-[#FFFFFF]">Benefits of Switching</h3>
+              <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
                   Save up to $1,500/year on energy
@@ -490,15 +490,15 @@ export default function Home() {
             </div>
           </div>
           <div className="mx-auto max-w-7xl px-6 md:px-12 mt-6">
-            <p className="text-sm text-[#8A8A8A] text-center">
+            <p className="text-sm text-[#A9A9A9] text-center">
               *Estimates vary. Contact us for a detailed assessment.
             </p>
           </div>
         </section>
         {/* Footer */}
-        <footer className="py-10 bg-[#1A3C1A] text-[#D3D3D3]">
-          <div className="mx-auto max-w-7xl px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 text-base">
-            <p className="text-[#D3D3D3]">
+        <footer className="py-10 bg-[#1A3C1A] text-[#FFFFFF]">
+          <div className="mx-auto max-w-7xl px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 text-lg">
+            <p className="font-medium text-[#FFFFFF]">
               © {new Date().getFullYear()} GreenLine Energy Pty Ltd • ABN 12 345 678 901
             </p>
             <div className="flex items-center gap-6">
