@@ -19,7 +19,7 @@ export default function Home() {
         <link rel="preconnect" href="https://cdn.tailwindcss.com" />
         <script src="https://cdn.tailwindcss.com"></script>
         {/* favicon: eco green */}
-        <link rel="icon" href="./favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
         {/* LocalBusiness JSON-LD */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -50,7 +50,7 @@ export default function Home() {
         {/* Banner */}
         <div className="w-full">
           <img
-            src="./greenline-banner.png.png.png"
+            src="/greenline-banner.png.png.jpeg"
             alt="GreenLine Energy Savings Banner"
             className="w-full h-auto object-cover rounded-b-lg shadow-md"
             loading="lazy"
@@ -62,13 +62,13 @@ export default function Home() {
             <div className="flex items-center justify-between h-16">
               <a href="#top" className="flex items-center gap-3 font-semibold text-[#E0E0E0]">
                 <img
-                  src="./greenline-logo-mark.png.jpeg"
+                  src="/greenline-logo-mark.png.jpeg"
                   alt="GreenLine Energy Logo"
                   className="h-10 w-10 rounded-full"
                   loading="lazy"
                 />
                 <img
-                  src="./greenline-logo-word.png.jpeg.png.jpeg"
+                  src="/greenline-logo-word.png.jpeg.jpeg"
                   alt="GreenLine Energy Wordmark"
                   className="h-6"
                   loading="lazy"
@@ -141,7 +141,7 @@ export default function Home() {
             <div className="md:col-span-5">
               <div className="bg-[#2E2E2E] rounded-2xl shadow-md ring-1 ring-gray-700 p-5">
                 <img
-                  src="./hero.jpeg"
+                  src="/hero.jpeg"
                   alt="Modern home with energy-efficient upgrades"
                   className="rounded-2xl object-cover w-full h-auto"
                   loading="lazy"
@@ -157,13 +157,13 @@ export default function Home() {
         <section aria-label="Trust and Accreditation" className="py-8 bg-[#4A704A]">
           <div className="mx-auto max-w-7xl px-6 md:px-12 flex flex-wrap items-center justify-center gap-6">
             <img
-              src="./veu.png.jpeg"
+              src="/veu.png.jpeg"
               alt="Victorian Energy Upgrades Accreditation"
               className="h-12"
               loading="lazy"
             />
             <img
-              src="./esc.png.jpeg"
+              src="/esc.png.jpeg"
               alt="Essential Services Commission Accreditation"
               className="h-12"
               loading="lazy"
@@ -186,21 +186,21 @@ export default function Home() {
                   body: "Efficient, quiet systems to reduce heating costs.",
                   bullets: ["Up to 80% energy savings", "Smart technology", "VEU & STC eligible"],
                   chips: "Emerald / EcoGenica / Neopower",
-                  image: "./heatpumphotwater.jpeg",
+                  image: "/heatpumphotwater.jpeg.jpeg",
                 },
                 {
                   title: "Reverse-Cycle Air Conditioning",
                   body: "Year-round comfort with VEU-approved units.",
                   bullets: ["All-season efficiency", "Custom sizing", "Rebate discounts"],
                   chips: "Daikin • Mitsubishi • Fujitsu",
-                  image: "./revcycair.jpeg",
+                  image: "/revcycair.jpeg",
                 },
                 {
                   title: "Hydronics & Boilers",
                   body: "Custom heating for consistent warmth.",
                   bullets: ["Tailored designs", "Site eligibility", "Complete service"],
                   chips: "Custom Quotes",
-                  image: "./hydronicsboilers.png",
+                  image: "/hydronicsboilers.png",
                 },
               ].map((card, i) => (
                 <article
@@ -268,7 +268,7 @@ export default function Home() {
             </div>
             <div className="md:pl-6">
               <img
-                src="./rebates-illustration.png.png"
+                src="/rebates-illustration.png.jpg"
                 alt="Energy-efficient home upgrades"
                 className="rounded-2xl shadow-sm ring-1 ring-gray-700 object-cover w-full h-auto"
                 loading="lazy"
@@ -292,19 +292,19 @@ export default function Home() {
                     </>
                   ),
                   points: ["Full install & removal", "5–7 year warranties", "Rebates applied"],
-                  image: "./heatpumphotwater.jpeg",
+                  image: "/heatpumphotwater.jpeg.jpeg",
                 },
                 {
                   title: "Split System RCAC (2.5–3.5 kW)",
                   desc: <>VEU-discounted, site-specific</>,
                   points: ["Efficient single-room comfort", "Certified units", "Quick setup"],
-                  image: "./splitrcac.jpeg",
+                  image: "/splitrcac.jpeg",
                 },
                 {
                   title: "Ducted RCAC (Whole Home)",
                   desc: <>Custom, VEU-discounted</>,
                   points: ["Whole-home efficiency", "Load planning", "Professional install"],
-                  image: "./ductedrcac.jpeg",
+                  image: "/ductedrcac.jpeg",
                 },
               ].map((p) => (
                 <div
@@ -343,7 +343,7 @@ export default function Home() {
             </h2>
             <div className="flex justify-center">
               <img
-                src="./eligible.png"
+                src="/eligible.png"
                 alt="Eligibility Process"
                 className="w-full h-auto object-cover rounded-lg shadow-md"
                 loading="lazy"
@@ -447,7 +447,7 @@ export default function Home() {
             {/* New Image Section */}
             <div className="mt-6">
               <img
-                src="./refer.jpeg"
+                src="/refer.jpeg"
                 alt="Refer a Friend Illustration"
                 className="w-full h-auto object-cover rounded-lg shadow-md"
                 loading="lazy"
