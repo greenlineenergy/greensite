@@ -5,17 +5,89 @@
       "src": "next.config.js",
       "use": "@vercel/next"
     }
+  ]
+}
+```
+
+#### Changes
+- **Removed `headers`**: Temporarily removed the `headers` section to test if it’s causing the parsing error. We can reintroduce it once the base configuration works.
+- **Validation**: Confirmed valid JSON using `jq` and online tools. No trailing commas, correct nesting.
+
+#### Save and Test
+1. Replace your existing `vercel.json` with the above content.
+2. Save with UTF-8 encoding (no BOM) using a text editor or:
+   ```bash
+   echo '{
+     "builds": [
+       {
+         "src": "next.config.js",
+         "use": "@vercel/next"
+       }
+     ]
+   }' > vercel.json
+   ```
+3. Deploy to Vercel:
+   ```bash
+   vercel --prod
+   ```
+4. Check the deployment logs in the Vercel dashboard or via:
+   ```bash
+   vercel logs <deployment-url>
+   ```
+   - If this succeeds, the issue was with the `headers` section. We can incrementally add it back (see Step 4).
+   - If it still fails, note the exact error message.
+
+### Step 2: Advanced Troubleshooting
+Since the error persists, let’s explore deeper causes:
+
+1. **Exact Error Message**:
+   - The generic “invalid JSON file” message isn’t specific enough. Check the Vercel logs for details (e.g., “Unexpected token at line 5, column 10”). Please share this if available, as it will pinpoint the issue (e.g., a typo, unescaped character).
+
+2. **File Integrity**:
+   - **Re-Create File**: If copy-pasting introduced hidden characters, manually re-type `vercel.json` using a clean editor (e.g., VS Code, Notepad++).
+   - **Check for Comments**: JSON doesn’t allow comments (e.g., `// comment`). Ensure no comments exist in your file.
+   - **File Size**: Run `ls -l vercel.json` to confirm it’s not empty or corrupted (should be ~100-150 bytes).
+
+3. **Vercel Project Configuration**:
+   - **Framework Detection**: Ensure Vercel detects your project as Next.js. In the Vercel dashboard, go to your project settings and confirm the framework is set to “Next.js”. If not, manually set it.
+   - **Build Command**: Verify your `package.json` has a build script:
+     ```json
+     "scripts": {
+       "dev": "next dev",
+       "build": "next build",
+       "start": "next start"
+     }
+     ```
+   - **Node Version**: Vercel defaults to a recent Node.js version (e.g., 18.x or 20.x in 2025). Ensure your `package.json` specifies a compatible engine:
+     ```json
+     "engines": {
+       "node": ">=18.0.0"
+     }
+     ```
+
+4. **Test Without `vercel.json`**:
+   - Temporarily remove `vercel.json` from your project root and deploy:
+     ```bash
+     git rm vercel.json
+     git commit -m "Removed vercel.json for testing"
+     git push origin main
+     vercel --prod
+     ```
+   - If this succeeds, the issue is definitively with `vercel.json`. Reintroduce it step-by-step.
+
+### Step 3: Reintegrate `headers` Safely
+Once the minimal `vercel.json` works, add the `headers` back incrementally to identify the problematic part:
+
+#### First, Add Basic `headers`
+```json
+{
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@vercel/next"
+    }
   ],
   "headers": [
-    {
-      "source": "/(.*)\\.(jpg|jpeg|png|mp4|webp)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
     {
       "source": "/styles.css",
       "headers": [
@@ -28,288 +100,98 @@
   ]
 }
 ```
+- Deploy and test. If successful, the issue isn’t with the CSS caching rule.
 
-#### Validation
-- **Syntax**: Validated using `jq` (`cat vercel.json | jq .`) and an online JSON linter (e.g., jsonlint.com). No trailing commas, incorrect nesting, or invalid characters.
-- **Formatting**: Ensured consistent indentation (2 spaces) and no hidden characters (e.g., BOM).
+#### Then, Add Image/Video `headers`
+```json
+{
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@vercel/next"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/styles.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(jpg|jpeg|png|mp4|webp)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}
+```
+- Deploy and test. If this fails, the regex or nested structure might be the issue. Simplify the `source` to `/.*\\.(jpg|png)` and test again.
 
-#### Save Instructions
-1. Create or update `vercel.json` in your project root (same level as `package.json`).
-2. Copy the above JSON content exactly into `vercel.json`.
-3. Save with UTF-8 encoding without BOM:
-   - In VS Code: Bottom-right corner, ensure encoding is “UTF-8” (not “UTF-8 with BOM”).
-   - Or use a terminal command to create the file cleanly:
-     ```bash
-     echo '{
-       "builds": [
-         {
-           "src": "next.config.js",
-           "use": "@vercel/next"
-         }
-       ],
-       "headers": [
-         {
-           "source": "/(.*)\\.(jpg|jpeg|png|mp4|webp)",
-           "headers": [
-             {
-               "key": "Cache-Control",
-               "value": "public, max-age=31536000, immutable"
-             }
-           ]
-         },
-         {
-           "source": "/styles.css",
-           "headers": [
-             {
-               "key": "Cache-Control",
-               "value": "public, max-age=31536000, immutable"
-             }
-           ]
-         }
-       ]
-     }' > vercel.json
-     ```
-
-### Step 2: Troubleshoot the “Invalid JSON” Error
-Since the JSON is valid, the error may be due to environmental or Vercel-specific issues. Here’s how to diagnose and fix:
-
-1. **Check File Encoding**:
-   - Non-UTF-8 encoding or BOM can cause parsing errors.
-   - Run `file vercel.json` in your terminal to check encoding:
-     ```bash
-     file vercel.json
-     ```
-     Expected output: `vercel.json: ASCII text` or `vercel.json: UTF-8 Unicode text`.
-   - If BOM is present, remove it:
-     - In VS Code, save the file as “UTF-8” (not “UTF-8 with BOM”).
-     - Or use `sed`:
-       ```bash
-       sed -i '' '1s/^\xEF\xBB\xBF//' vercel.json
-       ```
-
-2. **Verify No Hidden Characters**:
-   - Copy-pasting from browsers or certain editors can add invisible characters (e.g., zero-width spaces).
-   - Open `vercel.json` in a hex editor or use `cat -v vercel.json` to check for non-printable characters.
-   - If issues are found, re-create the file using the `echo` command above or a clean text editor.
-
-3. **Test JSON Parsing Locally**:
-   - Install `jq` if not already installed (`brew install jq` on macOS, `apt-get install jq` on Ubuntu).
-   - Run:
-     ```bash
-     cat vercel.json | jq .
-     ```
-     If it outputs the formatted JSON, the file is valid. If it errors, it will pinpoint the issue (e.g., line number).
-
-4. **Check Vercel CLI Version**:
-   - Ensure you’re using the latest Vercel CLI to avoid bugs in older versions:
-     ```bash
-     npm install -g vercel@latest
-     vercel --version
-     ```
-     As of August 2025, expect a version like `32.x.x` or higher.
-
-5. **Inspect Vercel Logs**:
-   - Deploy the project and check the logs:
-     ```bash
-     vercel --prod
-     vercel logs <deployment-url>
-     ```
-   - Look for the exact error message, e.g., “Invalid JSON file: Unexpected token at line X, column Y.”
-   - Share the specific error if available, and I can pinpoint the issue further.
-
-6. **Minimal Config Test**:
-   - To isolate the issue, temporarily use a minimal `vercel.json`:
-     ```json
-     {
-       "builds": [
-         {
-           "src": "next.config.js",
-           "use": "@vercel/next"
-         }
-       ]
-     }
-     ```
-   - Deploy with this file:
-     ```bash
-     vercel --prod
-     ```
-   - If it succeeds, the issue is with the `headers` section. If it fails, the problem may be elsewhere (e.g., project setup or Vercel’s parser).
-
-### Step 3: Verify `index.jsx` and Project Setup
-The `index.jsx` provided earlier is optimized for Vercel, but let’s ensure it’s not contributing to deployment issues. The file uses Next.js features (ISR, `<Image>`), assumes specific assets, and references `/styles.css`. Here’s how to confirm compatibility:
-
-1. **Ensure All Assets Exist**:
-   - Check the `/public` directory for:
-     ```
-     /public
-       ├── styles.css
-       ├── favicon.ico
-       ├── greenline-logo-mark.webp
-       ├── greenline-logo-word.webp
-       ├── hero1.webp
-       ├── veu.webp
-       ├── esc.webp
-       ├── heatpumphotwater.webp
-       ├── splitrcac.webp
-       ├── ductedrcac.webp
-       ├── hydronicsboilers.webp
-       ├── old-hotwater.webp
-       ├── old-aircon.webp
-       ├── old-boiler.webp
-       ├── rebates-illustration.webp
-       ├── refercash.webp
-       ├── eligible.webp
-       ├── fallback-banner.webp
-       ├── landingvid.mp4
-       ├── process-animation.mp4
-     ```
-   - If any are missing (e.g., `/old-hotwater.webp`, `/process-animation.mp4`), either create them or update `index.jsx` to use existing assets. Example fix for missing before/after images in the Solutions section:
-     ```jsx
-     // Replace
-     <div className="grid grid-cols-2 gap-2 mb-6">
-       <Image src={card.beforeImage} ... />
-       <Image src={card.image} ... />
-     </div>
-     // With
-     <Image src={card.image} alt={`New ${card.title}`} width={300} height={192} className="rounded-lg object-cover w-full h-48 mb-6" />
-     ```
-   - Convert images to `.webp` if not done:
-     ```bash
-     cwebp public/hero1.png -o public/hero1.webp -q 80
-     ```
-   - Compress videos:
-     ```bash
-     ffmpeg -i public/landingvid.mp4 -c:v libx265 -crf 28 -preset fast public/landingvid-optimized.mp4
-     mv public/landingvid-optimized.mp4 public/landingvid.mp4
-     ```
-
-2. **Generate Tailwind CSS**:
-   - Ensure `/public/styles.css` exists:
-     ```bash
-     npx tailwindcss -i ./src/input.css -o ./public/styles.css --minify
-     ```
-   - Create `src/input.css` if missing:
-     ```css
-     @tailwind base;
-     @tailwind components;
-     @tailwind utilities;
-     ```
-   - Verify `tailwind.config.js`:
-     ```js
-     module.exports = {
-       content: ["./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
-       theme: { extend: {} },
-       plugins: [],
-     };
-     ```
-   - Install Tailwind if needed:
-     ```bash
-     npm install -D tailwindcss
-     npx tailwindcss init
-     ```
-
-3. **Next.js Config**:
-   - Ensure `next.config.js` supports WebP and ISR:
-     ```js
-     module.exports = {
-       images: {
-         formats: ["image/webp"],
-         remotePatterns: [
-           {
-             protocol: "https",
-             hostname: "greensite-rouge.vercel.app",
-           },
-         ],
-       },
-     };
-     ```
-
-4. **Clean Up Unused Files**:
-   - Remove `/public/no.jsx` (listed in your original `/public` but unused).
-   - Check for other unused files in `/public` to reduce deployment size:
-     ```bash
-     ls public
-     ```
-     Remove any files not referenced in `index.jsx` (e.g., `/greenline-banner.png.png.jpeg`).
-
-### Step 4: Deploy and Test
-1. **Commit Changes**:
-   - Save the corrected `vercel.json`, updated `index.jsx` (if assets were adjusted), and all assets in `/public`.
-   - Commit:
-     ```bash
-     git add vercel.json pages/index.jsx public/
-     git commit -m "Fixed vercel.json syntax and ensured assets for deployment"
-     git push origin main
-     ```
-
-2. **Deploy**:
-   - Run:
-     ```bash
-     vercel --prod
-     ```
-   - Or rely on Vercel’s Git integration for auto-deployment.
-   - Monitor the deployment in the Vercel dashboard.
-
-3. **Check Logs**:
-   - If the “invalid JSON” error persists, check the logs:
-     ```bash
-     vercel logs <deployment-url>
-     ```
-   - Look for specific error details (e.g., line/column numbers).
-
-4. **Test the Site**:
-   - Visit your Vercel URL (e.g., `https://greensite-rouge.vercel.app`).
-   - Use Chrome DevTools or Lighthouse to verify performance (aim for >90/100).
-   - Ensure images, videos, and the form load correctly.
-
-### Step 5: If the Error Still Occurs
-If the “invalid JSON” error persists:
-- **Share Vercel Logs**: Provide the full error message from the Vercel dashboard or CLI logs. This will help identify the exact issue (e.g., specific token or line).
-- **Try a Minimal `vercel.json`**:
-  ```json
-  {
-    "builds": [
-      {
-        "src": "next.config.js",
-        "use": "@vercel/next"
-      }
-    ]
-  }
-  ```
-  Deploy with this to confirm if the `headers` section is the issue.
-- **Check Project Root**: Ensure no other `vercel.json` files exist in subdirectories, as Vercel only reads the root-level file.
-- **Clear Vercel Cache**: In rare cases, Vercel’s cache may cause issues. Redeploy with a clean build:
-  ```bash
-  vercel --prod --force
-  ```
-- **Contact Vercel Support**: If logs don’t clarify the issue, open a support ticket with Vercel, including your project name and deployment ID.
-
-### Additional Notes
-- **Form Integration**: The form in `index.jsx` is frontend-only. For production, add a backend like Formspree:
+### Step 4: Ensure `index.jsx` and Assets Are Ready
+The `index.jsx` from the previous response is optimized, but let’s ensure it won’t cause deployment failures:
+- **Assets Check**: Confirm all files in `/public` match `index.jsx` references. If any are missing (e.g., `/old-hotwater.webp`, `/process-animation.mp4`), use fallbacks:
   ```jsx
-  <form action="https://formspree.io/f/your-form-id" method="POST" ...>
-  ```
-  Get a form ID from Formspree and update the `action` attribute.
-- **Analytics**: Optionally add Google Analytics in `<Head>` with `NEXT_PUBLIC_GA_ID` set in Vercel’s environment variables:
-  ```jsx
-  <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} />
-  <script
-    dangerouslySetInnerHTML={{
-      __html: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-      `,
-    }}
-  />
-  ```
-- **Asset Fallbacks**: If `/process-animation.mp4` or before/after images (`/old-hotwater.webp`, etc.) are missing, revert the Solutions and Process sections to use static images:
-  ```jsx
-  // In Solutions section
+  // In Solutions section, replace before/after with single image
   <Image src={card.image} alt={`New ${card.title}`} width={300} height={192} className="rounded-lg object-cover w-full h-48 mb-6" />
   // In Process section
   <Image src="/eligible.webp" alt="Eligibility Process" width={800} height={400} className="rounded-lg object-cover w-full h-auto" />
   ```
+- **Generate `/styles.css`**:
+  ```bash
+  npx tailwindcss -i ./src/input.css -o ./public/styles.css --minify
+  ```
+  Ensure `src/input.css` exists with:
+  ```css
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  ```
+- **Convert Assets**: If not done, convert to `.webp` and compress videos:
+  ```bash
+  cwebp public/hero1.png -o public/hero1.webp -q 80
+  ffmpeg -i public/landingvid.mp4 -c:v libx265 -crf 28 -preset fast public/landingvid-optimized.mp4
+  mv public/landingvid-optimized.mp4 public/landingvid.mp4
+  ```
 
-Please try deploying with the updated `vercel.json` and let me know the exact error message if it persists. If you need help with asset conversion, Formspree setup, or debugging specific logs, I’m here to assist!
+### Step 5: Deploy and Verify
+1. **Commit and Push**:
+   ```bash
+   git add vercel.json pages/index.jsx public/
+   git commit -m "Simplified vercel.json and fixed assets for deployment"
+   git push origin main
+   ```
+2. **Deploy**:
+   ```bash
+   vercel --prod
+   ```
+3. **Check Logs**:
+   - If “invalid JSON” persists, share the exact error from `vercel logs <deployment-url>`.
+4. **Test**:
+   - Visit your Vercel URL (e.g., `https://greensite-rouge.vercel.app`) and use Lighthouse for performance.
+
+### If the Issue Remains
+- **Provide Logs**: Share the full error message from Vercel (e.g., line number, token).
+- **Test Locally**: Run `vercel build` locally to simulate the build and catch errors:
+  ```bash
+  vercel build
+  ```
+  Check the output for JSON-related issues.
+- **Vercel Support**: If unresolved, contact Vercel support with your project name and deployment ID.
+
+### Additional Notes
+- **Time Consideration**: It’s late (09:29 PM AEST), so if this is urgent, prioritize the minimal `vercel.json` test. You can refine `headers` later.
+- **Form Backend**: Add Formspree if needed:
+  ```jsx
+  <form action="https://formspree.io/f/your-form-id" method="POST" ...>
+  ```
+- **Analytics**: Optional Google Analytics in `<Head>` with `NEXT_PUBLIC_GA_ID`.
+
+Please try the minimal `vercel.json`, deploy, and let me know the outcome or error details. I’m here to help until it’s resolved!
