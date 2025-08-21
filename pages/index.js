@@ -46,11 +46,13 @@ export default function Home() {
       <div className="bg-gradient-to-b from-[#1C2525] via-[#1C2525] to-[#2F4F4F] text-[#D3D3D3] antialiased font-sans">
         {/* Banner */}
         <div className="w-full">
-          <img
-            src="/limebanner.png"
-            alt="GreenLine Energy Savings Banner"
+          <video
+            src="/landingvid.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-auto object-cover rounded-b-lg shadow-lg"
-            loading="lazy"
           />
         </div>
         {/* Header */}
