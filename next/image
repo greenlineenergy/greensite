@@ -1,0 +1,65 @@
+<Image
+  src="/greenline-logo-mark.png.jpeg"
+  alt="GreenLine Energy logo"
+  width={40}
+  height={40}
+  priority
+/>
+<Image
+  src="/greenline-logo-word.png.jpeg.jpeg"
+  alt="GreenLine Energy wordmark"
+  width={120}
+  height={24}
+/>
+
+{/* Hero */}
+<div className="relative w-full h-[60vh]">
+  <Image
+    src="/hero.jpeg"
+    alt="Modern energy-efficient home"
+    fill
+    className="object-cover"
+    priority
+  />
+</div>
+
+{/* Solutions */}
+<Image
+  src="/heatpumphotwater.jpeg.jpeg"
+  alt="Heat Pump Hot Water"
+  width={600}
+  height={400}
+  className="rounded-lg"
+/>
+<Image
+  src="/ductedrcac.jpeg"
+  alt="Ducted RCAC System"
+  width={600}
+  height={400}
+  className="rounded-lg"
+/>
+<Image
+  src="/hydronicsboilers.png"
+  alt="Hydronics & Boilers"
+  width={600}
+  height={400}
+  className="rounded-lg"
+/>
+
+{/* Rebates */}
+<Image
+  src="/rebates-illustration.png.jpg"
+  alt="Rebates illustration"
+  width={900}
+  height={700}
+  className="rounded-2xl"
+/>
+
+{/* Referral */}
+<Image
+  src="/refercash.png"
+  alt="Referral Cash Reward"
+  width={900}
+  height={600}
+  className="rounded-xl"
+/>
