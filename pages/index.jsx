@@ -1,3 +1,13 @@
+<nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+  <a href="#solutions" className="hover:text-lime-300">Solutions</a>
+  <a href="#rebates" className="hover:text-lime-300">Rebates</a>
+  <a href="#pricing" className="hover:text-lime-300">Pricing</a>
+  <a href="/vic-heat-pump" className="hover:text-lime-300">Heat Pump</a>
+  <a href="/air-conditioning-rebates" className="hover:text-lime-300">Air Conditioning</a>
+  <a href="#process" className="hover:text-lime-300">Process</a>
+  <a href="#faq" className="hover:text-lime-300">FAQ</a>
+  <a href="#contact" className="hover:text-lime-300">Contact</a>
+</nav>
 import Head from "next/head";
 import Image from "next/image";
 
