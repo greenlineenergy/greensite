@@ -438,11 +438,11 @@ export default function Home() {
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                  CER STCs – Meets efficiency standards
+                  CER STCs – System must meet efficiency standards
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                  SolarVic Rebate – Income < $210K, home < $3M, system > 3 years old
+                  SolarVic Rebate – Income &lt; $210K, home &lt; $3M, system &gt; 3 years old
                 </li>
               </ul>
               <a
