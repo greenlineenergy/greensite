@@ -1,17 +1,18 @@
 import Head from "next/head";
+
 export default function Home() {
   return (
     <>
       <Head>
-        <title>GreenLine Energy — Save Big on Energy Upgrades</title>
+        <title>GreenLine Energy — Melbourne VEU Rebates, Heating, Cooling & Hot Water</title>
         <meta
           name="description"
-          content="GreenLine Energy Pty Ltd offers VEU-accredited upgrades for heat pumps, air conditioning, and hydronics. Save up to $4,000 with rebates and expert support."
+          content="GreenLine Energy offers VEU-accredited upgrades for heating, cooling, and hot water in Melbourne. Save up to $9,900 with government rebates."
         />
-        <meta property="og:title" content="GreenLine Energy Solutions" />
+        <meta property="og:title" content="GreenLine Energy Solutions - Melbourne VEU Rebates" />
         <meta
           property="og:description"
-          content="Unlock VEU-accredited upgrades to save on energy costs and reduce emissions. Enjoy up to $4,000 in rebates with certified installations."
+          content="Unlock up to $9,900 in VEU rebates for energy-efficient heating, cooling, and hot water upgrades in Melbourne. Reduce bills and emissions."
         />
         <meta property="og:image" content="https://greensite-rouge.vercel.app/og-image.jpg" />
         <meta property="og:type" content="website" />
@@ -48,7 +49,7 @@ export default function Home() {
         <div className="w-full">
           <img
             src="/limebanner.png"
-            alt="GreenLine Energy Savings Banner"
+            alt="GreenLine Energy Melbourne VEU Rebates Banner"
             className="w-full h-auto object-cover rounded-b-lg shadow-lg"
             loading="lazy"
           />
@@ -73,9 +74,9 @@ export default function Home() {
               </a>
               <nav className="hidden md:flex items-center gap-8 text-lg font-medium">
                 <a href="#solutions" className="hover:text-[#3CB371]">Solutions</a>
+                <a href="#rebates" className="hover:text-[#3CB371]">Rebates</a>
                 <a href="#pricing" className="hover:text-[#3CB371]">Pricing</a>
                 <a href="#process" className="hover:text-[#3CB371]">Process</a>
-                <a href="#faq" className="hover:text-[#3CB371]">FAQ</a>
                 <a href="#contact" className="hover:text-[#3CB371]">Contact</a>
               </nav>
               <a
@@ -87,7 +88,7 @@ export default function Home() {
             </div>
           </div>
         </header>
-        {/* Hero */}
+        {/* Hero - Introduction */}
         <section id="top" className="py-20 md:py-28 bg-[#1C2525]">
           <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-12 gap-10 items-center">
             <div className="md:col-span-7 space-y-8">
@@ -95,18 +96,17 @@ export default function Home() {
                 VEU-Accredited Upgrades
               </span>
               <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-[#FFFFFF]">
-                Transform Your Home with Energy Savings
+                Take Advantage of Up to $9,900 in VEU Incentives
               </h1>
               <p className="text-xl md:text-2xl font-medium text-[#F0FFF0]">
-                GreenLine Energy offers VEU-accredited upgrades to cut costs and emissions. Save up to $4,000 with
-                government rebates!
+                Replace old gas heaters, air conditioners, or hot water systems with modern, energy-efficient technology to reduce bills, improve comfort, and cut emissions.
               </p>
               <div className="flex gap-6">
                 <a
                   href="#contact"
                   className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
                 >
-                  Contact Us
+                  Get a Free Quote
                 </a>
                 <a
                   href="#rebates"
@@ -117,10 +117,10 @@ export default function Home() {
               </div>
               <ul className="grid grid-cols-2 md:grid-cols-4 gap-6 text-lg">
                 {[
-                  ["Up to $4,000", "in Rebates*"],
-                  ["Up to $1,500", "Hot Water Savings"],
-                  ["Save $1,500/yr", "vs Old Systems"],
-                  ["Expert Team", "Quick Installs"],
+                  ["Up to $9,900", "in Rebates*"],
+                  ["Free Inspections", "Available"],
+                  ["$1,010/yr", "Gas Heating Savings"],
+                  ["Expert Team", "Fast Service"],
                 ].map(([t, s], i) => (
                   <li
                     key={i}
@@ -139,12 +139,12 @@ export default function Home() {
               <div className="bg-[#1C2525] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6">
                 <img
                   src="/hero1.png"
-                  alt="Modern home with energy-efficient upgrades"
+                  alt="Modern energy-efficient home"
                   className="rounded-2xl object-cover w-full h-auto"
                   loading="lazy"
                 />
                 <p className="text-base font-medium text-[#F0FFF0] mt-3 text-center">
-                  Upgrade to a more efficient, cost-saving home.
+                  Upgrade to a modern, efficient home.
                 </p>
               </div>
             </div>
@@ -216,34 +216,134 @@ export default function Home() {
             </span>
           </div>
         </section>
-        {/* Solutions */}
-        <section id="solutions" className="py-20 md:py-24 bg-[#1C2525]">
+        {/* Why Upgrade? */}
+        <section id="why-upgrade" className="py-20 md:py-24 bg-[#1C2525]">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
             <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-[#FFFFFF]">
-              Our Energy-Efficient Solutions
+              Why Upgrade?
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-[#6B8E23] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6">
+                <h3 className="text-2xl font-bold text-[#FFFFFF] mb-4">Program-Level Benefits</h3>
+                <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Rebates available under the VEU program
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Extended until 2045 for long-term certainty
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Annual savings: up to $1,010/yr (ducted gas) or $370/yr (space heaters)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    2.4M+ homes upgraded, targeting 37M tonnes CO₂ reduction
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Free onsite inspections and quotes
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-[#1C2525] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6">
+                <img
+                  src="/hero1.png"
+                  alt="Energy-efficient home upgrade benefits"
+                  className="rounded-2xl object-cover w-full h-48 mb-4"
+                  loading="lazy"
+                />
+                <p className="text-base font-medium text-[#F0FFF0] text-center">
+                  Upgrade to save money and reduce your carbon footprint.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* Heating & Cooling - Key Features */}
+        <section id="heating-cooling-features" className="py-20 md:py-24 bg-[#2F4F4F]">
+          <div className="mx-auto max-w-7xl px-6 md:px-12">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-[#FFFFFF]">
+              Key Features of Modern Split Systems
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-[#6B8E23] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6">
+                <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Energy Efficiency – Reduces bills while maintaining comfort
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    5 Fan Speeds – From turbo cooling to gentle breeze
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Super Quiet Operation – Whisper-quiet across all modes
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Filter Cleaning Reminder – Keeps air fresh
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    30-Second Fast Cooling – From 27°C to 18°C
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Ultra Inverter Compressor – Efficient low-frequency operation
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    R32 Refrigerant – Lower GWP, more efficient than R410
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Silver Ion Filter – Eliminates bacteria and fungi
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-[#1C2525] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6">
+                <img
+                  src="/revcycair.jpeg"
+                  alt="Modern split system"
+                  className="rounded-2xl object-cover w-full h-48 mb-4"
+                  loading="lazy"
+                />
+                <p className="text-base font-medium text-[#F0FFF0] text-center">
+                  Experience efficient and quiet climate control.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* Product Options (Heating & Cooling) */}
+        <section id="product-options" className="py-20 md:py-24 bg-[#1C2525]">
+          <div className="mx-auto max-w-7xl px-6 md:px-12">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-[#FFFFFF]">
+              Product Options for Heating & Cooling
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  title: "Heat Pump Hot Water",
-                  body: "Efficient, quiet systems to reduce heating costs.",
-                  bullets: ["Up to 80% energy savings", "Smart technology", "VEU & STC eligible"],
-                  chips: "Emerald / EcoGenica / Neopower",
-                  image: "/heatpumphotwater.jpeg.jpeg",
-                },
-                {
-                  title: "Reverse-Cycle Air Conditioning",
-                  body: "Year-round comfort with VEU-approved units.",
-                  bullets: ["All-season efficiency", "Custom sizing", "Rebate discounts"],
-                  chips: "Daikin • Mitsubishi • Fujitsu",
+                  title: "Emerald Split System",
+                  body: "Reverse cycle (heating + cooling) with 360° full DC inverter.",
+                  chips: "Advanced ducting & louver fin",
                   image: "/revcycair.jpeg",
                 },
                 {
-                  title: "Hydronics & Boilers",
-                  body: "Custom heating for consistent warmth.",
-                  bullets: ["Tailored designs", "Site eligibility", "Complete service"],
-                  chips: "Custom Quotes",
-                  image: "/hydronicsboilers.png",
+                  title: "Avanti PLUS® Series",
+                  body: "Platinum-grade, award-winning design with motion sensor.",
+                  chips: "Clean Air Technology",
+                  image: "/revcycair.jpeg",
+                },
+                {
+                  title: "Rinnai T Series",
+                  body: "Long-distance airflow with Wi-Fi & voice control.",
+                  chips: "R32 refrigerant",
+                  image: "/revcycair.jpeg",
                 },
               ].map((card, i) => (
                 <article
@@ -252,20 +352,12 @@ export default function Home() {
                 >
                   <img
                     src={card.image}
-                    alt={`${card.title} Solution`}
+                    alt={`${card.title} Product`}
                     className="w-full h-48 object-cover rounded-lg mb-6"
                     loading="lazy"
                   />
                   <h3 className="text-2xl font-bold text-[#FFFFFF] mb-4">{card.title}</h3>
                   <p className="text-lg font-medium text-[#F0FFF0] mb-4">{card.body}</p>
-                  <ul className="text-base space-y-2 list-disc pl-6 text-[#F0FFF0]">
-                    {card.bullets.map((b) => (
-                      <li key={b} className="flex items-center gap-2">
-                        <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
                   <span className="inline-flex items-center rounded-full px-4 py-2 text-base font-medium bg-[#1C2525] text-[#6B8E23] ring-1 ring-[#228B22]/20 mt-4">
                     {card.chips}
                   </span>
@@ -274,134 +366,198 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* Rebates */}
-        <section id="rebates" className="py-20 md:py-24 bg-[#2F4F4F]">
-          <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-2 gap-10 items-center">
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-extrabold text-[#FFFFFF]">
-                Unlock Your Rebate Savings
-              </h2>
-              <p className="text-xl font-medium text-[#F0FFF0]">
-                As a VEU-accredited provider, GreenLine Energy secures government rebates to make your upgrades
-                affordable.
-              </p>
+        {/* Hot Water Upgrades */}
+        <section id="hot-water" className="py-20 md:py-24 bg-[#2F4F4F]">
+          <div className="mx-auto max-w-7xl px-6 md:px-12">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-[#FFFFFF]">
+              Hot Water Upgrades
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-[#6B8E23] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6">
+                <h3 className="text-2xl font-bold text-[#FFFFFF] mb-4">Rebates & Incentives</h3>
+                <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Rebates up to $2,681 for electric upgrades
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    $0 product cost in some regions (e.g., Shepparton, Bendigo)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Electric replacement mandatory from Mar 1, 2027
+                  </li>
+                </ul>
+                <h3 className="text-2xl font-bold text-[#FFFFFF] mt-6 mb-4">Emergency Service</h3>
+                <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    48-hour replacement (Metro Melbourne)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Save $2,000–$3,000 vs. standard plumbing
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-[#1C2525] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6">
+                <h3 className="text-2xl font-bold text-[#FFFFFF] mb-4">Product Options</h3>
+                <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Neopower Black® 260L – Wi-Fi, 6-yr warranty, 5 people
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Emerald Energy 270L/320L – Wi-Fi, 6-yr warranty
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    EcoGenica Split – 215L, 260L, 290L, 7-yr warranty
+                  </li>
+                </ul>
+                <p className="text-base font-medium text-[#F0FFF0] mt-4">
+                  Includes 7-yr tank warranty, 12-month workmanship warranty, free recycling, and "install now, pay later" options.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* Rebates & Eligibility */}
+        <section id="rebates-eligibility" className="py-20 md:py-24 bg-[#1C2525]">
+          <div className="mx-auto max-w-7xl px-6 md:px-12">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-[#FFFFFF]">
+              Rebates & Eligibility
+            </h2>
+            <div className="bg-[#6B8E23] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6">
               <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                  Up to $4,000 in combined rebates
+                  VEU Rebate – Home over 24 months old, replacing inefficient systems
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                  Up to $1,500 hot water savings
+                  CER STCs – Meets efficiency standards
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                  Discounts on air conditioners
+                  SolarVic Rebate – Income < $210K, home < $3M, system > 3 years old
                 </li>
               </ul>
-              <p className="text-sm text-[#A9A9A9]">
-                *Depends on location and eligibility. Contact for a personalized estimate.
-              </p>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
+                className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200 mt-6"
               >
                 Check Eligibility
               </a>
             </div>
-            <div className="md:pl-8">
-              <img
-                src="/rebates-illustration.png.jpg"
-                alt="Energy-efficient home upgrades"
-                className="rounded-2xl shadow-lg ring-1 ring-gray-700 object-cover w-full h-auto"
-                loading="lazy"
-              />
+          </div>
+        </section>
+        {/* Why Choose Accredited Providers */}
+        <section id="why-choose" className="py-20 md:py-24 bg-[#2F4F4F]">
+          <div className="mx-auto max-w-7xl px-6 md:px-12">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-[#FFFFFF]">
+              Why Choose Accredited Providers
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-[#6B8E23] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6">
+                <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Tailored system selection for your needs
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    High-quality products with frost protection
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Licensed VIC plumbers and electricians
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    5-yr product + 2-yr labor warranty (heating/cooling)
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-[#6B8E23] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6">
+                <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    7-yr tank warranty (hot water)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Over 15 years of expertise
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    5 days standard install, 48 hrs emergency hot water
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    4.9/5 Google reviews, VEU accredited
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
-        {/* Pricing */}
-        <section id="pricing" className="py-20 md:py-24 bg-[#1C2525]">
+        {/* Step-by-Step Process */}
+        <section id="process" className="py-20 md:py-24 bg-[#1C2525]">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
             <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-[#FFFFFF]">
-              Pricing After Rebates
+              Step-by-Step Process
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Heat Pump Hot Water (260–300L)",
-                  desc: (
-                    <>
-                      From <span className="font-bold text-[#FFFFFF]">$799</span> installed*
-                    </>
-                  ),
-                  points: ["Full install & removal", "5–7 year warranties", "Rebates applied"],
-                  image: "/heatpumphotwater.jpeg.jpeg",
-                },
-                {
-                  title: "Split System RCAC (2.5–3.5 kW)",
-                  desc: <>VEU-discounted, site-specific</>,
-                  points: ["Efficient single-room comfort", "Certified units", "Quick setup"],
-                  image: "/splitrcac.jpeg",
-                },
-                {
-                  title: "Ducted RCAC (Whole Home)",
-                  desc: <>Custom, VEU-discounted</>,
-                  points: ["Whole-home efficiency", "Load planning", "Professional install"],
-                  image: "/ductedrcac.jpeg",
-                },
-              ].map((p) => (
-                <div
-                  key={p.title}
-                  className="bg-[#6B8E23] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6 hover:shadow-xl transition-shadow duration-300"
+            <div className="grid md:grid-cols-12 gap-10 items-center">
+              <div className="md:col-span-7 space-y-6">
+                <ol className="space-y-4 text-[#F0FFF0]">
+                  <li className="flex items-start gap-2">
+                    <span className="text-xl font-bold text-[#228B22]">1)</span>
+                    <span>Register – Complete quick form (eligibility check in ~60 seconds)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-xl font-bold text-[#228B22]">2)</span>
+                    <span>Confirm – Provider verifies rebate eligibility</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-xl font-bold text-[#228B22]">3)</span>
+                    <span>Install – Accredited professional completes setup</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-xl font-bold text-[#228B22]">4)</span>
+                    <span>Certify & Recycle – Certifications + old unit removed at no cost</span>
+                  </li>
+                </ol>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
                 >
+                  Get Started
+                </a>
+              </div>
+              <div className="md:col-span-5">
+                <div className="bg-[#1C2525] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6">
                   <img
-                    src={p.image}
-                    alt={`${p.title} Pricing`}
-                    className="w-full h-48 object-cover rounded-lg mb-6"
+                    src="/eligible.png"
+                    alt="Upgrade Process"
+                    className="rounded-2xl object-cover w-full h-auto"
                     loading="lazy"
                   />
-                  <h3 className="text-xl font-bold text-[#FFFFFF] mb-3">{p.title}</h3>
-                  <p className="text-base font-medium text-[#F0FFF0] mb-3">{p.desc}</p>
-                  <ul className="text-base space-y-2 list-disc pl-6 text-[#F0FFF0]">
-                    {p.points.map((x) => (
-                      <li key={x} className="flex items-center gap-2">
-                        <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                        {x}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              ))}
-            </div>
-            <p className="text-sm text-[#A9A9A9] mt-6 text-center">
-              *Based on eligibility. Confirm with us for exact costs.
-            </p>
-          </div>
-        </section>
-        {/* Process */}
-        <section id="process" className="py-20 md:py-24 bg-[#2F4F4F]">
-          <div className="mx-auto max-w-7xl px-6 md:px-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-[#FFFFFF]">
-              Your Upgrade Process
-            </h2>
-            <div className="flex justify-center">
-              <img
-                src="/eligible.png"
-                alt="Eligibility Process"
-                className="w-full h-auto object-cover rounded-lg shadow-lg"
-                loading="lazy"
-              />
+              </div>
             </div>
           </div>
         </section>
-        {/* Contact */}
+        {/* Contact & Next Steps */}
         <section id="contact" className="py-20 md:py-24 bg-[#1C2525]">
           <div className="mx-auto max-w-4xl px-6 md:px-12 text-center">
             <h2 className="text-4xl md:text-5xl font-extrabold text-[#FFFFFF] mb-6">
-              Let’s Get Started
+              Contact & Next Steps
             </h2>
             <p className="text-xl font-medium text-[#F0FFF0] mb-6">
-              Our team is here to assist with your energy upgrade needs.
+              Free inspections available across Victoria. Rebates apply now for heating, cooling, and hot water upgrades.
             </p>
             <form className="bg-[#6B8E23] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6 grid md:grid-cols-2 gap-6 text-left">
               <label className="block">
@@ -456,7 +612,7 @@ export default function Home() {
               </div>
             </form>
             <p className="text-sm text-[#A9A9A9] mt-4">
-              Refer a friend and get $100 off your next upgrade! By submitting, you agree to let us contact you.
+              Supported through 2045. By submitting, you agree to let us contact you.
             </p>
           </div>
         </section>
@@ -499,45 +655,48 @@ export default function Home() {
         </section>
         {/* FAQ */}
         <section id="faq" className="py-20 md:py-24 bg-[#2F4F4F]">
-          <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-2xl font-extrabold mb-6 text-[#FFFFFF]">Rebate Details</h3>
-              <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                  Hot water rebates up to $1,500
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                  Up to $4,000 in combined incentives
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                  Aircon discounts available
-                </li>
-              </ul>
+          <div className="mx-auto max-w-7xl px-6 md:px-12">
+            <h2 className="text-center text-4xl md:text-5xl font-extrabold mb-12 text-[#FFFFFF]">
+              Frequently Asked Questions
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-2xl font-extrabold mb-6 text-[#FFFFFF]">Rebate Details</h3>
+                <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Hot water rebates up to $2,681
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Up to $9,900 in combined incentives
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Aircon and heating discounts available
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-2xl font-extrabold mb-6 text-[#FFFFFF]">Benefits of Switching</h3>
+                <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Save up to $1,010/year on heating
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Upgrade to efficient systems
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
+                    Reduce your carbon footprint by 37M tonnes
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <h3 className="text-2xl font-extrabold mb-6 text-[#FFFFFF]">Benefits of Switching</h3>
-              <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                  Save up to $1,500/year on energy
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                  Upgrade to efficient heating
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                  Lower your carbon footprint
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="mx-auto max-w-7xl px-6 md:px-12 mt-6">
-            <p className="text-sm text-[#A9A9A9] text-center">
-              *Estimates vary. Contact us for a detailed assessment.
+            <p className="text-sm text-[#A9A9A9] mt-6 text-center">
+              *Estimates may vary. Contact us for personalized advice.
             </p>
           </div>
         </section>
