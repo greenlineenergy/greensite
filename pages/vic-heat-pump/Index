@@ -45,7 +45,7 @@ export default function HeatPumpOffer() {
     "@type": "LocalBusiness",
     name: "GLEnergy.com.au",
     url: "https://glenergy.com.au/vic-heat-pump/",
-    telephone: "+61 412 345 678", // Updated with a placeholder number
+    telephone: "+61 412 345 678", // Placeholder; update with actual number
     email: "contact@glenergy.com.au",
     areaServed: "Victoria, Australia",
     address: {
@@ -111,13 +111,22 @@ export default function HeatPumpOffer() {
               <a href="#faq" className="hover:text-[#3CB371]">FAQ</a>
               <a href="#quote" className="hover:text-[#3CB371]">Get a Quote</a>
             </nav>
-            <a
-              href="#quote"
-              className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] transition-colors duration-200"
-              aria-label="Get a Quote"
-            >
-              Get a Quote
-            </a>
+            <div className="flex items-center gap-4">
+              <a
+                href="/vic-heat-pump/"
+                className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold bg-[#3CB371] text-[#FFFFFF] hover:bg-[#228B22] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
+                aria-label="Heat Pump Offer"
+              >
+                Heat Pump Offer
+              </a>
+              <a
+                href="#quote"
+                className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] transition-colors duration-200"
+                aria-label="Get a Quote"
+              >
+                Get a Quote
+              </a>
+            </div>
           </div>
         </header>
         {/* Hero - Offer */}
