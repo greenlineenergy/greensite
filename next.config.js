@@ -8,6 +8,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "greensite-rouge.vercel.app",
       },
+      {
+        protocol: "https",
+        hostname: "glenergy.com.au",
+      },
     ],
   },
   output: "standalone", // leaner deployment bundle
