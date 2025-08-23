@@ -45,14 +45,23 @@ export default function Home() {
         </script>
       </Head>
       <div className="bg-gradient-to-b from-[#1C2525] via-[#1C2525] to-[#2F4F4F] text-[#D3D3D3] antialiased font-sans">
-        {/* Banner */}
-        <div className="w-full">
+        {/* Banner with Link */}
+        <div className="w-full relative">
           <img
             src="/limebanner.png"
             alt="GreenLine Energy Melbourne VEU Rebates Banner"
             className="w-full h-auto object-cover rounded-b-lg shadow-lg"
             loading="lazy"
           />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <a
+              href="/vic-heat-pump/"
+              className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
+              aria-label="Explore Heat Pump Offer"
+            >
+              Explore Heat Pump Offer
+            </a>
+          </div>
         </div>
         {/* Header */}
         <header className="sticky top-0 z-50 bg-[#1A3C1A] text-[#FFFFFF] shadow-md">
@@ -113,6 +122,12 @@ export default function Home() {
                   className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#1C2525] text-[#FFFFFF] ring-1 ring-[#228B22]/30 hover:bg-[#2F4F4F]"
                 >
                   Explore Rebates
+                </a>
+                <a
+                  href="/vic-heat-pump/"
+                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#3CB371] text-[#FFFFFF] hover:bg-[#228B22] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
+                >
+                  Heat Pump Offer
                 </a>
               </div>
               <ul className="grid grid-cols-2 md:grid-cols-4 gap-6 text-lg">
