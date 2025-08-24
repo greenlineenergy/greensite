@@ -26,7 +26,6 @@ module.exports = {
     },
   },
   plugins: [
-    // simple text/box glow helpers
     function ({ addUtilities }) {
       const utilities = {
         ".text-glow": {
