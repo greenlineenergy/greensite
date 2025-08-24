@@ -23,7 +23,6 @@ export default function Home() {
 
       {/* Site wrapper */}
       <div className="bg-black text-text-base antialiased font-sans">
-
         {/* Banner */}
         <div className="w-full">
           <img
@@ -47,7 +46,7 @@ export default function Home() {
                   loading="lazy"
                 />
                 <img
-                  src="/greenline-logo-word.png.jpeg.jpeg"
+                  src="/greenline-logo-word.png.jpeg"
                   alt="GreenLine Energy Wordmark"
                   className="h-7"
                   loading="lazy"
@@ -69,8 +68,7 @@ export default function Home() {
                 {/* Mobile: only "Get a Quote" */}
                 <a
                   href="#contact"
-                  className="inline-flex md:hidden justify-center rounded-lg px-4 py-2 text-sm font-bold
-                             bg-lime-neon text-black hover:bg-lime-soft focus:ring-4 focus:ring-lime-neon/30 transition-all"
+                  className="inline-flex md:hidden justify-center rounded-lg px-4 py-2 text-sm font-bold bg-lime-neon text-black hover:bg-lime-soft focus:ring-4 focus:ring-lime-neon/30 transition-all"
                   aria-label="Get a Quote"
                 >
                   Get a Quote
@@ -80,16 +78,14 @@ export default function Home() {
                 <div className="hidden md:flex items-center gap-3">
                   <a
                     href="/vic-heat-pump/"
-                    className="inline-flex justify-center rounded-lg px-6 py-3 font-bold
-                               bg-lime-neon text-black hover:bg-lime-soft focus:ring-4 focus:ring-lime-neon/30 transition-all"
+                    className="inline-flex justify-center rounded-lg px-6 py-3 font-bold bg-lime-neon text-black hover:bg-lime-soft focus:ring-4 focus:ring-lime-neon/30 transition-all"
                     aria-label="Heat Pump Offer"
                   >
                     Heat Pump Offer
                   </a>
                   <a
                     href="#contact"
-                    className="inline-flex justify-center rounded-lg px-6 py-3 font-bold
-                               bg-lime-neon text-black hover:bg-lime-soft focus:ring-4 focus:ring-lime-neon/30 transition-all"
+                    className="inline-flex justify-center rounded-lg px-6 py-3 font-bold bg-lime-neon text-black hover:bg-lime-soft focus:ring-4 focus:ring-lime-neon/30 transition-all"
                     aria-label="Get a Quote"
                   >
                     Get a Quote
@@ -116,15 +112,13 @@ export default function Home() {
               <div className="flex gap-4">
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-lg px-4 py-2 font-medium
-                             bg-lime-neon text-black hover:bg-lime-soft focus:ring-2 focus:ring-lime-neon/30 transition-all"
+                  className="inline-flex items-center justify-center rounded-lg px-4 py-2 font-medium bg-lime-neon text-black hover:bg-lime-soft focus:ring-2 focus:ring-lime-neon/30 transition-all"
                 >
                   Get a Free Quote
                 </a>
                 <a
                   href="/vic-heat-pump/"
-                  className="hidden md:inline-flex items-center justify-center rounded-lg px-4 py-2 font-medium
-                             bg-lime-neon text-black hover:bg-lime-soft focus:ring-2 focus:ring-lime-neon/30 transition-all"
+                  className="hidden md:inline-flex items-center justify-center rounded-lg px-4 py-2 font-medium bg-lime-neon text-black hover:bg-lime-soft focus:ring-2 focus:ring-lime-neon/30 transition-all"
                 >
                   Heat Pump Offer
                 </a>
@@ -157,7 +151,7 @@ export default function Home() {
                   className="rounded-2xl object-cover w-full h-auto"
                   loading="lazy"
                 />
-                <p className="text-base font-medium text-text-soft mt-3 text-center">
+                <p className="text-base font-medium text-text-soft mt-3 text-left">
                   Upgrade to a modern, efficient home.
                 </p>
               </div>
@@ -180,7 +174,7 @@ export default function Home() {
                     className="w-full h-48 object-cover rounded-lg mb-4"
                     loading="lazy"
                   />
-                  <p className="text-center text-base font-medium text-white">{`Animation ${i + 1}`}</p>
+                  <p className="text-base font-medium text-white text-left">{`Animation ${i + 1}`}</p>
                 </div>
               ))}
             </div>
@@ -199,67 +193,70 @@ export default function Home() {
         </section>
 
         {/* Why Upgrade */}
-        <section className="bg-black text-white py-12 px-6 md:px-16">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-lime-neon mb-6">Why Upgrade?</h2>
-            <h3 className="text-xl md:text-2xl font-semibold text-lime-soft mb-10">Program-Level Benefits</h3>
-            <ul className="space-y-6 text-lg leading-relaxed">
-              <li>
-                <span className="text-lime-neon font-semibold">✅ Government Rebates Available</span><br />
-                Access rebates under the <strong>Victorian Energy Upgrades (VEU) program</strong>, making energy-efficient upgrades more affordable than ever.
-              </li>
-              <li>
-                <span className="text-lime-neon font-semibold">✅ Long-Term Certainty</span><br />
-                The program is <strong>extended until 2045</strong>, giving homeowners rebates for decades to come.
-              </li>
-              <li>
-                <span className="text-lime-neon font-semibold">✅ Save More Every Year</span><br />
-                • Up to <strong>$1,010 per year</strong> by replacing ducted gas.<br />• Up to <strong>$370 per year</strong> by upgrading space heaters.
-              </li>
-              <li>
-                <span className="text-lime-neon font-semibold">✅ Proven Impact</span><br />
-                Over <strong>2.4 million Victorian homes</strong> already upgraded, cutting <strong>37 million tonnes of CO₂</strong> between 2022–2027.
-              </li>
-              <li>
-                <span className="text-lime-neon font-semibold">✅ Free Inspections & Quotes</span><br />
-                Enjoy <strong>no-obligation onsite inspections</strong> and tailored quotes — know exactly how much you can save.
-              </li>
-            </ul>
+        <section id="why-upgrade" className="bg-black text-white py-12 px-6 md:px-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-dark-soft rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-lime-neon mb-6">Why Upgrade?</h2>
+              <h3 className="text-xl md:text-2xl font-semibold text-lime-soft mb-6">Program-Level Benefits</h3>
+              <ul className="space-y-6 text-lg leading-relaxed">
+                <li>
+                  <span className="text-lime-neon font-semibold">✅ Government Rebates Available</span><br />
+                  Access rebates under the <strong>Victorian Energy Upgrades (VEU) program</strong>, making energy-efficient upgrades more affordable than ever.
+                </li>
+                <li>
+                  <span className="text-lime-neon font-semibold">✅ Long-Term Certainty</span><br />
+                  The program is <strong>extended until 2045</strong>, giving homeowners rebates for decades to come.
+                </li>
+                <li>
+                  <span className="text-lime-neon font-semibold">✅ Save More Every Year</span><br />
+                  • Up to <strong>$1,010 per year</strong> by replacing ducted gas.<br />• Up to <strong>$370 per year</strong> by upgrading space heaters.
+                </li>
+                <li>
+                  <span className="text-lime-neon font-semibold">✅ Proven Impact</span><br />
+                  Over <strong>2.4 million Victorian homes</strong> already upgraded, cutting <strong>37 million tonnes of CO₂</strong> between 2022–2027.
+                </li>
+                <li>
+                  <span className="text-lime-neon font-semibold">✅ Free Inspections & Quotes</span><br />
+                  Enjoy <strong>no-obligation onsite inspections</strong> and tailored quotes — know exactly how much you can save.
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 
         {/* Heating & Cooling - Key Features */}
         <section id="heating-cooling-features" className="bg-black text-white py-12 px-6 md:px-16">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-lime-neon mb-6">Heating & Cooling - Key Features</h2>
-            <h3 className="text-xl md:text-2xl font-semibold text-lime-soft mb-10">Modern Split Systems</h3>
-            <ul className="space-y-6 text-lg leading-relaxed">
-              {[
-                "Energy Efficiency — reduces bills while maintaining comfort.",
-                "5 Fan Speeds — from turbo cooling to a gentle breeze.",
-                "Super Quiet Operation — whisper-quiet across all modes.",
-                "Filter Cleaning Reminder — keeps indoor air fresh.",
-                "30-Second Fast Cooling — drops air from 27°C to 18°C.",
-                "Ultra Inverter Compressor — efficient low-frequency operation.",
-                "R32 Refrigerant — lower GWP, more efficient than R410.",
-                "Silver Ion Filter — eliminates bacteria and fungi.",
-              ].map((txt, i) => (
-                <li key={i}>
-                  <span className="text-lime-neon font-semibold">✅ {txt.split(" — ")[0]}</span><br />
-                  {txt.includes(" — ") ? txt.split(" — ")[1] : ""}
-                </li>
-              ))}
-            </ul>
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-dark-soft rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-lime-neon mb-6">Heating & Cooling - Key Features</h2>
+              <h3 className="text-xl md:text-2xl font-semibold text-lime-soft mb-6">Modern Split Systems</h3>
+              <ul className="space-y-6 text-lg leading-relaxed">
+                {[
+                  "Energy Efficiency — reduces bills while maintaining comfort.",
+                  "5 Fan Speeds — from turbo cooling to a gentle breeze.",
+                  "Super Quiet Operation — whisper-quiet across all modes.",
+                  "Filter Cleaning Reminder — keeps indoor air fresh.",
+                  "30-Second Fast Cooling — drops air from 27°C to 18°C.",
+                  "Ultra Inverter Compressor — efficient low-frequency operation.",
+                  "R32 Refrigerant — lower GWP, more efficient than R410.",
+                  "Silver Ion Filter — eliminates bacteria and fungi.",
+                ].map((txt, i) => (
+                  <li key={i}>
+                    <span className="text-lime-neon font-semibold">✅ {txt.split(" — ")[0]}</span><br />
+                    {txt.includes(" — ") ? txt.split(" — ")[1] : ""}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
-        {/* Product Options (Emerald card uses Carousel) */}
+        {/* Product Options */}
         <section id="product-options" className="py-20 md:py-24 bg-black">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
             <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-white">
               Product Options for Heating & Cooling
             </h2>
-
             <div className="grid md:grid-cols-3 gap-8">
               {/* Emerald Split System with carousel */}
               <article className="bg-dark-soft rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-6 hover:shadow-xl transition-shadow">
@@ -276,7 +273,7 @@ export default function Home() {
                 </span>
               </article>
 
-              {/* Avanti PLUS® Series (single image placeholder) */}
+              {/* Avanti PLUS® Series */}
               <article className="bg-dark-soft rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-6 hover:shadow-xl transition-shadow">
                 <img
                   src="/revcycair.jpeg"
@@ -320,20 +317,20 @@ export default function Home() {
               Hot Water Upgrades
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-dark-soft text-white rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-6 text-center">
+              <div className="bg-dark-soft text-white rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-6">
                 <h3 className="text-3xl md:text-4xl font-bold text-lime-neon mb-6">Rebates & Incentives</h3>
                 <ul className="space-y-6 text-lg leading-relaxed">
                   <li><span className="text-lime-neon font-semibold">✅ Rebates up to $2,681</span><br />For electric upgrades.</li>
                   <li><span className="text-lime-neon font-semibold">✅ $0 Product Cost</span><br />In some regions (e.g., Shepparton, Bendigo).</li>
                   <li><span className="text-lime-neon font-semibold">✅ Electric Replacement Mandatory</span><br />From Mar 1, 2027.</li>
                 </ul>
-                <h3 className="text-xl md:text-2xl font-semibold text-lime-soft mt-10 mb-6">Emergency Service</h3>
+                <h3 className="text-xl md:text-2xl font-semibold text-lime-soft mt-6 mb-6">Emergency Service</h3>
                 <ul className="space-y-6 text-lg leading-relaxed">
                   <li><span className="text-lime-neon font-semibold">✅ 48-Hour Replacement</span><br />(Metro Melbourne).</li>
                   <li><span className="text-lime-neon font-semibold">✅ Save $2,000–$3,000</span><br />Vs. standard plumbing.</li>
                 </ul>
               </div>
-              <div className="bg-dark-soft text-white rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-6 text-center">
+              <div className="bg-dark-soft text-white rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-6">
                 <h3 className="text-3xl md:text-4xl font-bold text-lime-neon mb-6">Product Options</h3>
                 <ul className="space-y-6 text-lg leading-relaxed">
                   <li><span className="text-lime-neon font-semibold">✅ Neopower Black® 260L</span><br />Wi-Fi, 6-yr warranty, 5 people.</li>
@@ -354,7 +351,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-white">
               Rebates & Eligibility
             </h2>
-            <div className="bg-dark-soft text-white rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-6 text-center">
+            <div className="bg-dark-soft text-white rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-6">
               <h3 className="text-3xl md:text-4xl font-bold text-lime-neon mb-6">Rebate Options</h3>
               <ul className="space-y-6 text-lg leading-relaxed">
                 <li><span className="text-lime-neon font-semibold">✅ VEU Rebate</span><br />Home over 24 months old, replacing inefficient systems.</li>
@@ -363,8 +360,7 @@ export default function Home() {
               </ul>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold
-                           bg-lime-neon text-black hover:bg-lime-soft focus:ring-4 focus:ring-lime-neon/30 transition-all mt-6"
+                className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-lime-neon text-black hover:bg-lime-soft focus:ring-4 focus:ring-lime-neon/30 transition-all mt-6"
               >
                 Check Eligibility
               </a>
@@ -374,42 +370,49 @@ export default function Home() {
 
         {/* Why Choose Accredited Providers */}
         <section id="why-choose" className="bg-black text-white py-12 px-6 md:px-16">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-lime-neon mb-6">Why Choose Accredited Providers</h2>
-            <ul className="space-y-6 text-lg leading-relaxed">
-              {[
-                "Tailored System Selection — For your needs.",
-                "High-Quality Products — With frost protection.",
-                "Licensed VIC Professionals — Plumbers and electricians.",
-                "5-Yr Product Warranty — Plus 2-yr labor warranty (heating/cooling).",
-                "7-Yr Tank Warranty — (Hot water).",
-                "15+ Years of Expertise —",
-                "5 Days Standard Install — 48 hrs emergency hot water.",
-                "4.9/5 Google Reviews — VEU accredited.",
-              ].map((line, i) => (
-                <li key={i}>
-                  <span className="text-lime-neon font-semibold">✅ {line.split(" — ")[0]}</span><br />
-                  {line.includes(" — ") ? line.split(" — ")[1] : ""}
-                </li>
-              ))}
-            </ul>
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-dark-soft rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-lime-neon mb-6">Why Choose Accredited Providers</h2>
+              <ul className="space-y-6 text-lg leading-relaxed">
+                {[
+                  "Tailored System Selection — For your needs.",
+                  "High-Quality Products — With frost protection.",
+                  "Licensed VIC Professionals — Plumbers and electricians.",
+                  "5-Yr Product Warranty — Plus 2-yr labor warranty (heating/cooling).",
+                  "7-Yr Tank Warranty — (Hot water).",
+                  "15+ Years of Expertise —",
+                  "5 Days Standard Install — 48 hrs emergency hot water.",
+                  "4.9/5 Google Reviews — VEU accredited.",
+                ].map((line, i) => (
+                  <li key={i}>
+                    <span className="text-lime-neon font-semibold">✅ {line.split(" — ")[0]}</span><br />
+                    {line.includes(" — ") ? line.split(" — ")[1] : ""}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
-        {/* Process */}
+        {/* Step-by-Step Process */}
         <section id="process" className="bg-black text-white py-12 px-6 md:px-16">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-lime-neon mb-6">Step-by-Step Process</h2>
-            <ul className="space-y-6 text-lg leading-relaxed">
-              {[
-                ["Step 1: Register", "Complete quick form (eligibility check in ~60 seconds)."],
-                ["Step 2: Confirm", "Provider verifies rebate eligibility."],
-                ["Step 3: Install", "Accredited professional completes setup."],
-                ["Step 4: Certify & Recycle", "Certifications + old unit removed at no cost."],
-              ].map(([h, s], i) => (
-                <li key={i}><span className="text-lime-neon font-semibold">✅ {h}</span><br />{s}</li>
-              ))}
-            </ul>
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-dark-soft rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-lime-neon mb-6">Step-by-Step Process</h2>
+              <ul className="space-y-6 text-lg leading-relaxed">
+                {[
+                  ["Step 1: Register", "Complete quick form (eligibility check in ~60 seconds)."],
+                  ["Step 2: Confirm", "Provider verifies rebate eligibility."],
+                  ["Step 3: Install", "Accredited professional completes setup."],
+                  ["Step 4: Certify & Recycle", "Certifications + old unit removed at no cost."],
+                ].map(([h, s], i) => (
+                  <li key={i}>
+                    <span className="text-lime-neon font-semibold">✅ {h}</span><br />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -441,15 +444,13 @@ export default function Home() {
               <div className="md:col-span-2 flex gap-6">
                 <button
                   type="submit"
-                  className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold
-                             bg-lime-neon text-black hover:bg-lime-soft focus:ring-4 focus:ring-lime-neon/30 transition-all"
+                  className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-lime-neon text-black hover:bg-lime-soft focus:ring-4 focus:ring-lime-neon/30 transition-all"
                 >
                   Submit Inquiry
                 </button>
                 <a
                   href="mailto:contact@GLEnergy.com.au"
-                  className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold
-                             bg-black text-white ring-1 ring-lime-neon/30 hover:bg-[#0F0F0F] transition-colors"
+                  className="w-full md:w-auto inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-black text-white ring-1 ring-lime-neon/30 hover:bg-[#0F0F0F] transition-colors"
                 >
                   Email Us
                 </a>
@@ -469,19 +470,18 @@ export default function Home() {
               <div className="bg-black text-white text-center py-8 border-b border-dark-border">
                 <h2 className="text-4xl font-extrabold tracking-tight">Refer a Friend, $100 Cash!</h2>
               </div>
-              <div className="p-8 space-y-6 text-center">
+              <div className="p-8 space-y-6 text-left">
                 <p className="text-xl font-bold text-white">
                   Invite your friends to join GreenLine Energy and earn <strong>$100 cash</strong> for each successful referral!
                 </p>
                 <p className="text-base font-medium text-text-soft">No limit—refer more friends to boost your rewards!</p>
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold
-                             bg-lime-neon text-black hover:bg-lime-soft focus:ring-4 focus:ring-lime-neon/30 transition-all"
+                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-lime-neon text-black hover:bg-lime-soft focus:ring-4 focus:ring-lime-neon/30 transition-all"
                 >
                   Refer Now
                 </a>
-                <p className="flex justify-center mt-4 text-base font-medium text-text-soft">
+                <p className="text-base font-medium text-text-soft">
                   Quick, easy, and rewarding way to share the savings.
                 </p>
               </div>
@@ -497,23 +497,25 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FAQ */}
+        {/* Frequently Asked Questions */}
         <section id="faq" className="bg-black text-white py-12 px-6 md:px-16">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-lime-neon mb-6">Frequently Asked Questions</h2>
-            <h3 className="text-xl md:text-2xl font-semibold text-lime-soft mb-10">Rebate Details</h3>
-            <ul className="space-y-6 text-lg leading-relaxed">
-              <li><span className="text-lime-neon font-semibold">✅ Hot Water Rebates</span><br />Up to $2,681.</li>
-              <li><span className="text-lime-neon font-semibold">✅ Combined Incentives</span><br />Up to $9,900.</li>
-              <li><span className="text-lime-neon font-semibold">✅ Aircon & Heating Discounts</span><br />Available.</li>
-            </ul>
-            <h3 className="text-xl md:text-2xl font-semibold text-lime-soft mt-10 mb-6">Benefits of Switching</h3>
-            <ul className="space-y-6 text-lg leading-relaxed">
-              <li><span className="text-lime-neon font-semibold">✅ Save on Heating</span><br />Up to $1,010/year.</li>
-              <li><span className="text-lime-neon font-semibold">✅ Upgrade to Efficiency</span><br /></li>
-              <li><span className="text-lime-neon font-semibold">✅ Reduce Carbon Footprint</span><br />By 37M tonnes.</li>
-            </ul>
-            <p className="mt-6 text-sm text-lime-soft">*Estimates may vary. Contact us for personalized advice.</p>
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-dark-soft rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-lime-neon mb-6">Frequently Asked Questions</h2>
+              <h3 className="text-xl md:text-2xl font-semibold text-lime-soft mb-6">Rebate Details</h3>
+              <ul className="space-y-6 text-lg leading-relaxed">
+                <li><span className="text-lime-neon font-semibold">✅ Hot Water Rebates</span><br />Up to $2,681.</li>
+                <li><span className="text-lime-neon font-semibold">✅ Combined Incentives</span><br />Up to $9,900.</li>
+                <li><span className="text-lime-neon font-semibold">✅ Aircon & Heating Discounts</span><br />Available.</li>
+              </ul>
+              <h3 className="text-xl md:text-2xl font-semibold text-lime-soft mt-6 mb-6">Benefits of Switching</h3>
+              <ul className="space-y-6 text-lg leading-relaxed">
+                <li><span className="text-lime-neon font-semibold">✅ Save on Heating</span><br />Up to $1,010/year.</li>
+                <li><span className="text-lime-neon font-semibold">✅ Upgrade to Efficiency</span><br /></li>
+                <li><span className="text-lime-neon font-semibold">✅ Reduce Carbon Footprint</span><br />By 37M tonnes.</li>
+              </ul>
+              <p className="mt-6 text-sm text-lime-soft">*Estimates may vary. Contact us for personalized advice.</p>
+            </div>
           </div>
         </section>
 
