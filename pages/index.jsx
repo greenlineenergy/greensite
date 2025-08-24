@@ -272,60 +272,48 @@ export default function Home() {
           </div>
         </section>
         {/* Heating & Cooling - Key Features */}
-        <section id="heating-cooling-features" className="py-20 md:py-24 bg-[#1C2525]">
-          <div className="mx-auto max-w-7xl px-6 md:px-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-[#FFFFFF]">
-              Key Features of Modern Split Systems
+        <section id="heating-cooling-features" className="bg-black text-white py-12 px-6 md:px-16">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-lime-400 mb-6">
+              Heating & Cooling - Key Features
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-[#6B8E23] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6">
-                <ul className="text-base font-medium text-[#F0FFF0] space-y-3 list-none">
-                  <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                    Energy Efficiency – Reduces bills while maintaining comfort
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                    5 Fan Speeds – From turbo cooling to gentle breeze
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                    Super Quiet Operation – Whisper-quiet across all modes
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                    Filter Cleaning Reminder – Keeps air fresh
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                    30-Second Fast Cooling – From 27°C to 18°C
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                    Ultra Inverter Compressor – Efficient low-frequency operation
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                    R32 Refrigerant – Lower GWP, more efficient than R410
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#228B22] rounded-full"></span>
-                    Silver Ion Filter – Eliminates bacteria and fungi
-                  </li>
-                </ul>
-              </div>
-              <div className="bg-[#1C2525] rounded-2xl shadow-lg ring-1 ring-gray-700 p-6">
-                <img
-                  src="/revcycair.jpeg"
-                  alt="Modern split system"
-                  className="rounded-2xl object-cover w-full h-48 mb-4"
-                  loading="lazy"
-                />
-                <p className="text-base font-medium text-[#F0FFF0] text-center">
-                  Experience efficient and quiet climate control.
-                </p>
-              </div>
-            </div>
+            <h3 className="text-xl md:text-2xl font-semibold text-lime-300 mb-10">
+              Modern Split Systems
+            </h3>
+            <ul className="space-y-6 text-lg leading-relaxed">
+              <li>
+                <span className="text-lime-400 font-semibold">✅ Energy Efficiency</span><br />
+                Reduces bills while maintaining comfort.
+              </li>
+              <li>
+                <span className="text-lime-400 font-semibold">✅ 5 Fan Speeds</span><br />
+                From turbo cooling to a gentle breeze.
+              </li>
+              <li>
+                <span className="text-lime-400 font-semibold">✅ Super Quiet Operation</span><br />
+                Whisper-quiet across all modes.
+              </li>
+              <li>
+                <span className="text-lime-400 font-semibold">✅ Filter Cleaning Reminder</span><br />
+                Keeps indoor air fresh.
+              </li>
+              <li>
+                <span className="text-lime-400 font-semibold">✅ 30-Second Fast Cooling</span><br />
+                Drops air from 27°C to 18°C.
+              </li>
+              <li>
+                <span className="text-lime-400 font-semibold">✅ Ultra Inverter Compressor</span><br />
+                Efficient low-frequency operation.
+              </li>
+              <li>
+                <span className="text-lime-400 font-semibold">✅ R32 Refrigerant</span><br />
+                Lower GWP, more efficient than R410.
+              </li>
+              <li>
+                <span className="text-lime-400 font-semibold">✅ Silver Ion Filter</span><br />
+                Eliminates bacteria and fungi.
+              </li>
+            </ul>
           </div>
         </section>
         {/* Product Options (Heating & Cooling) */}
