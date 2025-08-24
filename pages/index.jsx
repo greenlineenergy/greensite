@@ -106,7 +106,7 @@ export default function Home() {
               <span className="inline-flex items-center rounded-full px-4 py-2 text-sm font-bold bg-lime-400 text-black ring-1 ring-lime-300/30">
                 VEU-Accredited Upgrades
               </span>
-              <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-lime-400">
+              <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white">
                 Take Advantage of Up to $9,900 in VEU Incentives
               </h1>
               <p className="text-xl md:text-2xl font-medium text-lime-300">
@@ -147,14 +147,14 @@ export default function Home() {
               </p>
             </div>
             <div className="md:col-span-5">
-              <div className="bg-black rounded-2xl shadow-lg ring-1 ring-lime-300/30 p-6">
+              <div className="bg-lime-400 rounded-2xl shadow-lg ring-1 ring-lime-300 p-6">
                 <img
                   src="/hero1.png"
                   alt="Modern energy-efficient home"
                   className="rounded-2xl object-cover w-full h-auto"
                   loading="lazy"
                 />
-                <p className="text-base font-medium text-lime-300 mt-3 text-center">
+                <p className="text-base font-medium text-black mt-3 text-center">
                   Upgrade to a modern, efficient home.
                 </p>
               </div>
@@ -164,7 +164,7 @@ export default function Home() {
         {/* Featured GIFs */}
         <section id="featured-gifs" className="py-20 md:py-24 bg-black">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-lime-400">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-white">
               Featured Animations
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
@@ -230,7 +230,7 @@ export default function Home() {
         {/* Why Upgrade */}
         <section className="bg-black text-white py-12 px-6 md:px-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-lime-400 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Why Upgrade?
             </h2>
             <h3 className="text-xl md:text-2xl font-semibold text-lime-300 mb-10">
@@ -239,27 +239,27 @@ export default function Home() {
             <ul className="space-y-6 text-lg leading-relaxed">
               <li>
                 <span className="text-lime-400 font-semibold">✅ Government Rebates Available</span><br />
-                Access rebates under the <strong>Victorian Energy Upgrades (VEU) program</strong>,
+                Access rebates under the <strong className="text-black">Victorian Energy Upgrades (VEU) program</strong>,
                 making energy-efficient upgrades more affordable than ever.
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Long-Term Certainty</span><br />
-                The program is <strong>extended until 2045</strong>, giving homeowners rebates
+                The program is <strong className="text-black">extended until 2045</strong>, giving homeowners rebates
                 for decades to come.
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Save More Every Year</span><br />
-                • Up to <strong>$1,010 per year</strong> by replacing ducted gas.<br />
-                • Up to <strong>$370 per year</strong> by upgrading space heaters.
+                • Up to <strong className="text-black">$1,010 per year</strong> by replacing ducted gas.<br />
+                • Up to <strong className="text-black">$370 per year</strong> by upgrading space heaters.
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Proven Impact</span><br />
-                Over <strong>2.4 million Victorian homes</strong> already upgraded, cutting
-                <strong>37 million tonnes of CO₂</strong> between 2022–2027.
+                Over <strong className="text-black">2.4 million Victorian homes</strong> already upgraded, cutting
+                <strong className="text-black">37 million tonnes of CO₂</strong> between 2022–2027.
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Free Inspections & Quotes</span><br />
-                Enjoy <strong>no-obligation onsite inspections</strong> and tailored quotes —
+                Enjoy <strong className="text-black">no-obligation onsite inspections</strong> and tailored quotes —
                 know exactly how much you can save.
               </li>
             </ul>
@@ -274,7 +274,7 @@ export default function Home() {
         {/* Heating & Cooling - Key Features */}
         <section id="heating-cooling-features" className="bg-black text-white py-12 px-6 md:px-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-lime-400 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Heating & Cooling - Key Features
             </h2>
             <h3 className="text-xl md:text-2xl font-semibold text-lime-300 mb-10">
@@ -283,35 +283,35 @@ export default function Home() {
             <ul className="space-y-6 text-lg leading-relaxed">
               <li>
                 <span className="text-lime-400 font-semibold">✅ Energy Efficiency</span><br />
-                Reduces bills while maintaining comfort.
+                <span className="text-black">Reduces bills while maintaining comfort.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ 5 Fan Speeds</span><br />
-                From turbo cooling to a gentle breeze.
+                <span className="text-black">From turbo cooling to a gentle breeze.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Super Quiet Operation</span><br />
-                Whisper-quiet across all modes.
+                <span className="text-black">Whisper-quiet across all modes.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Filter Cleaning Reminder</span><br />
-                Keeps indoor air fresh.
+                <span className="text-black">Keeps indoor air fresh.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ 30-Second Fast Cooling</span><br />
-                Drops air from 27°C to 18°C.
+                <span className="text-black">Drops air from 27°C to 18°C.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Ultra Inverter Compressor</span><br />
-                Efficient low-frequency operation.
+                <span className="text-black">Efficient low-frequency operation.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ R32 Refrigerant</span><br />
-                Lower GWP, more efficient than R410.
+                <span className="text-black">Lower GWP, more efficient than R410.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Silver Ion Filter</span><br />
-                Eliminates bacteria and fungi.
+                <span className="text-black">Eliminates bacteria and fungi.</span>
               </li>
             </ul>
           </div>
@@ -319,7 +319,7 @@ export default function Home() {
         {/* Product Options (Heating & Cooling) */}
         <section id="product-options" className="py-20 md:py-24 bg-black">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-lime-400">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-white">
               Product Options for Heating & Cooling
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
@@ -366,57 +366,57 @@ export default function Home() {
         {/* Hot Water Upgrades */}
         <section id="hot-water" className="py-20 md:py-24 bg-black">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-lime-400">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-white">
               Hot Water Upgrades
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-black text-white rounded-2xl shadow-lg ring-1 ring-lime-300/30 p-6">
-                <h3 className="text-3xl md:text-4xl font-bold text-lime-400 mb-6">
+              <div className="bg-lime-400 text-black rounded-2xl shadow-lg ring-1 ring-lime-300 p-6">
+                <h3 className="text-3xl md:text-4xl font-bold text-black mb-6">
                   Rebates & Incentives
                 </h3>
                 <ul className="space-y-6 text-lg leading-relaxed text-center">
                   <li>
-                    <span className="text-lime-400 font-semibold">✅ Rebates up to $2,681</span><br />
+                    <span className="text-black font-semibold">✅ Rebates up to $2,681</span><br />
                     For electric upgrades.
                   </li>
                   <li>
-                    <span className="text-lime-400 font-semibold">✅ $0 Product Cost</span><br />
+                    <span className="text-black font-semibold">✅ $0 Product Cost</span><br />
                     In some regions (e.g., Shepparton, Bendigo).
                   </li>
                   <li>
-                    <span className="text-lime-400 font-semibold">✅ Electric Replacement Mandatory</span><br />
+                    <span className="text-black font-semibold">✅ Electric Replacement Mandatory</span><br />
                     From Mar 1, 2027.
                   </li>
                 </ul>
-                <h3 className="text-xl md:text-2xl font-semibold text-lime-300 mt-10 mb-6">
+                <h3 className="text-xl md:text-2xl font-semibold text-black mt-10 mb-6">
                   Emergency Service
                 </h3>
                 <ul className="space-y-6 text-lg leading-relaxed text-center">
                   <li>
-                    <span className="text-lime-400 font-semibold">✅ 48-Hour Replacement</span><br />
+                    <span className="text-black font-semibold">✅ 48-Hour Replacement</span><br />
                     (Metro Melbourne).
                   </li>
                   <li>
-                    <span className="text-lime-400 font-semibold">✅ Save $2,000–$3,000</span><br />
+                    <span className="text-black font-semibold">✅ Save $2,000–$3,000</span><br />
                     Vs. standard plumbing.
                   </li>
                 </ul>
               </div>
-              <div className="bg-black text-white rounded-2xl shadow-lg ring-1 ring-lime-300/30 p-6">
-                <h3 className="text-3xl md:text-4xl font-bold text-lime-400 mb-6">
+              <div className="bg-lime-400 text-black rounded-2xl shadow-lg ring-1 ring-lime-300 p-6">
+                <h3 className="text-3xl md:text-4xl font-bold text-black mb-6">
                   Product Options
                 </h3>
                 <ul className="space-y-6 text-lg leading-relaxed text-center">
                   <li>
-                    <span className="text-lime-400 font-semibold">✅ Neopower Black® 260L</span><br />
+                    <span className="text-black font-semibold">✅ Neopower Black® 260L</span><br />
                     Wi-Fi, 6-yr warranty, 5 people.
                   </li>
                   <li>
-                    <span className="text-lime-400 font-semibold">✅ Emerald Energy 270L/320L</span><br />
+                    <span className="text-black font-semibold">✅ Emerald Energy 270L/320L</span><br />
                     Wi-Fi, 6-yr warranty.
                   </li>
                   <li>
-                    <span className="text-lime-400 font-semibold">✅ EcoGenica Split</span><br />
+                    <span className="text-black font-semibold">✅ EcoGenica Split</span><br />
                     215L, 260L, 290L, 7-yr warranty.
                   </li>
                 </ul>
@@ -430,30 +430,30 @@ export default function Home() {
         {/* Rebates & Eligibility */}
         <section id="rebates-eligibility" className="py-20 md:py-24 bg-black">
           <div className="mx-auto max-w-7xl px-6 md:px-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-lime-400">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-white">
               Rebates & Eligibility
             </h2>
-            <div className="bg-black text-white rounded-2xl shadow-lg ring-1 ring-lime-300/30 p-6">
-              <h3 className="text-3xl md:text-4xl font-bold text-lime-400 mb-6">
+            <div className="bg-lime-400 text-black rounded-2xl shadow-lg ring-1 ring-lime-300 p-6">
+              <h3 className="text-3xl md:text-4xl font-bold text-black mb-6">
                 Rebate Options
               </h3>
               <ul className="space-y-6 text-lg leading-relaxed text-center">
                 <li>
-                  <span className="text-lime-400 font-semibold">✅ VEU Rebate</span><br />
+                  <span className="text-black font-semibold">✅ VEU Rebate</span><br />
                   Home over 24 months old, replacing inefficient systems.
                 </li>
                 <li>
-                  <span className="text-lime-400 font-semibold">✅ CER STCs</span><br />
+                  <span className="text-black font-semibold">✅ CER STCs</span><br />
                   System must meet efficiency standards.
                 </li>
                 <li>
-                  <span className="text-lime-400 font-semibold">✅ SolarVic Rebate</span><br />
+                  <span className="text-black font-semibold">✅ SolarVic Rebate</span><br />
                   Income &lt; $210K, home &lt; $3M, system &gt; 3 years old.
                 </li>
               </ul>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-lime-400 text-black hover:bg-lime-300 focus:ring-4 focus:ring-lime-300/30 transition-all duration-200 mt-6"
+                className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-black text-lime-400 hover:bg-lime-300 focus:ring-4 focus:ring-lime-300/30 transition-all duration-200 mt-6"
               >
                 Check Eligibility
               </a>
@@ -463,40 +463,41 @@ export default function Home() {
         {/* Why Choose Accredited Providers */}
         <section id="why-choose" className="bg-black text-white py-12 px-6 md:px-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-lime-400 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Why Choose Accredited Providers
             </h2>
             <ul className="space-y-6 text-lg leading-relaxed">
               <li>
                 <span className="text-lime-400 font-semibold">✅ Tailored System Selection</span><br />
-                For your needs.
+                <span className="text-black">For your needs.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ High-Quality Products</span><br />
-                With frost protection.
+                <span className="text-black">With frost protection.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Licensed VIC Professionals</span><br />
-                Plumbers and electricians.
+                <span className="text-black">Plumbers and electricians.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ 5-Yr Product Warranty</span><br />
-                Plus 2-yr labor warranty (heating/cooling).
+                <span className="text-black">Plus 2-yr labor warranty (heating/cooling).</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ 7-Yr Tank Warranty</span><br />
-                (Hot water).
+                <span className="text-black">(Hot water).</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ 15+ Years of Expertise</span><br />
+                <span className="text-black"></span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ 5 Days Standard Install</span><br />
-                48 hrs emergency hot water.
+                <span className="text-black">48 hrs emergency hot water.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ 4.9/5 Google Reviews</span><br />
-                VEU accredited.
+                <span className="text-black">VEU accredited.</span>
               </li>
             </ul>
           </div>
@@ -504,25 +505,25 @@ export default function Home() {
         {/* Step-by-Step Process */}
         <section id="process" className="bg-black text-white py-12 px-6 md:px-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-lime-400 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Step-by-Step Process
             </h2>
             <ul className="space-y-6 text-lg leading-relaxed">
               <li>
                 <span className="text-lime-400 font-semibold">✅ Step 1: Register</span><br />
-                Complete quick form (eligibility check in ~60 seconds).
+                <span className="text-black">Complete quick form (eligibility check in ~60 seconds).</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Step 2: Confirm</span><br />
-                Provider verifies rebate eligibility.
+                <span className="text-black">Provider verifies rebate eligibility.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Step 3: Install</span><br />
-                Accredited professional completes setup.
+                <span className="text-black">Accredited professional completes setup.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Step 4: Certify & Recycle</span><br />
-                Certifications + old unit removed at no cost.
+                <span className="text-black">Certifications + old unit removed at no cost.</span>
               </li>
             </ul>
           </div>
@@ -530,7 +531,7 @@ export default function Home() {
         {/* Contact & Next Steps */}
         <section id="contact" className="py-20 md:py-24 bg-black">
           <div className="mx-auto max-w-4xl px-6 md:px-12 text-center">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-lime-400 mb-6">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
               Contact & Next Steps
             </h2>
             <p className="text-xl font-medium text-lime-300 mb-6">
@@ -542,7 +543,7 @@ export default function Home() {
                 <input
                   type="text"
                   required
-                  className="mt-2 w-full rounded-lg border-gray-400 focus:border-black focus:ring-black p-3 bg-black text-lime-400"
+                  className="mt-2 w-full rounded-lg border-gray-400 focus:border-black focus:ring-black p-3 bg-lime-400 text-black"
                   placeholder="Jane Citizen"
                 />
               </label>
@@ -551,7 +552,7 @@ export default function Home() {
                 <input
                   type="email"
                   required
-                  className="mt-2 w-full rounded-lg border-gray-400 focus:border-black focus:ring-black p-3 bg-black text-lime-400"
+                  className="mt-2 w-full rounded-lg border-gray-400 focus:border-black focus:ring-black p-3 bg-lime-400 text-black"
                   placeholder="jane@email.com"
                 />
               </label>
@@ -560,7 +561,7 @@ export default function Home() {
                 <input
                   type="text"
                   required
-                  className="mt-2 w-full rounded-lg border-gray-400 focus:border-black focus:ring-black p-3 bg-black text-lime-400"
+                  className="mt-2 w-full rounded-lg border-gray-400 focus:border-black focus:ring-black p-3 bg-lime-400 text-black"
                   placeholder="3000"
                 />
               </label>
@@ -569,7 +570,7 @@ export default function Home() {
                 <textarea
                   rows={5}
                   required
-                  className="mt-2 w-full rounded-lg border-gray-400 focus:border-black focus:ring-black p-3 bg-black text-lime-400"
+                  className="mt-2 w-full rounded-lg border-gray-400 focus:border-black focus:ring-black p-3 bg-lime-400 text-black"
                   placeholder="How can we assist you?"
                 />
               </label>
@@ -596,26 +597,26 @@ export default function Home() {
         {/* Refer a Friend */}
         <section className="w-full py-16 md:py-20 bg-black">
           <div className="max-w-4xl mx-auto px-6">
-            <div className="bg-black rounded-2xl shadow-lg overflow-hidden">
-              <div className="bg-lime-400 text-black text-center py-8">
+            <div className="bg-lime-400 rounded-2xl shadow-lg overflow-hidden">
+              <div className="bg-black text-white text-center py-8">
                 <h2 className="text-4xl font-extrabold tracking-tight flex items-center justify-center gap-2">
                   Refer a Friend, $100 Cash!
                 </h2>
               </div>
               <div className="p-8 space-y-6 text-center">
-                <p className="text-xl font-bold text-lime-400">
+                <p className="text-xl font-bold text-black">
                   Invite your friends to join GreenLine Energy and earn <strong>$100 cash</strong> for each successful referral!
                 </p>
-                <p className="text-base font-medium text-lime-300">
+                <p className="text-base font-medium text-black">
                   No limit—refer more friends to boost your rewards!
                 </p>
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-lime-400 text-black hover:bg-lime-300 focus:ring-4 focus:ring-lime-300/30 transition-all duration-200"
+                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-black text-lime-400 hover:bg-lime-300 focus:ring-4 focus:ring-lime-300/30 transition-all duration-200"
                 >
                   Refer Now
                 </a>
-                <p className="flex justify-center mt-4 text-base font-medium text-lime-300">
+                <p className="flex justify-center mt-4 text-base font-medium text-black">
                   Quick, easy, and rewarding way to share the savings.
                 </p>
               </div>
@@ -633,7 +634,7 @@ export default function Home() {
         {/* FAQ */}
         <section id="faq" className="bg-black text-white py-12 px-6 md:px-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-lime-400 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Frequently Asked Questions
             </h2>
             <h3 className="text-xl md:text-2xl font-semibold text-lime-300 mb-10">
@@ -642,15 +643,15 @@ export default function Home() {
             <ul className="space-y-6 text-lg leading-relaxed">
               <li>
                 <span className="text-lime-400 font-semibold">✅ Hot Water Rebates</span><br />
-                Up to $2,681.
+                <span className="text-black">Up to $2,681.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Combined Incentives</span><br />
-                Up to $9,900.
+                <span className="text-black">Up to $9,900.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Aircon & Heating Discounts</span><br />
-                Available.
+                <span className="text-black">Available.</span>
               </li>
             </ul>
             <h3 className="text-xl md:text-2xl font-semibold text-lime-300 mt-10 mb-6">
@@ -659,14 +660,15 @@ export default function Home() {
             <ul className="space-y-6 text-lg leading-relaxed">
               <li>
                 <span className="text-lime-400 font-semibold">✅ Save on Heating</span><br />
-                Up to $1,010/year.
+                <span className="text-black">Up to $1,010/year.</span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Upgrade to Efficiency</span><br />
+                <span className="text-black"></span>
               </li>
               <li>
                 <span className="text-lime-400 font-semibold">✅ Reduce Carbon Footprint</span><br />
-                By 37M tonnes.
+                <span className="text-black">By 37M tonnes.</span>
               </li>
             </ul>
             <p className="mt-6 text-sm text-lime-300">
