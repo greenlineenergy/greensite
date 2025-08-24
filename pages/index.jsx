@@ -82,14 +82,14 @@ export default function Home() {
               <div className="flex items-center gap-4">
                 <a
                   href="/vic-heat-pump/"
-                  className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold bg-[#3CB371] text-[#FFFFFF] hover:bg-[#228B22] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
+                  className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
                   aria-label="Heat Pump Offer"
                 >
                   Heat Pump Offer
                 </a>
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] transition-colors duration-200"
+                  className="inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
                   aria-label="Get a Quote"
                 >
                   Get a Quote
@@ -111,22 +111,16 @@ export default function Home() {
               <p className="text-xl md:text-2xl font-medium text-[#F0FFF0]">
                 Replace old gas heaters, air conditioners, or hot water systems with modern, energy-efficient technology to reduce bills, improve comfort, and cut emissions.
               </p>
-              <div className="flex gap-6">
+              <div className="flex gap-4">
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
+                  className="inline-flex items-center justify-center rounded-lg px-4 py-2 font-medium bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-2 focus:ring-[#228B22]/30 transition-all duration-200"
                 >
                   Get a Free Quote
                 </a>
                 <a
-                  href="#rebates"
-                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#1C2525] text-[#FFFFFF] ring-1 ring-[#228B22]/30 hover:bg-[#2F4F4F]"
-                >
-                  Explore Rebates
-                </a>
-                <a
                   href="/vic-heat-pump/"
-                  className="inline-flex items-center justify-center rounded-lg px-8 py-3 font-bold bg-[#3CB371] text-[#FFFFFF] hover:bg-[#228B22] focus:ring-4 focus:ring-[#228B22]/30 transition-all duration-200"
+                  className="inline-flex items-center justify-center rounded-lg px-4 py-2 font-medium bg-[#228B22] text-[#FFFFFF] hover:bg-[#3CB371] focus:ring-2 focus:ring-[#228B22]/30 transition-all duration-200"
                 >
                   Heat Pump Offer
                 </a>
