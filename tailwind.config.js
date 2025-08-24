@@ -9,43 +9,42 @@ module.exports = {
     extend: {
       colors: {
         lime: {
-          neon: "#39FF14",   // glowing lime green
-          soft: "#72FF6A",   // lighter hover lime
+          neon: "#39FF14",
+          soft: "#72FF6A",
         },
         dark: {
-          base: "#000000",   // pure black
-          soft: "#0B0B0B",   // soft black for cards
-          border: "#151515", // divider lines
+          base: "#000000",
+          soft: "#0B0B0B",
+          border: "#151515",
         },
         text: {
-          base: "#E6E6E6",   // main light grey
-          soft: "#D6FFD6",   // minty text accent
-          muted: "#9A9A9A",  // muted grey
+          base: "#E6E6E6",
+          soft: "#D6FFD6",
+          muted: "#9A9A9A",
         },
-      },
-      boxShadow: {
-        neon: "0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 40px #39FF14",
-      },
-      textShadow: {
-        neon: "0 0 6px #39FF14, 0 0 12px #39FF14, 0 0 24px #39FF14",
       },
     },
   },
   plugins: [
-    // custom plugin for text-shadow (since Tailwind doesn’t include it by default)
+    // simple text/box glow helpers
     function ({ addUtilities }) {
-      const newUtilities = {
+      const utilities = {
         ".text-glow": {
           textShadow: "0 0 6px #39FF14, 0 0 12px #39FF14, 0 0 24px #39FF14",
-        },
-        ".text-glow-soft": {
-          textShadow: "0 0 4px #72FF6A, 0 0 8px #72FF6A",
         },
         ".shadow-glow": {
           boxShadow: "0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 40px #39FF14",
         },
+        ".scrollbar-hide": {
+          /* for webkit */
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+        },
+        ".scrollbar-hide::-webkit-scrollbar": {
+          display: "none",
+        },
       };
-      addUtilities(newUtilities, ["responsive", "hover"]);
+      addUtilities(utilities, ["responsive", "hover"]);
     },
   ],
 };
