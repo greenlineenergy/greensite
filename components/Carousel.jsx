@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-/** Lightweight, dependency-free carousel with swipe + dots + arrows */
+/** Lightweight, dependency-free carousel with green theme and left-aligned text */
 export default function Carousel({ images, altBase = "Slide", className = "" }) {
   const [idx, setIdx] = useState(0);
   const touchStartX = useRef(0);
@@ -41,6 +41,9 @@ export default function Carousel({ images, altBase = "Slide", className = "" }) 
                 className="w-full h-56 md:h-64 lg:h-72 object-contain bg-black"
                 loading="lazy"
               />
+              <p className="text-base font-medium text-text-soft mt-2 text-left">
+                {`${altBase} ${i + 1}`}
+              </p>
             </div>
           ))}
         </div>
@@ -50,7 +53,7 @@ export default function Carousel({ images, altBase = "Slide", className = "" }) 
       <button
         type="button"
         onClick={() => go(-1)}
-        className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full bg-[#39FF14] text-black hover:bg-[#72FF6A] shadow-md"
+        className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full bg-lime-neon text-black hover:bg-lime-soft shadow-md focus:ring-4 focus:ring-lime-neon/30 transition-all"
         aria-label="Previous slide"
       >
         ‹
@@ -58,21 +61,21 @@ export default function Carousel({ images, altBase = "Slide", className = "" }) 
       <button
         type="button"
         onClick={() => go(1)}
-        className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full bg-[#39FF14] text-black hover:bg-[#72FF6A] shadow-md"
+        className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 h-9 w-9 items-center justify-center rounded-full bg-lime-neon text-black hover:bg-lime-soft shadow-md focus:ring-4 focus:ring-lime-neon/30 transition-all"
         aria-label="Next slide"
       >
         ›
       </button>
 
       {/* Dots */}
-      <div className="mt-3 flex items-center justify-center gap-2">
+      <div className="mt-3 flex items-center justify-start gap-2">
         {images.map((_, i) => (
           <button
             key={i}
             onClick={() => goto(i)}
             aria-label={`Go to slide ${i + 1}`}
             className={`h-2.5 w-2.5 rounded-full transition ${
-              i === idx ? "bg-[#39FF14]" : "bg-white/30 hover:bg-white/60"
+              i === idx ? "bg-lime-neon" : "bg-white/30 hover:bg-white/60"
             }`}
           />
         ))}
