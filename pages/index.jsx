@@ -169,12 +169,12 @@ export default function Home() {
                 />
               </a>
               <nav className="hidden md:flex items-center gap-6 text-base font-medium">
-                <a href="#why-upgrade" className="hover:text-[#66FF66] transition-colors">Why Upgrade</a>
-                <a href="#heating-cooling-features" className="hover:text-[#66FF66] transition-colors">Heating & Cooling</a>
-                <a href="#hot-water" className="hover:text-[#66FF66] transition-colors">Hot Water</a>
-                <a href="#rebates-eligibility" className="hover:text-[#66FF66] transition-colors">Rebates</a>
-                <a href="#process" className="hover:text-[#66FF66] transition-colors">Process</a>
-                <a href="#contact" className="hover:text-[#66FF66] transition-colors">Contact</a>
+                <a href="#why-upgrade" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Why Upgrade</a>
+                <a href="#heating-cooling-features" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Heating & Cooling</a>
+                <a href="#hot-water" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Hot Water</a>
+                <a href="#rebates-eligibility" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Rebates</a>
+                <a href="#process" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Process</a>
+                <a href="#contact" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Contact</a>
               </nav>
               <div className="flex items-center gap-2 shrink-0">
                 <button
@@ -204,12 +204,12 @@ export default function Home() {
             </div>
             <div id="mobile-menu" className="hidden md:hidden bg-black border-t border-[#1f1f1f] px-4 py-4">
               <nav className="flex flex-col gap-4 text-base font-medium">
-                <a href="#why-upgrade" className="hover:text-[#66FF66] transition-colors">Why Upgrade</a>
-                <a href="#heating-cooling-features" className="hover:text-[#66FF66] transition-colors">Heating & Cooling</a>
-                <a href="#hot-water" className="hover:text-[#66FF66] transition-colors">Hot Water</a>
-                <a href="#rebates-eligibility" className="hover:text-[#66FF66] transition-colors">Rebates</a>
-                <a href="#process" className="hover:text-[#66FF66] transition-colors">Process</a>
-                <a href="#contact" className="hover:text-[#66FF66] transition-colors">Contact</a>
+                <a href="#why-upgrade" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Why Upgrade</a>
+                <a href="#heating-cooling-features" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Heating & Cooling</a>
+                <a href="#hot-water" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Hot Water</a>
+                <a href="#rebates-eligibility" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Rebates</a>
+                <a href="#process" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Process</a>
+                <a href="#contact" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Contact</a>
                 <a
                   href="/vic-heat-pump/"
                   className="inline-flex justify-center rounded-lg px-4 py-2 font-bold bg-[#32CD32] text-black hover:bg-[#66FF66] focus:ring-4 focus:ring-[#32CD32]/30 transition-all"
@@ -269,7 +269,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <p className="text-xs sm:text-sm text-[#66FF66]">
+              <p className="text-xs sm:text-sm text-[#32CD32]">
                 *Savings vary by location, eligibility, and product. Contact for details.
               </p>
             </div>
@@ -320,7 +320,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 flex flex-wrap items-center justify-center gap-6">
             <Image src="/veu.png.jpeg" alt="Victorian Energy Upgrades Accreditation" width={56} height={56} className="h-14" loading="lazy" />
             <Image src="/esc.png.jpeg" alt="Essential Services Commission Accreditation" width={56} height={56} className="h-14" loading="lazy" />
-            <span className="text-sm sm:text-base font-medium text-[#66FF66]">
+            <span className="text-sm sm:text-base font-medium text-[#32CD32]">
               Licensed, Insured, and Committed to Excellence
             </span>
           </div>
@@ -391,63 +391,58 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8 text-[#32CD32]">
               Product Options for Heating & Cooling
             </h2>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-              <article className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 hover:shadow-xl transition-shadow text-center">
-                <div className="flex flex-col items-center gap-2">
-                  <div className="w-full max-w-md">
-                    <Image
-                      src="/IMG_5167.webp"
-                      alt="Emerald Split System 2kW"
-                      width={400}
-                      height={224}
-                      className="w-full h-56 object-cover rounded-lg"
-                      loading="lazy"
-                    />
-                    <p className="text-xs sm:text-sm text-white/80 mt-1">Emerald Split System 2kW</p>
-                  </div>
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 mb-6 relative overflow-hidden text-center">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">Heating & Cooling Systems</h3>
+              <div className="carousel-container relative w-full overflow-hidden" role="region" aria-label="Heating and cooling product carousel" tabIndex="0">
+                <div
+                  ref={carouselRef}
+                  className="carousel flex transition-transform duration-300 ease-in-out"
+                  style={{ width: "300%" }}
+                >
+                  {[
+                    { img: "/IMG_5224.jpeg", title: "Emerald Split System 2kW", desc: "Reverse cycle (heating + cooling) with 360° full DC inverter." },
+                    { img: "/IMG_5223.jpeg", title: "Avanti PLUS® Series", desc: "Platinum-grade, award-winning design with motion sensor." },
+                    { img: "/IMG_5225.jpeg", title: "Rinnai T Series", desc: "Long-distance airflow with Wi-Fi & voice control." },
+                  ].map((item, i) => (
+                    <div key={i} className="carousel-slide flex-none w-full sm:w-1/2 md:w-1/3 p-2">
+                      <div className="flex flex-col items-center">
+                        <Image
+                          src={item.img}
+                          alt={item.title}
+                          width={400}
+                          height={224}
+                          className="w-full h-56 object-cover rounded-lg mb-3"
+                          loading="lazy"
+                        />
+                        <h4 className="text-base sm:text-lg font-bold text-white">{item.title}</h4>
+                        <p className="text-xs sm:text-sm text-white/80">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 mt-3">Emerald Split System</h3>
-                <p className="text-sm sm:text-base font-medium text-white/80 mb-3">
-                  Reverse cycle (heating + cooling) with 360° full DC inverter.
-                </p>
-                <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-black text-[#32CD32] ring-1 ring-[#32CD32]/25 mt-2">
-                  Advanced ducting & louver fin
-                </span>
-              </article>
-              <article className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 hover:shadow-xl transition-shadow text-center">
-                <Image
-                  src="/revcycair.jpeg"
-                  alt="Avanti PLUS Series Product"
-                  width={400}
-                  height={224}
-                  className="w-full h-56 object-cover rounded-lg mb-4"
-                  loading="lazy"
-                />
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Avanti PLUS® Series</h3>
-                <p className="text-sm sm:text-base font-medium text-white/80 mb-3">
-                  Platinum-grade, award-winning design with motion sensor.
-                </p>
-                <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-black text-[#32CD32] ring-1 ring-[#32CD32]/25 mt-2">
-                  Clean Air Technology
-                </span>
-              </article>
-              <article className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 hover:shadow-xl transition-shadow text-center">
-                <Image
-                  src="/revcycair.jpeg"
-                  alt="Rinnai T Series Product"
-                  width={400}
-                  height={224}
-                  className="w-full h-56 object-cover rounded-lg mb-4"
-                  loading="lazy"
-                />
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Rinnai T Series</h3>
-                <p className="text-sm sm:text-base font-medium text-white/80 mb-3">
-                  Long-distance airflow with Wi-Fi & voice control.
-                </p>
-                <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-black text-[#32CD32] ring-1 ring-[#32CD32]/25 mt-2">
-                  R32 refrigerant
-                </span>
-              </article>
+                <button
+                  className="carousel-prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/50 text-[#32CD32] p-2 rounded-full hover:text-[#66FF66] focus:outline-none focus:ring-2 focus:ring-[#32CD32]"
+                  aria-label="Previous slide"
+                >
+                  ←
+                </button>
+                <button
+                  className="carousel-next absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/50 text-[#32CD32] p-2 rounded-full hover:text-[#66FF66] focus:outline-none focus:ring-2 focus:ring-[#32CD32]"
+                  aria-label="Next slide"
+                >
+                  →
+                </button>
+                <div className="carousel-dots flex justify-center mt-4 space-x-2">
+                  {[0, 1, 2].map((_, i) => (
+                    <button
+                      key={i}
+                      ref={(el) => (dotsRef.current[i] = el)}
+                      className={`w-2 h-2 rounded-full ${i === 0 ? "bg-[#32CD32]" : "bg-[#32CD32]/50"} focus:outline-none focus:ring-2 focus:ring-[#32CD32]`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -680,7 +675,7 @@ export default function Home() {
                 </a>
               </div>
             </form>
-            <p className="text-xs sm:text-sm text-[#66FF66] mt-3">
+            <p className="text-xs sm:text-sm text-[#32CD32] mt-3">
               Supported through 2045. By submitting, you agree to let us contact you.
             </p>
           </div>
@@ -757,7 +752,7 @@ export default function Home() {
               >
                 VEU Program
               </a>
-              <span className="text-[#66FF66]">•</span>
+              <span className="text-[#32CD32]">•</span>
               <a
                 href="https://www.solar.vic.gov.au/hot-water-rebate"
                 target="_blank"
@@ -766,7 +761,7 @@ export default function Home() {
               >
                 Solar Victoria Rebates
               </a>
-              <span className="text-[#66FF66]">•</span>
+              <span className="text-[#32CD32]">•</span>
               <a href="mailto:contact@GLEnergy.com.au" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">
                 Contact
               </a>
