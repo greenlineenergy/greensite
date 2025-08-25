@@ -236,7 +236,7 @@ export default function Home() {
               <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-bold bg-[#32CD32] text-black ring-1 ring-[#32CD32]/30">
                 VEU-Accredited Upgrades
               </span>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#32CD32]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
                 Take Advantage of Up to $9,900 in VEU Incentives
               </h1>
               <p className="text-base sm:text-lg md:text-xl font-medium text-[#32CD32]">
@@ -274,7 +274,7 @@ export default function Home() {
               </p>
             </div>
             <div className="md:col-span-5">
-              <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4">
+              <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 text-center">
                 <Image
                   src="/hero1.png"
                   alt="Modern energy-efficient home with advanced heating and cooling"
@@ -283,7 +283,7 @@ export default function Home() {
                   className="rounded-2xl object-cover w-full h-auto"
                   loading="lazy"
                 />
-                <p className="text-xs sm:text-sm text-white/80 mt-2 text-left">
+                <p className="text-xs sm:text-sm text-white/80 mt-2">
                   Upgrade to a modern, efficient home.
                 </p>
               </div>
@@ -299,7 +299,7 @@ export default function Home() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {["gif1.gif", "gif2.gif", "gif3.gif", "gif4.gif"].map((g, i) => (
-                <div key={i} className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4">
+                <div key={i} className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 text-center">
                   <Image
                     src={`/${g}`}
                     alt={`Energy-efficient animation ${i + 1}`}
@@ -308,7 +308,7 @@ export default function Home() {
                     className="w-full h-48 object-cover rounded-lg mb-3"
                     loading="lazy"
                   />
-                  <p className="text-xs sm:text-sm text-white/80 text-left">{`Animation ${i + 1}`}</p>
+                  <p className="text-xs sm:text-sm text-white/80">{`Animation ${i + 1}`}</p>
                 </div>
               ))}
             </div>
@@ -329,7 +329,7 @@ export default function Home() {
         {/* Why Upgrade */}
         <section id="why-upgrade" className="bg-black text-[#32CD32] py-12 px-4 sm:px-6 lg:px-16">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6">
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Why Upgrade?</h2>
               <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white/80 mb-4">Program-Level Benefits</h3>
               <ul className="space-y-4 text-sm sm:text-base leading-relaxed">
@@ -361,7 +361,7 @@ export default function Home() {
         {/* Heating & Cooling - Key Features */}
         <section id="heating-cooling-features" className="bg-black text-[#32CD32] py-12 px-4 sm:px-6 lg:px-16">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6">
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Heating & Cooling - Key Features</h2>
               <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white/80 mb-4">Modern Split Systems</h3>
               <ul className="space-y-4 text-sm sm:text-base leading-relaxed">
@@ -392,7 +392,7 @@ export default function Home() {
               Product Options for Heating & Cooling
             </h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-              <article className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 hover:shadow-xl transition-shadow">
+              <article className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 hover:shadow-xl transition-shadow text-center">
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-full max-w-md">
                     <Image
@@ -403,7 +403,7 @@ export default function Home() {
                       className="w-full h-56 object-cover rounded-lg"
                       loading="lazy"
                     />
-                    <p className="text-xs sm:text-sm text-white/80 mt-1 text-left">Emerald Split System 2kW</p>
+                    <p className="text-xs sm:text-sm text-white/80 mt-1">Emerald Split System 2kW</p>
                   </div>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 mt-3">Emerald Split System</h3>
@@ -414,7 +414,7 @@ export default function Home() {
                   Advanced ducting & louver fin
                 </span>
               </article>
-              <article className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 hover:shadow-xl transition-shadow">
+              <article className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 hover:shadow-xl transition-shadow text-center">
                 <Image
                   src="/revcycair.jpeg"
                   alt="Avanti PLUS Series Product"
@@ -431,7 +431,7 @@ export default function Home() {
                   Clean Air Technology
                 </span>
               </article>
-              <article className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 hover:shadow-xl transition-shadow">
+              <article className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 hover:shadow-xl transition-shadow text-center">
                 <Image
                   src="/revcycair.jpeg"
                   alt="Rinnai T Series Product"
@@ -458,8 +458,7 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8 text-[#32CD32]">
               Hot Water Upgrades
             </h2>
-            {/* Custom Carousel */}
-            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 mb-6 relative overflow-hidden">
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 mb-6 relative overflow-hidden text-center">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">Emerald Hot Water Systems</h3>
               <div className="carousel-container relative w-full overflow-hidden" role="region" aria-label="Hot water product carousel" tabIndex="0">
                 <div
@@ -483,7 +482,7 @@ export default function Home() {
                           loading="lazy"
                         />
                         <h4 className="text-base sm:text-lg font-bold text-white">{item.title}</h4>
-                        <p className="text-xs sm:text-sm text-white/80 text-center">{item.desc}</p>
+                        <p className="text-xs sm:text-sm text-white/80">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -513,7 +512,7 @@ export default function Home() {
               </div>
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
-              <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6">
+              <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">Rebates & Incentives</h3>
                 <p className="text-sm sm:text-base text-white/80 mb-4">
                   Hot water rebates of up to $1,000 are available for eligible heat pump and solar hot water products. Choose a locally made product for up to $1,400. Heating hot water accounts for 15%–30% of household energy use. Save with efficient systems and VEU discounts.
@@ -529,7 +528,7 @@ export default function Home() {
                   <li><span className="text-white font-semibold">✅ Save $2,000–$3,000</span><br /><span className="text-white/80">Vs. standard plumbing.</span></li>
                 </ul>
               </div>
-              <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6">
+              <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">Product Options</h3>
                 <ul className="space-y-4 text-sm sm:text-base leading-relaxed">
                   <li><span className="text-white font-semibold">✅ Neopower Black® 260L</span><br /><span className="text-white/80">Wi-Fi, 6-yr warranty, 5 people.</span></li>
@@ -550,7 +549,7 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8 text-[#32CD32]">
               Rebates & Eligibility
             </h2>
-            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6">
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">Rebate Options</h3>
               <p className="text-sm sm:text-base text-white/80 mb-4">
                 As a Victorian householder, you could receive a hot water rebate if you are an owner-occupier, household income is &lt; $210,000/year, property value is &lt; $3 million, and the system is &gt; 3 years old. Work with an authorised retailer using eligible products.
@@ -573,7 +572,7 @@ export default function Home() {
         {/* Why Choose Accredited Providers */}
         <section id="why-choose" className="bg-black text-[#32CD32] py-12 px-4 sm:px-6 lg:px-16">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6">
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Why Choose Accredited Providers</h2>
               <ul className="space-y-4 text-sm sm:text-base leading-relaxed">
                 {[
@@ -599,7 +598,7 @@ export default function Home() {
         {/* Step-by-Step Process */}
         <section id="process" className="bg-black text-[#32CD32] py-12 px-4 sm:px-6 lg:px-16">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6">
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Step-by-Step Process</h2>
               <p className="text-sm sm:text-base text-white/80 mb-4">
                 Follow these steps to access hot water rebates and install an efficient system:
@@ -629,7 +628,7 @@ export default function Home() {
             <p className="text-base sm:text-lg md:text-xl font-medium text-[#32CD32] mb-6">
               Free inspections available across Victoria. Rebates apply now for heating, cooling, and hot water upgrades.
             </p>
-            <form className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 grid sm:grid-cols-2 gap-4 text-left">
+            <form className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 grid sm:grid-cols-2 gap-4 text-center">
               <label className="block">
                 <span className="text-sm sm:text-base font-bold text-white">Full Name</span>
                 <input
@@ -666,7 +665,7 @@ export default function Home() {
                   placeholder="How can we assist you?"
                 />
               </label>
-              <div className="sm:col-span-2 flex gap-4 flex-wrap">
+              <div className="sm:col-span-2 flex gap-4 flex-wrap justify-center">
                 <button
                   type="submit"
                   className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg px-6 py-2 font-bold bg-black text-[#32CD32] hover:bg-[#66FF66] hover:text-black focus:ring-4 focus:ring-[#32CD32]/30 transition-all"
@@ -690,11 +689,11 @@ export default function Home() {
         {/* Refer a Friend */}
         <section className="w-full py-12 sm:py-16 md:py-20 bg-black border-t border-[#1f1f1f]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12">
-            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] overflow-hidden">
-              <div className="bg-black text-[#32CD32] text-center py-6 border-b border-[#1f1f1f]">
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] overflow-hidden text-center">
+              <div className="bg-black text-[#32CD32] py-6 border-b border-[#1f1f1f]">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#32CD32]">Refer a Friend, $100 Cash!</h2>
               </div>
-              <div className="p-4 sm:p-6 space-y-4 text-left">
+              <div className="p-4 sm:p-6 space-y-4">
                 <p className="text-base sm:text-lg font-bold text-white">
                   Invite your friends to join GreenLine Energy and earn <strong>$100 cash</strong> for each successful referral!
                 </p>
@@ -726,7 +725,7 @@ export default function Home() {
         {/* Frequently Asked Questions */}
         <section id="faq" className="bg-black text-[#32CD32] py-12 px-4 sm:px-6 lg:px-16">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6">
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
               <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white/80 mb-4">Rebate Details</h3>
               <ul className="space-y-4 text-sm sm:text-base leading-relaxed">
