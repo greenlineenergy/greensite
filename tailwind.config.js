@@ -47,3 +47,20 @@ module.exports = {
     },
   ],
 };
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './pages/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        'lime-neon': '#a3e635', /* Bright lime for buttons and highlights */
+        'lime-soft': '#d4f487', /* Softer lime for text and hover states */
+        'dark-border': '#1f1f1f', /* Border color for cards */
+      },
+    },
+  },
+  plugins: [],
+};
