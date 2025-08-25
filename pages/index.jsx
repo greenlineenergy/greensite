@@ -1,24 +1,116 @@
 // pages/index.js
 import Head from "next/head";
-import Image from "next/image"; // Use next/image for optimized images
-import { useEffect } from "react";
-import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper"; // Swiper.js imports
-import { Swiper, SwiperSlide } from "swiper/react"; // Swiper components
-import "swiper/css"; // Core Swiper styles
-import "swiper/css/navigation"; // Navigation styles
-import "swiper/css/pagination"; // Pagination styles
-
-// Initialize Swiper modules
-SwiperCore.use([Autoplay, Navigation, Pagination]);
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
-  // Load Swiper dynamically to avoid SSR issues
+  // Carousel logic
+  const carouselRef = useRef(null);
+  const dotsRef = useRef([]);
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      import("swiper").then((Swiper) => {
-        // Swiper is already initialized via imports
+    const carousel = carouselRef.current;
+    const slides = carousel.querySelectorAll(".carousel-slide");
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+
+    // Auto-play
+    const autoPlay = () => {
+      if (!carousel.matches(":hover")) {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+      }
+    };
+    const interval = setInterval(autoPlay, 5000);
+
+    // Update carousel position
+    const updateCarousel = () => {
+      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dotsRef.current.forEach((dot, i) => {
+        dot.classList.toggle("bg-[#32CD32]", i === currentIndex);
+        dot.classList.toggle("bg-[#32CD32]/50", i !== currentIndex);
       });
-    }
+    };
+
+    // Navigation buttons
+    const prevButton = carousel.parentElement.querySelector(".carousel-prev");
+    const nextButton = carousel.parentElement.querySelector(".carousel-next");
+    prevButton.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    });
+    nextButton.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateCarousel();
+    });
+
+    // Dot navigation
+    dotsRef.current.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        currentIndex = i;
+        updateCarousel();
+      });
+    });
+
+    // Touch support
+    const touchStart = (e) => {
+      isDragging = true;
+      startPos = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
+      carousel.style.transition = "none";
+    };
+    const touchMove = (e) => {
+      if (isDragging) {
+        const currentPosition = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
+        const diff = currentPosition - startPos;
+        currentTranslate = prevTranslate + diff;
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
+      }
+    };
+    const touchEnd = () => {
+      isDragging = false;
+      const movedBy = currentTranslate - prevTranslate;
+      if (movedBy < -100 && currentIndex < totalSlides - 1) currentIndex++;
+      if (movedBy > 100 && currentIndex > 0) currentIndex--;
+      prevTranslate = -currentIndex * carousel.offsetWidth;
+      carousel.style.transition = "transform 0.3s ease";
+      updateCarousel();
+    };
+
+    carousel.addEventListener("touchstart", touchStart);
+    carousel.addEventListener("touchmove", touchMove);
+    carousel.addEventListener("touchend", touchEnd);
+    carousel.addEventListener("mousedown", touchStart);
+    carousel.addEventListener("mousemove", touchMove);
+    carousel.addEventListener("mouseup", touchEnd);
+    carousel.addEventListener("mouseleave", touchEnd);
+
+    // Keyboard navigation
+    carousel.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      } else if (e.key === "ArrowRight") {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+      }
+    });
+
+    return () => {
+      clearInterval(interval);
+      prevButton.removeEventListener("click", () => {});
+      nextButton.removeEventListener("click", () => {});
+      carousel.removeEventListener("touchstart", touchStart);
+      carousel.removeEventListener("touchmove", touchMove);
+      carousel.removeEventListener("touchend", touchEnd);
+      carousel.removeEventListener("mousedown", touchStart);
+      carousel.removeEventListener("mousemove", touchMove);
+      carousel.removeEventListener("mouseup", touchEnd);
+      carousel.removeEventListener("mouseleave", touchEnd);
+    };
   }, []);
 
   return (
@@ -38,11 +130,9 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        {/* Add Inter font from Google Fonts */}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
       </Head>
 
-      {/* Site wrapper */}
       <div className="bg-black text-[#32CD32] antialiased font-inter">
         {/* Banner */}
         <div className="w-full">
@@ -112,7 +202,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            {/* Mobile Menu */}
             <div id="mobile-menu" className="hidden md:hidden bg-black border-t border-[#1f1f1f] px-4 py-4">
               <nav className="flex flex-col gap-4 text-base font-medium">
                 <a href="#why-upgrade" className="hover:text-[#66FF66] transition-colors">Why Upgrade</a>
@@ -369,44 +458,59 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8 text-[#32CD32]">
               Hot Water Upgrades
             </h2>
-            {/* Carousel for Emerald Hot Water Systems */}
-            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 mb-6">
+            {/* Custom Carousel */}
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 mb-6 relative overflow-hidden">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">Emerald Hot Water Systems</h3>
-              <Swiper
-                spaceBetween={20}
-                slidesPerView={1}
-                breakpoints={{
-                  640: { slidesPerView: 1 },
-                  768: { slidesPerView: 2 },
-                  1024: { slidesPerView: 3 },
-                }}
-                autoplay={{ delay: 5000, disableOnInteraction: false }}
-                navigation
-                pagination={{ clickable: true }}
-                className="hot-water-carousel"
-                aria-label="Hot water product carousel"
-              >
-                {[
-                  { img: "/IMG_5165.webp", title: "Emerald 2kW System", desc: "Wi-Fi, 6-yr warranty, ideal for small households." },
-                  { img: "/IMG_5166.webp", title: "Emerald 3kW System", desc: "Wi-Fi, 6-yr warranty, suitable for medium homes." },
-                  { img: "/IMG_5167.webp", title: "Emerald 7kW System", desc: "Wi-Fi, 6-yr warranty, perfect for large families." },
-                ].map((item, i) => (
-                  <SwiperSlide key={i}>
-                    <div className="flex flex-col items-center">
-                      <Image
-                        src={item.img}
-                        alt={item.title}
-                        width={400}
-                        height={224}
-                        className="w-full h-56 object-cover rounded-lg mb-3"
-                        loading="lazy"
-                      />
-                      <h4 className="text-base sm:text-lg font-bold text-white">{item.title}</h4>
-                      <p className="text-xs sm:text-sm text-white/80 text-center">{item.desc}</p>
+              <div className="carousel-container relative w-full overflow-hidden" role="region" aria-label="Hot water product carousel" tabIndex="0">
+                <div
+                  ref={carouselRef}
+                  className="carousel flex transition-transform duration-300 ease-in-out"
+                  style={{ width: "300%" }}
+                >
+                  {[
+                    { img: "/IMG_5165.webp", title: "Emerald 2kW System", desc: "Wi-Fi, 6-yr warranty, ideal for small households." },
+                    { img: "/IMG_5166.webp", title: "Emerald 3kW System", desc: "Wi-Fi, 6-yr warranty, suitable for medium homes." },
+                    { img: "/IMG_5167.webp", title: "Emerald 7kW System", desc: "Wi-Fi, 6-yr warranty, perfect for large families." },
+                  ].map((item, i) => (
+                    <div key={i} className="carousel-slide flex-none w-full sm:w-1/2 md:w-1/3 p-2">
+                      <div className="flex flex-col items-center">
+                        <Image
+                          src={item.img}
+                          alt={item.title}
+                          width={400}
+                          height={224}
+                          className="w-full h-56 object-cover rounded-lg mb-3"
+                          loading="lazy"
+                        />
+                        <h4 className="text-base sm:text-lg font-bold text-white">{item.title}</h4>
+                        <p className="text-xs sm:text-sm text-white/80 text-center">{item.desc}</p>
+                      </div>
                     </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                  ))}
+                </div>
+                <button
+                  className="carousel-prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/50 text-[#32CD32] p-2 rounded-full hover:text-[#66FF66] focus:outline-none focus:ring-2 focus:ring-[#32CD32]"
+                  aria-label="Previous slide"
+                >
+                  ←
+                </button>
+                <button
+                  className="carousel-next absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/50 text-[#32CD32] p-2 rounded-full hover:text-[#66FF66] focus:outline-none focus:ring-2 focus:ring-[#32CD32]"
+                  aria-label="Next slide"
+                >
+                  →
+                </button>
+                <div className="carousel-dots flex justify-center mt-4 space-x-2">
+                  {[0, 1, 2].map((_, i) => (
+                    <button
+                      key={i}
+                      ref={(el) => (dotsRef.current[i] = el)}
+                      className={`w-2 h-2 rounded-full ${i === 0 ? "bg-[#32CD32]" : "bg-[#32CD32]/50"} focus:outline-none focus:ring-2 focus:ring-[#32CD32]`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6">
@@ -672,33 +776,49 @@ export default function Home() {
         </footer>
       </div>
 
-      {/* Custom Swiper Styles */}
+      {/* Custom Carousel Styles */}
       <style jsx global>{`
-        .swiper-button-next,
-        .swiper-button-prev {
-          color: #32CD32;
-          transition: color 0.3s ease;
+        .carousel-container {
+          position: relative;
+          overflow: hidden;
         }
-        .swiper-button-next:hover,
-        .swiper-button-prev:hover {
-          color: #66FF66;
+        .carousel {
+          display: flex;
+          transition: transform 0.3s ease-in-out;
         }
-        .swiper-pagination-bullet {
-          background: #32CD32;
-          opacity: 0.5;
+        .carousel-slide {
+          flex: 0 0 100%;
+          box-sizing: border-box;
         }
-        .swiper-pagination-bullet-active {
-          background: #32CD32;
-          opacity: 1;
-        }
-        .hot-water-carousel {
-          padding-bottom: 2rem;
-        }
-        @media (max-width: 640px) {
-          .swiper-button-next,
-          .swiper-button-prev {
-            display: none; /* Hide arrows on small screens */
+        @media (min-width: 640px) {
+          .carousel-slide {
+            flex: 0 0 50%;
           }
+        }
+        @media (min-width: 1024px) {
+          .carousel-slide {
+            flex: 0 0 33.333%;
+          }
+        }
+        .carousel-container:hover .carousel {
+          animation-play-state: paused;
+        }
+        .carousel-prev,
+        .carousel-next {
+          display: none;
+        }
+        @media (min-width: 640px) {
+          .carousel-prev,
+          .carousel-next {
+            display: block;
+          }
+        }
+        .carousel-dots button {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          border: none;
+          cursor: pointer;
         }
       `}</style>
     </>
