@@ -1,14 +1,46 @@
+/* styles/global.css */
+
+/* Import Tailwind base, components, and utilities */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Base body styling */
-html, body, #__next {
-  height: 100%;
-  background: #000; /* deep black base */
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Smooth transforms for buttons/links */
-a, button {
-  transition: all .2s ease;
+/* Base styles for HTML and body */
+html,
+body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  background-color: #000000; /* Matches bg-black */
+  color: #ffffff; /* Matches text-white */
+}
+
+/* Custom styles for links */
+a {
+  color: #a3e635; /* Matches lime-neon */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #d4f487; /* Matches lime-soft for hover */
+}
+
+/* Ensure responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Custom container for consistent layout */
+.container {
+  max-width: 1280px; /* Matches max-w-7xl */
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
