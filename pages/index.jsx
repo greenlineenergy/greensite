@@ -1,4 +1,3 @@
-// pages/index.js
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
@@ -317,12 +316,36 @@ export default function Home() {
 
         {/* Trust and Accreditation */}
         <section aria-label="Trust and Accreditation" className="py-8 bg-black border-y border-[#1f1f1f]">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 flex flex-wrap items-center justify-center gap-6">
-            <Image src="/veu.png.jpeg" alt="Victorian Energy Upgrades Accreditation" width={56} height={56} className="h-14" loading="lazy" />
-            <Image src="/esc.png.jpeg" alt="Essential Services Commission Accreditation" width={56} height={56} className="h-14" loading="lazy" />
-            <span className="text-sm sm:text-base font-medium text-[#32CD32]">
-              Licensed, Insured, and Committed to Excellence
-            </span>
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 items-center justify-center">
+              {[
+                { src: "/veu.png.jpeg", alt: "Victorian Energy Upgrades Accreditation" },
+                { src: "/esc.png.jpeg", alt: "Essential Services Commission Accreditation" },
+                { src: "/IMG_5250.jpeg", alt: "Accreditation Logo 1" },
+                { src: "/IMG_5249.jpeg", alt: "Accreditation Logo 2" },
+                { src: "/IMG_5248.jpeg", alt: "Accreditation Logo 3" },
+                { src: "/IMG_5247.jpeg", alt: "Accreditation Logo 4" },
+                { src: "/IMG_5246.jpeg", alt: "Accreditation Logo 5" },
+              ].map((item, i) => (
+                <div key={i} className="flex justify-center">
+                  <div className="bg-white rounded-lg p-2">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      width={56}
+                      height={56}
+                      className="h-14 w-14 object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              ))}
+              <div className="col-span-2 sm:col-span-4 lg:col-span-7 text-center">
+                <span className="text-sm sm:text-base font-medium text-[#32CD32]">
+                  Licensed, Insured, and Committed to Excellence
+                </span>
+              </div>
+            </div>
           </div>
         </section>
 
