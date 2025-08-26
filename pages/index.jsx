@@ -3,113 +3,130 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 export default function Home() {
-  // Carousel logic
-  const carouselRef = useRef(null);
-  const dotsRef = useRef([]);
+  // Carousel logic (used for both Product Options and Hot Water Upgrades carousels)
+  const carouselRefs = {
+    productOptions: useRef(null),
+    hotWater: useRef(null),
+  };
+  const dotsRefs = {
+    productOptions: useRef([]),
+    hotWater: useRef([]),
+  };
 
   useEffect(() => {
-    const carousel = carouselRef.current;
-    const slides = carousel.querySelectorAll(".carousel-slide");
-    const totalSlides = slides.length;
-    let currentIndex = 0;
-    let isDragging = false;
-    let startPos = 0;
-    let currentTranslate = 0;
-    let prevTranslate = 0;
+    const setupCarousel = (carouselKey, ref, dots) => {
+      const carousel = ref.current;
+      if (!carousel) return; // Prevent errors if ref is null
+      const slides = carousel.querySelectorAll(".carousel-slide");
+      const totalSlides = slides.length;
+      let currentIndex = 0;
+      let isDragging = false;
+      let startPos = 0;
+      let currentTranslate = 0;
+      let prevTranslate = 0;
 
-    // Auto-play
-    const autoPlay = () => {
-      if (!carousel.matches(":hover")) {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateCarousel();
+      // Auto-play
+      const autoPlay = () => {
+        if (!carousel.matches(":hover")) {
+          currentIndex = (currentIndex + 1) % totalSlides;
+          updateCarousel();
+        }
+      };
+      const interval = setInterval(autoPlay, 5000);
+
+      // Update carousel position
+      const updateCarousel = () => {
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.current.forEach((dot, i) => {
+          dot.classList.toggle("bg-[#32CD32]", i === currentIndex);
+          dot.classList.toggle("bg-[#32CD32]/50", i !== currentIndex);
+        });
+      };
+
+      // Navigation buttons
+      const prevButton = carousel.parentElement.querySelector(".carousel-prev");
+      const nextButton = carousel.parentElement.querySelector(".carousel-next");
+      if (prevButton) {
+        prevButton.addEventListener("click", () => {
+          currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+          updateCarousel();
+        });
       }
-    };
-    const interval = setInterval(autoPlay, 5000);
+      if (nextButton) {
+        nextButton.addEventListener("click", () => {
+          currentIndex = (currentIndex + 1) % totalSlides;
+          updateCarousel();
+        });
+      }
 
-    // Update carousel position
-    const updateCarousel = () => {
-      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-      dotsRef.current.forEach((dot, i) => {
-        dot.classList.toggle("bg-[#32CD32]", i === currentIndex);
-        dot.classList.toggle("bg-[#32CD32]/50", i !== currentIndex);
+      // Dot navigation
+      dots.current.forEach((dot, i) => {
+        dot.addEventListener("click", () => {
+          currentIndex = i;
+          updateCarousel();
+        });
       });
-    };
 
-    // Navigation buttons
-    const prevButton = carousel.parentElement.querySelector(".carousel-prev");
-    const nextButton = carousel.parentElement.querySelector(".carousel-next");
-    prevButton.addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-      updateCarousel();
-    });
-    nextButton.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % totalSlides;
-      updateCarousel();
-    });
-
-    // Dot navigation
-    dotsRef.current.forEach((dot, i) => {
-      dot.addEventListener("click", () => {
-        currentIndex = i;
+      // Touch support
+      const touchStart = (e) => {
+        isDragging = true;
+        startPos = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
+        carousel.style.transition = "none";
+      };
+      const touchMove = (e) => {
+        if (isDragging) {
+          const currentPosition = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
+          const diff = currentPosition - startPos;
+          currentTranslate = prevTranslate + diff;
+          carousel.style.transform = `translateX(${currentTranslate}px)`;
+        }
+      };
+      const touchEnd = () => {
+        isDragging = false;
+        const movedBy = currentTranslate - prevTranslate;
+        if (movedBy < -100 && currentIndex < totalSlides - 1) currentIndex++;
+        if (movedBy > 100 && currentIndex > 0) currentIndex--;
+        prevTranslate = -currentIndex * carousel.offsetWidth;
+        carousel.style.transition = "transform 0.3s ease";
         updateCarousel();
+      };
+
+      carousel.addEventListener("touchstart", touchStart);
+      carousel.addEventListener("touchmove", touchMove);
+      carousel.addEventListener("touchend", touchEnd);
+      carousel.addEventListener("mousedown", touchStart);
+      carousel.addEventListener("mousemove", touchMove);
+      carousel.addEventListener("mouseup", touchEnd);
+      carousel.addEventListener("mouseleave", touchEnd);
+
+      // Keyboard navigation
+      carousel.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+          currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+          updateCarousel();
+        } else if (e.key === "ArrowRight") {
+          currentIndex = (currentIndex + 1) % totalSlides;
+          updateCarousel();
+        }
       });
-    });
 
-    // Touch support
-    const touchStart = (e) => {
-      isDragging = true;
-      startPos = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
-      carousel.style.transition = "none";
-    };
-    const touchMove = (e) => {
-      if (isDragging) {
-        const currentPosition = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
-        const diff = currentPosition - startPos;
-        currentTranslate = prevTranslate + diff;
-        carousel.style.transform = `translateX(${currentTranslate}px)`;
-      }
-    };
-    const touchEnd = () => {
-      isDragging = false;
-      const movedBy = currentTranslate - prevTranslate;
-      if (movedBy < -100 && currentIndex < totalSlides - 1) currentIndex++;
-      if (movedBy > 100 && currentIndex > 0) currentIndex--;
-      prevTranslate = -currentIndex * carousel.offsetWidth;
-      carousel.style.transition = "transform 0.3s ease";
-      updateCarousel();
+      return () => {
+        clearInterval(interval);
+        if (prevButton) prevButton.removeEventListener("click", () => {});
+        if (nextButton) nextButton.removeEventListener("click", () => {});
+        carousel.removeEventListener("touchstart", touchStart);
+        carousel.removeEventListener("touchmove", touchMove);
+        carousel.removeEventListener("touchend", touchEnd);
+        carousel.removeEventListener("mousedown", touchStart);
+        carousel.removeEventListener("mousemove", touchMove);
+        carousel.removeEventListener("mouseup", touchEnd);
+        carousel.removeEventListener("mouseleave", touchEnd);
+      };
     };
 
-    carousel.addEventListener("touchstart", touchStart);
-    carousel.addEventListener("touchmove", touchMove);
-    carousel.addEventListener("touchend", touchEnd);
-    carousel.addEventListener("mousedown", touchStart);
-    carousel.addEventListener("mousemove", touchMove);
-    carousel.addEventListener("mouseup", touchEnd);
-    carousel.addEventListener("mouseleave", touchEnd);
-
-    // Keyboard navigation
-    carousel.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateCarousel();
-      } else if (e.key === "ArrowRight") {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateCarousel();
-      }
-    });
-
-    return () => {
-      clearInterval(interval);
-      prevButton.removeEventListener("click", () => {});
-      nextButton.removeEventListener("click", () => {});
-      carousel.removeEventListener("touchstart", touchStart);
-      carousel.removeEventListener("touchmove", touchMove);
-      carousel.removeEventListener("touchend", touchEnd);
-      carousel.removeEventListener("mousedown", touchStart);
-      carousel.removeEventListener("mousemove", touchMove);
-      carousel.removeEventListener("mouseup", touchEnd);
-      carousel.removeEventListener("mouseleave", touchEnd);
-    };
+    // Setup carousels for both sections
+    setupCarousel("productOptions", carouselRefs.productOptions, dotsRefs.productOptions);
+    setupCarousel("hotWater", carouselRefs.hotWater, dotsRefs.hotWater);
   }, []);
 
   return (
@@ -172,6 +189,10 @@ export default function Home() {
                 <a href="#heating-cooling-features" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Heating & Cooling</a>
                 <a href="#hot-water" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Hot Water</a>
                 <a href="#rebates-eligibility" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Rebates</a>
+                <a href="#home-energy-assessments" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Energy Assessments</a>
+                <a href="#solar-panel-rebates" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Solar Rebates</a>
+                <a href="#hot-water-guide" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Hot Water Guide</a>
+                <a href="#emergency-installations" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Emergency Installations</a>
                 <a href="#process" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Process</a>
                 <a href="#contact" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Contact</a>
               </nav>
@@ -207,6 +228,10 @@ export default function Home() {
                 <a href="#heating-cooling-features" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Heating & Cooling</a>
                 <a href="#hot-water" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Hot Water</a>
                 <a href="#rebates-eligibility" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Rebates</a>
+                <a href="#home-energy-assessments" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Energy Assessments</a>
+                <a href="#solar-panel-rebates" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Solar Rebates</a>
+                <a href="#hot-water-guide" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Hot Water Guide</a>
+                <a href="#emergency-installations" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Emergency Installations</a>
                 <a href="#process" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Process</a>
                 <a href="#contact" className="text-[#32CD32] hover:text-[#66FF66] transition-colors">Contact</a>
                 <a
@@ -414,18 +439,19 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8 text-[#32CD32]">
               Product Options for Heating & Cooling
             </h2>
+            {/* Emerald HVAC Carousel */}
             <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 mb-6 relative overflow-hidden text-center">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">Heating & Cooling Systems</h3>
-              <div className="carousel-container relative w-full overflow-hidden" role="region" aria-label="Heating and cooling product carousel" tabIndex="0">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">Emerald HVAC Systems</h3>
+              <div className="carousel-container relative w-full overflow-hidden" role="region" aria-label="Emerald HVAC product carousel" tabIndex="0">
                 <div
-                  ref={carouselRef}
+                  ref={carouselRefs.productOptions}
                   className="carousel flex transition-transform duration-300 ease-in-out"
                   style={{ width: "300%" }}
                 >
                   {[
-                    { img: "/IMG_5224.jpeg", title: "Emerald Split System 2kW", desc: "Reverse cycle (heating + cooling) with 360° full DC inverter." },
-                    { img: "/IMG_5223.jpeg", title: "Avanti PLUS® Series", desc: "Platinum-grade, award-winning design with motion sensor." },
-                    { img: "/IMG_5225.jpeg", title: "Rinnai T Series", desc: "Long-distance airflow with Wi-Fi & voice control." },
+                    { img: "/IMG_5224.jpeg", title: "Emerald HVAC 2kW", desc: "Reverse cycle system with 360° full DC inverter, ideal for small spaces." },
+                    { img: "/IMG_5223.jpeg", title: "Emerald HVAC 3kW", desc: "Efficient reverse cycle system with Wi-Fi control, suitable for medium rooms." },
+                    { img: "/IMG_5225.jpeg", title: "Emerald HVAC 7kW", desc: "High-capacity reverse cycle system for large areas, with advanced efficiency." },
                   ].map((item, i) => (
                     <div key={i} className="carousel-slide flex-none w-full sm:w-1/2 md:w-1/3 p-2">
                       <div className="flex flex-col items-center">
@@ -459,13 +485,33 @@ export default function Home() {
                   {[0, 1, 2].map((_, i) => (
                     <button
                       key={i}
-                      ref={(el) => (dotsRef.current[i] = el)}
+                      ref={(el) => (dotsRefs.productOptions.current[i] = el)}
                       className={`w-2 h-2 rounded-full ${i === 0 ? "bg-[#32CD32]" : "bg-[#32CD32]/50"} focus:outline-none focus:ring-2 focus:ring-[#32CD32]`}
                       aria-label={`Go to slide ${i + 1}`}
                     />
                   ))}
                 </div>
               </div>
+            </div>
+            {/* Static Avanti and Rinnai Boxes */}
+            <div className="grid sm:grid-cols-2 gap-6">
+              {[
+                { img: "/IMG_5223.jpeg", title: "Avanti PLUS® Series", desc: "Platinum-grade, award-winning design with motion sensor." },
+                { img: "/IMG_5225.jpeg", title: "Rinnai T Series", desc: "Long-distance airflow with Wi-Fi & voice control." },
+              ].map((item, i) => (
+                <div key={i} className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 text-center">
+                  <Image
+                    src={item.img}
+                    alt={item.title}
+                    width={400}
+                    height={224}
+                    className="w-full h-56 object-cover rounded-lg mb-3"
+                    loading="lazy"
+                  />
+                  <h4 className="text-base sm:text-lg font-bold text-white">{item.title}</h4>
+                  <p className="text-xs sm:text-sm text-white/80">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -476,11 +522,12 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8 text-[#32CD32]">
               Hot Water Upgrades
             </h2>
+            {/* Emerald Hot Water Carousel */}
             <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 mb-6 relative overflow-hidden text-center">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">Emerald Hot Water Systems</h3>
               <div className="carousel-container relative w-full overflow-hidden" role="region" aria-label="Hot water product carousel" tabIndex="0">
                 <div
-                  ref={carouselRef}
+                  ref={carouselRefs.hotWater}
                   className="carousel flex transition-transform duration-300 ease-in-out"
                   style={{ width: "300%" }}
                 >
@@ -521,7 +568,7 @@ export default function Home() {
                   {[0, 1, 2].map((_, i) => (
                     <button
                       key={i}
-                      ref={(el) => (dotsRef.current[i] = el)}
+                      ref={(el) => (dotsRefs.hotWater.current[i] = el)}
                       className={`w-2 h-2 rounded-full ${i === 0 ? "bg-[#32CD32]" : "bg-[#32CD32]/50"} focus:outline-none focus:ring-2 focus:ring-[#32CD32]`}
                       aria-label={`Go to slide ${i + 1}`}
                     />
@@ -529,6 +576,23 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            {/* Static Rinnai Hot Water Box */}
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 mb-6 text-center">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">Rinnai Hot Water System</h3>
+              <div className="flex flex-col items-center">
+                <Image
+                  src="/IMG_5168.webp"
+                  alt="Rinnai Solar Hot Water"
+                  width={400}
+                  height={224}
+                  className="w-full h-56 object-cover rounded-lg mb-3"
+                  loading="lazy"
+                />
+                <h4 className="text-base sm:text-lg font-bold text-white">Rinnai Solar Hot Water</h4>
+                <p className="text-xs sm:text-sm text-white/80">Eligible for up to $1,400 rebate with locally made components, ideal for energy-efficient homes.</p>
+              </div>
+            </div>
+            {/* Rebates & Incentives and Product Options */}
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">Rebates & Incentives</h3>
@@ -570,12 +634,12 @@ export default function Home() {
             <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">Rebate Options</h3>
               <p className="text-sm sm:text-base text-white/80 mb-4">
-                As a Victorian householder, you could receive a hot water rebate if you are an owner-occupier, household income is &lt; $210,000/year, property value is &lt; $3 million, and the system is &gt; 3 years old. Work with an authorised retailer using eligible products.
+                As a Victorian householder, you could receive a hot water rebate if you are an owner-occupier, household income is &lt; $210,000/year, property value is &lt; $3 million, the system is &gt; 3 years old, and the property has not previously received a hot water or solar battery rebate under the Solar Homes Program. Work with an authorised retailer using eligible products.
               </p>
               <ul className="space-y-4 text-sm sm:text-base leading-relaxed">
                 <li><span className="text-white font-semibold">✅ VEU Rebate</span><br /><span className="text-white/80">Home over 24 months old, replacing inefficient systems.</span></li>
                 <li><span className="text-white font-semibold">✅ CER STCs</span><br /><span className="text-white/80">System must meet efficiency standards.</span></li>
-                <li><span className="text-white font-semibold">✅ SolarVic Rebate</span><br /><span className="text-white/80">Income &lt; $210K, home &lt; $3M, system &gt; 3 years old.</span></li>
+                <li><span className="text-white font-semibold">✅ SolarVic Rebate</span><br /><span className="text-white/80">Income &lt; $210K, home &lt; $3M, system &gt; 3 years old, no prior Solar Homes rebates.</span></li>
               </ul>
               <a
                 href="#contact"
@@ -635,6 +699,130 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Home Energy Rating Assessments */}
+        <section id="home-energy-assessments" className="bg-black text-[#32CD32] py-12 px-4 sm:px-6 lg:px-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Home Energy Rating Assessments</h2>
+              <p className="text-sm sm:text-base text-white/80 mb-4">
+                The Residential Efficiency Scorecard assesses your home’s energy efficiency, helping you save on energy bills. Most homes are eligible for a rebate of approximately $120.
+              </p>
+              <ul className="space-y-4 text-sm sm:text-base leading-relaxed">
+                <li>
+                  <span className="text-white font-semibold">✅ Energy Efficiency Check</span><br />
+                  <span className="text-white/80">Evaluates your home and appliances to identify savings opportunities.</span>
+                </li>
+                <li>
+                  <span className="text-white font-semibold">✅ $120 Rebate</span><br />
+                  <span className="text-white/80">Available for most Victorian households.</span>
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center rounded-lg px-6 py-2 font-bold bg-black text-[#32CD32] hover:bg-[#66FF66] hover:text-black focus:ring-4 focus:ring-[#32CD32]/30 transition-all mt-4"
+              >
+                Book an Assessment
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Solar Panel Rebates and All-Electric Homes */}
+        <section id="solar-panel-rebates" className="bg-black text-[#32CD32] py-12 px-4 sm:px-6 lg:px-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Solar Panel Rebates & All-Electric Homes</h2>
+              <p className="text-sm sm:text-base text-white/80 mb-4">
+                Eligible Victorians can access solar panel (PV) rebates to reduce energy costs. Switching to an all-electric home powered by solar can save thousands annually.
+              </p>
+              <ul className="space-y-4 text-sm sm:text-base leading-relaxed">
+                <li>
+                  <span className="text-white font-semibold">✅ Solar Panel Rebates</span><br />
+                  <span className="text-white/80">Available through the Solar Homes Program for eligible households.</span>
+                </li>
+                <li>
+                  <span className="text-white font-semibold">✅ All-Electric Savings</span><br />
+                  <span className="text-white/80">Save thousands per year with solar-powered electric systems.</span>
+                </li>
+              </ul>
+              <a
+                href="https://www.solar.vic.gov.au/solar-panel-rebate"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-lg px-6 py-2 font-bold bg-black text-[#32CD32] hover:bg-[#66FF66] hover:text-black focus:ring-4 focus:ring-[#32CD32]/30 transition-all mt-4"
+              >
+                Learn More About Solar Rebates
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Hot Water Buyers Guide and Product Lists */}
+        <section id="hot-water-guide" className="bg-black text-[#32CD32] py-12 px-4 sm:px-6 lg:px-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Hot Water Buyers Guide & Product Lists</h2>
+              <p className="text-sm sm:text-base text-white/80 mb-4">
+                Explore our Hot Water Buyers Guide to choose the best system for your home. Select from eligible products, including locally made options for higher rebates up to $1,400, supporting local jobs.
+              </p>
+              <ul className="space-y-4 text-sm sm:text-base leading-relaxed">
+                <li>
+                  <span className="text-white font-semibold">✅ Buyers Guide</span><br />
+                  <span className="text-white/80">Helps you select energy-efficient hot water systems tailored to your needs.</span>
+                </li>
+                <li>
+                  <span className="text-white font-semibold">✅ Locally Made Incentive</span><br />
+                  <span className="text-white/80">Up to $1,400 rebate for products with at least 50% locally made or assembled parts, supporting Local Jobs First.</span>
+                </li>
+                <li>
+                  <span className="text-white font-semibold">✅ Product Lists</span><br />
+                  <span className="text-white/80">Check eligible products regularly updated by Solar Victoria.</span>
+                </li>
+              </ul>
+              <a
+                href="https://www.solar.vic.gov.au/hot-water-rebate"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-lg px-6 py-2 font-bold bg-black text-[#32CD32] hover:bg-[#66FF66] hover:text-black focus:ring-4 focus:ring-[#32CD32]/30 transition-all mt-4"
+              >
+                View Buyers Guide & Product Lists
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Emergency Installations */}
+        <section id="emergency-installations" className="bg-black text-[#32CD32] py-12 px-4 sm:px-6 lg:px-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-[#008000] rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Emergency Hot Water Installations</h2>
+              <p className="text-sm sm:text-base text-white/80 mb-4">
+                If your hot water system breaks down or is unsafe, you can replace it immediately without waiting for rebate approval. Apply for the rebate post-installation to save up to $1,400.
+              </p>
+              <ul className="space-y-4 text-sm sm:text-base leading-relaxed">
+                <li>
+                  <span className="text-white font-semibold">✅ Immediate Replacement</span><br />
+                  <span className="text-white/80">Contact an authorised retailer for a solar hot water or heat pump installation.</span>
+                </li>
+                <li>
+                  <span className="text-white font-semibold">✅ Post-Installation Rebate</span><br />
+                  <span className="text-white/80">Submit eligibility documents after installation to claim your rebate.</span>
+                </li>
+                <li>
+                  <span className="text-white font-semibold">✅ Eligibility Check</span><br />
+                  <span className="text-white/80">Ensure you meet criteria (e.g., owner-occupier, income &lt; $210K) to avoid missing out.</span>
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center rounded-lg px-6 py-2 font-bold bg-black text-[#32CD32] hover:bg-[#66FF66] hover:text-black focus:ring-4 focus:ring-[#32CD32]/30 transition-all mt-4"
+              >
+                Arrange Emergency Installation
+              </a>
             </div>
           </div>
         </section>
