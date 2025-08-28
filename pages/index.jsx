@@ -1,135 +1,8 @@
 ```jsx
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
 
 export default function Home() {
-  // Carousel logic (used for both Product Options and Hot Water Upgrades carousels)
-  const carouselRefs = {
-    productOptions: useRef(null),
-    hotWater: useRef(null),
-  };
-  const dotsRefs = {
-    productOptions: useRef([]),
-    hotWater: useRef([]),
-  };
-
-  useEffect(() => {
-    const setupCarousel = (carouselKey, ref, dots) => {
-      const carousel = ref.current;
-      if (!carousel) return; // Prevent errors if ref is null
-      const slides = carousel.querySelectorAll(".carousel-slide");
-      const totalSlides = slides.length;
-      let currentIndex = 0;
-      let isDragging = false;
-      let startPos = 0;
-      let currentTranslate = 0;
-      let prevTranslate = 0;
-
-      // Auto-play
-      const autoPlay = () => {
-        if (!carousel.matches(":hover")) {
-          currentIndex = (currentIndex + 1) % totalSlides;
-          updateCarousel();
-        }
-      };
-      const interval = setInterval(autoPlay, 5000);
-
-      // Update carousel position
-      const updateCarousel = () => {
-        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-        dots.current.forEach((dot, i) => {
-          dot.classList.toggle("bg-lime-500", i === currentIndex);
-          dot.classList.toggle("bg-lime-500/50", i !== currentIndex);
-        });
-      };
-
-      // Navigation buttons
-      const prevButton = carousel.parentElement.querySelector(".carousel-prev");
-      const nextButton = carousel.parentElement.querySelector(".carousel-next");
-      if (prevButton) {
-        prevButton.addEventListener("click", () => {
-          currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-          updateCarousel();
-        });
-      }
-      if (nextButton) {
-        nextButton.addEventListener("click", () => {
-          currentIndex = (currentIndex + 1) % totalSlides;
-          updateCarousel();
-        });
-      }
-
-      // Dot navigation
-      dots.current.forEach((dot, i) => {
-        dot.addEventListener("click", () => {
-          currentIndex = i;
-          updateCarousel();
-        });
-      });
-
-      // Touch support
-      const touchStart = (e) => {
-        isDragging = true;
-        startPos = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
-        carousel.style.transition = "none";
-      };
-      const touchMove = (e) => {
-        if (isDragging) {
-          const currentPosition = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
-          const diff = currentPosition - startPos;
-          currentTranslate = prevTranslate + diff;
-          carousel.style.transform = `translateX(${currentTranslate}px)`;
-        }
-      };
-      const touchEnd = () => {
-        isDragging = false;
-        const movedBy = currentTranslate - prevTranslate;
-        if (movedBy < -100 && currentIndex < totalSlides - 1) currentIndex++;
-        if (movedBy > 100 && currentIndex > 0) currentIndex--;
-        prevTranslate = -currentIndex * carousel.offsetWidth;
-        carousel.style.transition = "transform 0.3s ease";
-        updateCarousel();
-      };
-
-      carousel.addEventListener("touchstart", touchStart);
-      carousel.addEventListener("touchmove", touchMove);
-      carousel.addEventListener("touchend", touchEnd);
-      carousel.addEventListener("mousedown", touchStart);
-      carousel.addEventListener("mousemove", touchMove);
-      carousel.addEventListener("mouseup", touchEnd);
-      carousel.addEventListener("mouseleave", touchEnd);
-
-      // Keyboard navigation
-      carousel.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") {
-          currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-          updateCarousel();
-        } else if (e.key === "ArrowRight") {
-          currentIndex = (currentIndex + 1) % totalSlides;
-          updateCarousel();
-        }
-      });
-
-      return () => {
-        clearInterval(interval);
-        if (prevButton) prevButton.removeEventListener("click", () => {});
-        if (nextButton) nextButton.removeEventListener("click", () => {});
-        carousel.removeEventListener("touchstart", touchStart);
-        carousel.removeEventListener("touchmove", touchMove);
-        carousel.removeEventListener("touchend", touchEnd);
-        carousel.removeEventListener("mousedown", touchStart);
-        carousel.removeEventListener("mousemove", touchMove);
-        carousel.removeEventListener("mouseup", touchEnd);
-        carousel.removeEventListener("mouseleave", touchEnd);
-      };
-    };
-
-    // Setup carousels for both sections
-    setupCarousel("productOptions", carouselRefs.productOptions, dotsRefs.productOptions);
-    setupCarousel("hotWater", carouselRefs.hotWater, dotsRefs.hotWater);
-  }, []);
-
   return (
     <>
       <Head>
@@ -432,61 +305,6 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8 text-lime-500">
               Product Options for Heating & Cooling
             </h2>
-            {/* Emerald HVAC Carousel */}
-            <div className="bg-green-900 rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 mb-6 relative overflow-hidden text-center">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-lime-500 mb-4">Emerald HVAC Systems</h3>
-              <div className="carousel-container relative w-full overflow-hidden" role="region" aria-label="Emerald HVAC product carousel" tabIndex="0">
-                <div
-                  ref={carouselRefs.productOptions}
-                  className="carousel flex transition-transform duration-300 ease-in-out"
-                  style={{ width: "300%" }}
-                >
-                  {[
-                    { img: "/IMG_5224.jpeg", title: "Emerald HVAC 2kW", desc: "Reverse cycle system with 360° full DC inverter, ideal for small spaces." },
-                    { img: "/IMG_5223.jpeg", title: "Emerald HVAC 3kW", desc: "Efficient reverse cycle system with Wi-Fi control, suitable for medium rooms." },
-                    { img: "/IMG_5225.jpeg", title: "Emerald HVAC 7kW", desc: "High-capacity reverse cycle system for large areas, with advanced efficiency." },
-                  ].map((item, i) => (
-                    <div key={i} className="carousel-slide flex-none w-full sm:w-1/2 md:w-1/3 p-2">
-                      <div className="flex flex-col items-center">
-                        <Image
-                          src={item.img}
-                          alt={item.title}
-                          width={400}
-                          height={224}
-                          className="w-full h-56 object-cover rounded-lg mb-3"
-                          loading="lazy"
-                        />
-                        <h4 className="text-base sm:text-lg font-bold text-lime-500">{item.title}</h4>
-                        <p className="text-xs sm:text-sm text-white/80">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <button
-                  className="carousel-prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:text-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-500"
-                  aria-label="Previous slide"
-                >
-                  ←
-                </button>
-                <button
-                  className="carousel-next absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:text-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-500"
-                  aria-label="Next slide"
-                >
-                  →
-                </button>
-                <div className="carousel-dots flex justify-center mt-4 space-x-2">
-                  {[0, 1, 2].map((_, i) => (
-                    <button
-                      key={i}
-                      ref={(el) => (dotsRefs.productOptions.current[i] = el)}
-                      className={`w-2 h-2 rounded-full ${i === 0 ? "bg-lime-500" : "bg-lime-500/50"} focus:outline-none focus:ring-2 focus:ring-lime-500`}
-                      aria-label={`Go to slide ${i + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-            {/* Static Avanti and Rinnai Boxes */}
             <div className="grid sm:grid-cols-2 gap-6">
               {[
                 { img: "/IMG_5223.jpeg", title: "Avanti PLUS® Series", desc: "Platinum-grade, award-winning design with motion sensor." },
@@ -514,61 +332,6 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8 text-lime-500">
               Hot Water Upgrades
             </h2>
-            {/* Emerald Hot Water Carousel */}
-            <div className="bg-green-900 rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 mb-6 relative overflow-hidden text-center">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-lime-500 mb-4">Emerald Hot Water Systems</h3>
-              <div className="carousel-container relative w-full overflow-hidden" role="region" aria-label="Hot water product carousel" tabIndex="0">
-                <div
-                  ref={carouselRefs.hotWater}
-                  className="carousel flex transition-transform duration-300 ease-in-out"
-                  style={{ width: "300%" }}
-                >
-                  {[
-                    { img: "/IMG_5165.webp", title: "Emerald 2kW System", desc: "Wi-Fi, 6-yr warranty, ideal for small households." },
-                    { img: "/IMG_5166.webp", title: "Emerald 3kW System", desc: "Wi-Fi, 6-yr warranty, suitable for medium homes." },
-                    { img: "/IMG_5167.webp", title: "Emerald 7kW System", desc: "Wi-Fi, 6-yr warranty, perfect for large families." },
-                  ].map((item, i) => (
-                    <div key={i} className="carousel-slide flex-none w-full sm:w-1/2 md:w-1/3 p-2">
-                      <div className="flex flex-col items-center">
-                        <Image
-                          src={item.img}
-                          alt={item.title}
-                          width={400}
-                          height={224}
-                          className="w-full h-56 object-cover rounded-lg mb-3"
-                          loading="lazy"
-                        />
-                        <h4 className="text-base sm:text-lg font-bold text-lime-500">{item.title}</h4>
-                        <p className="text-xs sm:text-sm text-white/80">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <button
-                  className="carousel-prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:text-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-500"
-                  aria-label="Previous slide"
-                >
-                  ←
-                </button>
-                <button
-                  className="carousel-next absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:text-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-500"
-                  aria-label="Next slide"
-                >
-                  →
-                </button>
-                <div className="carousel-dots flex justify-center mt-4 space-x-2">
-                  {[0, 1, 2].map((_, i) => (
-                    <button
-                      key={i}
-                      ref={(el) => (dotsRefs.hotWater.current[i] = el)}
-                      className={`w-2 h-2 rounded-full ${i === 0 ? "bg-lime-500" : "bg-lime-500/50"} focus:outline-none focus:ring-2 focus:ring-lime-500`}
-                      aria-label={`Go to slide ${i + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-            {/* Static Rinnai Hot Water Box */}
             <div className="bg-green-900 rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 mb-6 text-center">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-lime-500 mb-4">Rinnai Hot Water System</h3>
               <div className="flex flex-col items-center">
@@ -584,7 +347,6 @@ export default function Home() {
                 <p className="text-xs sm:text-sm text-white/80">Eligible for up to $1,400 rebate with locally made components, ideal for energy-efficient homes.</p>
               </div>
             </div>
-            {/* Rebates & Incentives and Product Options */}
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="bg-green-900 rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-lime-500 mb-4">Rebates & Incentives</h3>
@@ -961,51 +723,6 @@ export default function Home() {
           </div>
         </footer>
       </div>
-      {/* Custom Carousel Styles */}
-      <style jsx global>{`
-        .carousel-container {
-          position: relative;
-          overflow: hidden;
-        }
-        .carousel {
-          display: flex;
-          transition: transform 0.3s ease-in-out;
-        }
-        .carousel-slide {
-          flex: 0 0 100%;
-          box-sizing: border-box;
-        }
-        @media (min-width: 640px) {
-          .carousel-slide {
-            flex: 0 0 50%;
-          }
-        }
-        @media (min-width: 1024px) {
-          .carousel-slide {
-            flex: 0 0 33.333%;
-          }
-        }
-        .carousel-container:hover .carousel {
-          animation-play-state: paused;
-        }
-        .carousel-prev,
-        .carousel-next {
-          display: none;
-        }
-        @media (min-width: 640px) {
-          .carousel-prev,
-          .carousel-next {
-            display: block;
-          }
-        }
-        .carousel-dots button {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          border: none;
-          cursor: pointer;
-        }
-      `}</style>
     </>
   );
 }
