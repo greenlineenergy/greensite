@@ -299,41 +299,12 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* Product Options */}
-        <section id="product-options" className="py-12 sm:py-16 md:py-20 bg-black">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8 text-lime-500">
-              Product Options for Heating & Cooling
-            </h2>
-            {/* Static Avanti and Rinnai Boxes */}
-            <div className="grid sm:grid-cols-2 gap-6">
-              {[
-                { img: "/IMG_5223.jpeg", title: "Avanti PLUS® Series", desc: "Platinum-grade, award-winning design with motion sensor." },
-                { img: "/IMG_5225.jpeg", title: "Rinnai T Series", desc: "Long-distance airflow with Wi-Fi & voice control." },
-              ].map((item, i) => (
-                <div key={i} className="bg-green-900 rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 text-center">
-                  <Image
-                    src={item.img}
-                    alt={item.title}
-                    width={400}
-                    height={224}
-                    className="w-full h-56 object-cover rounded-lg mb-3"
-                    loading="lazy"
-                  />
-                  <h4 className="text-base sm:text-lg font-bold text-lime-500">{item.title}</h4>
-                  <p className="text-xs sm:text-sm text-white/80">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
         {/* Hot Water Upgrades */}
         <section id="hot-water" className="py-12 sm:py-16 md:py-20 bg-black">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8 text-lime-500">
               Hot Water Upgrades
             </h2>
-            {/* Static Rinnai Hot Water Box */}
             <div className="bg-green-900 rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 mb-6 text-center">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-lime-500 mb-4">Rinnai Hot Water System</h3>
               <div className="flex flex-col items-center">
@@ -349,7 +320,6 @@ export default function Home() {
                 <p className="text-xs sm:text-sm text-white/80">Eligible for up to $1,400 rebate with locally made components, ideal for energy-efficient homes.</p>
               </div>
             </div>
-            {/* Rebates & Incentives and Product Options */}
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="bg-green-900 rounded-2xl shadow-lg ring-1 ring-[#1f1f1f] p-4 sm:p-6 text-center">
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-lime-500 mb-4">Rebates & Incentives</h3>
