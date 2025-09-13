@@ -1,4 +1,3 @@
-```jsx
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -158,4 +157,42 @@ export default function VEURrebates() {
                   <li>
                     <span className="text-white font-semibold">✅ Reduce Energy Bills</span><br />
                     <span className="text-white/80">Save up to $1,010/year by replacing gas heating systems.</span>
-                  </
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </main>
+        {/* Footer */}
+        <footer className="py-8 bg-black border-t border-[#1f1f1f] text-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm sm:text-base">
+            <p className="font-medium text-white">© {new Date().getFullYear()} Greenline Energy Pty Ltd • ABN 12 345 678 901</p>
+            <div className="flex items-center gap-4 flex-wrap">
+              <Link
+                href="https://www.energy.vic.gov.au/victorian-energy-upgrades"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-lime-400 transition-colors"
+              >
+                VEU Program
+              </Link>
+              <span className="text-white">•</span>
+              <Link
+                href="https://www.solar.vic.gov.au/hot-water-rebate"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-lime-400 transition-colors"
+              >
+                Solar Victoria Rebates
+              </Link>
+              <span className="text-white">•</span>
+              <Link href="mailto:info@greenlineenergy.com.au" className="text-white hover:text-lime-400 transition-colors">
+                Contact
+              </Link>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </>
+  );
+}
